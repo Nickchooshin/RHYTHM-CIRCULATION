@@ -14,6 +14,8 @@ namespace RHYTHM_CIRCULATION_Tool
 {
     public partial class Form1 : Form
     {
+        private const int MAX_BAR = 500;
+
         private int m_bpm = 120;
         private int m_maxBeat = 16;
         private int m_nowBar = 0;
@@ -23,8 +25,8 @@ namespace RHYTHM_CIRCULATION_Tool
         private int m_slideNoteLength = 1;
         private SlideWay m_slideWay = SlideWay.LEFT;
 
-        private NoteData[, ,] m_noteList;
-        private Image[] m_noteImageList = new Image[4];
+        private NoteData[,] m_noteList;
+        private Image[] m_noteImageList = new Image[7];
         private PictureBox[] m_notePictureBoxList = new PictureBox[9];
 
         public Form1()
@@ -83,15 +85,15 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void InitNote()
         {
-            m_noteList = new NoteData[500, m_maxBeat, 9];
+            m_noteList = new NoteData[MAX_BAR * m_maxBeat, 9];
 
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < MAX_BAR; i++)
             {
                 for (int j = 0; j < m_maxBeat; j++)
                 {
                     for (int k = 0; k < 9; k++)
                     {
-                        m_noteList[i, j, k] = new NoteData();
+                        m_noteList[(i * m_maxBeat) + j, k] = new NoteData();
                     }
                 }
             }
@@ -103,6 +105,9 @@ namespace RHYTHM_CIRCULATION_Tool
             m_noteImageList[1] = System.Drawing.Image.FromFile("./Resources/Tap.png");
             m_noteImageList[2] = System.Drawing.Image.FromFile("./Resources/Long.png");
             m_noteImageList[3] = System.Drawing.Image.FromFile("./Resources/Slide.png");
+            m_noteImageList[4] = System.Drawing.Image.FromFile("./Resources/Shake.png");
+            m_noteImageList[5] = System.Drawing.Image.FromFile("./Resources/Long_Shadow.png");
+            m_noteImageList[6] = System.Drawing.Image.FromFile("./Resources/Slide_Shadow.png");
 
             m_notePictureBoxList[0] = pictureBox_Note1;
             m_notePictureBoxList[1] = pictureBox_Note2;
@@ -202,8 +207,14 @@ namespace RHYTHM_CIRCULATION_Tool
         {
             for (int i = 0; i < 9; i++)
             {
-                int imageNum = (int)m_noteList[m_nowBar, m_nowBeat, i].Type;
+                int index = GetNowBarBeatIndex();
+                int imageNum = (int)m_noteList[index, i].Type;
                 m_notePictureBoxList[i].Image = m_noteImageList[imageNum];
+
+                if (imageNum >= (int)NoteType.LONG_SHADOW)
+                    m_notePictureBoxList[i].Enabled = false;
+                else
+                    m_notePictureBoxList[i].Enabled = true;
             }
         }
 
@@ -211,21 +222,43 @@ namespace RHYTHM_CIRCULATION_Tool
         {
             PictureBox pictureBox = (PictureBox)sender;
             int noteNum = int.Parse((string)pictureBox.Tag);
-            NoteData noteData = m_noteList[m_nowBar, m_nowBeat, noteNum];
+            int index = GetNowBarBeatIndex();
+            NoteData noteData = m_noteList[index, noteNum];
 
             pictureBox.Image = m_noteImageList[(int)m_noteType];
+            if (noteData.Length > 0)
+                DeleteNoteShadow(noteNum);
             noteData.Type = m_noteType;
+            noteData.Length = 0;
 
-            switch (m_noteType)
+            if (m_noteType == NoteType.LONG)
             {
-                case NoteType.LONG:
-                    noteData.Length = m_longNoteLength;
-                    break;
-                case NoteType.SLIDE:
-                    noteData.Length = m_slideNoteLength;
-                    noteData.SlideWay = m_slideWay;
-                    break;
+                noteData.Length = m_longNoteLength;
+                for (int i = 1; i <= m_longNoteLength; i++)
+                    m_noteList[index + i, noteNum].Type = NoteType.LONG_SHADOW;
             }
+            else if (m_noteType == NoteType.SLIDE)
+            {
+                noteData.Length = m_slideNoteLength;
+                noteData.SlideWay = m_slideWay;
+                for (int i = 1; i <= m_slideNoteLength; i++)
+                    m_noteList[index + i, noteNum].Type = NoteType.SLIDE_SHADOW;
+            }
+        }
+
+        private void DeleteNoteShadow(int noteNum)
+        {
+            int index = GetNowBarBeatIndex();
+            int length = m_noteList[index, noteNum].Length;
+
+            for (int i = 1; i <= length; i++)
+                m_noteList[(m_nowBar * m_maxBeat) + (m_nowBeat + i), noteNum].Type = NoteType.NONE;
+        }
+
+        // Utils
+        private int GetNowBarBeatIndex()
+        {
+            return (m_nowBar * m_maxBeat) + m_nowBeat;
         }
     }
 }

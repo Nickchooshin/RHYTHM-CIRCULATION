@@ -13,6 +13,8 @@ namespace Note
         LONG,
         SLIDE,
         SHAKE,
+        LONG_SHADOW,
+        SLIDE_SHADOW,
     }
 
     public enum SlideWay
