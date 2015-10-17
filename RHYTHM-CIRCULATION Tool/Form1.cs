@@ -23,7 +23,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private int m_slideNoteLength = 1;
         private SlideWay m_slideWay = SlideWay.LEFT;
 
-        private NoteType[,,] m_noteList;
+        private NoteData[, ,] m_noteList;
         private Image[] m_noteImageList = new Image[4];
         private PictureBox[] m_notePictureBoxList = new PictureBox[9];
 
@@ -83,7 +83,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void InitNote()
         {
-            m_noteList = new NoteType[500, m_maxBeat, 9];
+            m_noteList = new NoteData[500, m_maxBeat, 9];
 
             for (int i = 0; i < 500; i++)
             {
@@ -91,7 +91,7 @@ namespace RHYTHM_CIRCULATION_Tool
                 {
                     for (int k = 0; k < 9; k++)
                     {
-                        m_noteList[i, j, k] = NoteType.NONE;
+                        m_noteList[i, j, k] = new NoteData();
                     }
                 }
             }
@@ -201,7 +201,10 @@ namespace RHYTHM_CIRCULATION_Tool
         private void ReloadNote()
         {
             for (int i = 0; i < 9; i++)
-                m_notePictureBoxList[i].Image = m_noteImageList[(int)m_noteList[m_nowBar, m_nowBeat, i]];
+            {
+                int imageNum = (int)m_noteList[m_nowBar, m_nowBeat, i].Type;
+                m_notePictureBoxList[i].Image = m_noteImageList[imageNum];
+            }
         }
 
         private void FixedNote(object sender, EventArgs e)
@@ -210,7 +213,7 @@ namespace RHYTHM_CIRCULATION_Tool
             int noteNum = int.Parse((string)pictureBox.Tag);
 
             pictureBox.Image = m_noteImageList[(int)m_noteType];
-            m_noteList[m_nowBar, m_nowBeat, noteNum] = m_noteType;
+            m_noteList[m_nowBar, m_nowBeat, noteNum].Type = m_noteType;
         }
     }
 }

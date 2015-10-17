@@ -21,13 +21,53 @@ namespace Note
         RIGHT,
     }
 
-    class Note
+    class NoteData
     {
-        public Note()
+        private NoteType m_type = NoteType.NONE;
+        private int m_length = 0;
+        private SlideWay m_slideWay = SlideWay.LEFT;
+
+        public NoteData()
         {
         }
-        ~Note()
+        ~NoteData()
         {
+        }
+
+        public NoteType Type
+        {
+            get
+            {
+                return m_type;
+            }
+            set
+            {
+                m_type = value;
+            }
+        }
+
+        public int Length
+        {
+            get
+            {
+                return m_length;
+            }
+            set
+            {
+                m_length = value;
+            }
+        }
+
+        public SlideWay SlideWay
+        {
+            get
+            {
+                return m_slideWay;
+            }
+            set
+            {
+                m_slideWay = value;
+            }
         }
     }
 }
