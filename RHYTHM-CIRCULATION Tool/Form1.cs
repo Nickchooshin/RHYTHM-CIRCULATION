@@ -8,24 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Note;
+
 namespace RHYTHM_CIRCULATION_Tool
 {
     public partial class Form1 : Form
     {
-        private enum NoteType
-        {
-            NONE = 0,
-            TAP,
-            LONG,
-            SLIDE,
-            SHAKE,
-        }
-
         private int m_bpm = 120;
         private int m_maxBeat = 16;
         private int m_nowBar = 0;
         private int m_nowBeat = 0;
         private NoteType m_noteType = NoteType.TAP;
+        private int m_longNoteLength = 1;
+        private int m_slideNoteLength = 1;
+        private SlideWay m_slideWay = SlideWay.LEFT;
 
         private NoteType[,,] m_noteList;
         private Image[] m_noteImageList = new Image[4];
@@ -44,6 +40,9 @@ namespace RHYTHM_CIRCULATION_Tool
             InitSetting();
             InitNote();
             InitNoteImage();
+
+            groupBox_LongNoteOption.Enabled = false;
+            groupBox_SlideNoteOption.Enabled = false;
         }
 
         private void InitSetting()
@@ -65,6 +64,17 @@ namespace RHYTHM_CIRCULATION_Tool
                     break;
                 case NoteType.SHAKE:
                     radioButton_Shake.Checked = true;
+                    break;
+            }
+            textBox_LongNoteLength.Text = m_longNoteLength.ToString();
+            textBox_SlideNoteLength.Text = m_slideNoteLength.ToString();
+            switch (m_slideWay)
+            {
+                case SlideWay.LEFT:
+                    radioButton_LeftWay.Checked = true;
+                    break;
+                case SlideWay.RIGHT:
+                    radioButton_RightWay.Checked = true;
                     break;
             }
 
@@ -133,10 +143,12 @@ namespace RHYTHM_CIRCULATION_Tool
             ReloadNote();
         }
 
-        // Note
         private void ChangeNoteType(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
+
+            groupBox_LongNoteOption.Enabled = false;
+            groupBox_SlideNoteOption.Enabled = false;
 
             switch (radioButton.TabIndex)
             {
@@ -148,9 +160,11 @@ namespace RHYTHM_CIRCULATION_Tool
                     break;
                 case 2:
                     m_noteType = NoteType.LONG;
+                    groupBox_LongNoteOption.Enabled = true;
                     break;
                 case 3:
                     m_noteType = NoteType.SLIDE;
+                    groupBox_SlideNoteOption.Enabled = true;
                     break;
                 case 4:
                     //m_noteType = NoteType.SHAKE;
@@ -158,6 +172,32 @@ namespace RHYTHM_CIRCULATION_Tool
             }
         }
 
+        private void textBox_LongNoteLength_TextChanged(object sender, EventArgs e)
+        {
+            m_longNoteLength = int.Parse(textBox_LongNoteLength.Text);
+        }
+
+        private void ChangeSlideWay(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+
+            switch (radioButton.TabIndex)
+            {
+                case 0:
+                    m_slideWay = SlideWay.LEFT;
+                    break;
+                case 1:
+                    m_slideWay = SlideWay.RIGHT;
+                    break;
+            }
+        }
+
+        private void textBox_SlideNoteLength_TextChanged(object sender, EventArgs e)
+        {
+            m_slideNoteLength = int.Parse(textBox_SlideNoteLength.Text);
+        }
+
+        // Note
         private void ReloadNote()
         {
             for (int i = 0; i < 9; i++)

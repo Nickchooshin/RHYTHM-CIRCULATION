@@ -46,21 +46,29 @@
             this.pictureBox_Note2 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note1 = new System.Windows.Forms.PictureBox();
             this.groupBox_Page = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_Beat = new System.Windows.Forms.Label();
             this.numericUpDown_Beat = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Bar = new System.Windows.Forms.Label();
             this.numericUpDown_Bar = new System.Windows.Forms.NumericUpDown();
             this.groupBox_Setting = new System.Windows.Forms.GroupBox();
             this.textBox_MaxBeat = new System.Windows.Forms.TextBox();
             this.textBox_BPM = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label_MaxBeat = new System.Windows.Forms.Label();
+            this.label_BPM = new System.Windows.Forms.Label();
             this.groupBox_Type = new System.Windows.Forms.GroupBox();
             this.radioButton_None = new System.Windows.Forms.RadioButton();
             this.radioButton_Shake = new System.Windows.Forms.RadioButton();
             this.radioButton_Slide = new System.Windows.Forms.RadioButton();
             this.radioButton_Long = new System.Windows.Forms.RadioButton();
             this.radioButton_Tap = new System.Windows.Forms.RadioButton();
+            this.textBox_LongNoteLength = new System.Windows.Forms.TextBox();
+            this.label_LongNoteLength = new System.Windows.Forms.Label();
+            this.groupBox_LongNoteOption = new System.Windows.Forms.GroupBox();
+            this.radioButton_LeftWay = new System.Windows.Forms.RadioButton();
+            this.radioButton_RightWay = new System.Windows.Forms.RadioButton();
+            this.groupBox_SlideNoteOption = new System.Windows.Forms.GroupBox();
+            this.textBox_SlideNoteLength = new System.Windows.Forms.TextBox();
+            this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note9)).BeginInit();
@@ -77,6 +85,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Bar)).BeginInit();
             this.groupBox_Setting.SuspendLayout();
             this.groupBox_Type.SuspendLayout();
+            this.groupBox_LongNoteOption.SuspendLayout();
+            this.groupBox_SlideNoteOption.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -258,9 +268,9 @@
             // 
             // groupBox_Page
             // 
-            this.groupBox_Page.Controls.Add(this.label2);
+            this.groupBox_Page.Controls.Add(this.label_Beat);
             this.groupBox_Page.Controls.Add(this.numericUpDown_Beat);
-            this.groupBox_Page.Controls.Add(this.label1);
+            this.groupBox_Page.Controls.Add(this.label_Bar);
             this.groupBox_Page.Controls.Add(this.numericUpDown_Bar);
             this.groupBox_Page.Location = new System.Drawing.Point(433, 92);
             this.groupBox_Page.Name = "groupBox_Page";
@@ -269,14 +279,14 @@
             this.groupBox_Page.TabStop = false;
             this.groupBox_Page.Text = "페이지";
             // 
-            // label2
+            // label_Beat
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "비트 :";
+            this.label_Beat.AutoSize = true;
+            this.label_Beat.Location = new System.Drawing.Point(11, 49);
+            this.label_Beat.Name = "label_Beat";
+            this.label_Beat.Size = new System.Drawing.Size(37, 12);
+            this.label_Beat.TabIndex = 3;
+            this.label_Beat.Text = "비트 :";
             // 
             // numericUpDown_Beat
             // 
@@ -297,14 +307,14 @@
             0});
             this.numericUpDown_Beat.ValueChanged += new System.EventHandler(this.ChangePageValue);
             // 
-            // label1
+            // label_Bar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "마디 : ";
+            this.label_Bar.AutoSize = true;
+            this.label_Bar.Location = new System.Drawing.Point(11, 22);
+            this.label_Bar.Name = "label_Bar";
+            this.label_Bar.Size = new System.Drawing.Size(41, 12);
+            this.label_Bar.TabIndex = 2;
+            this.label_Bar.Text = "마디 : ";
             // 
             // numericUpDown_Bar
             // 
@@ -329,8 +339,8 @@
             // 
             this.groupBox_Setting.Controls.Add(this.textBox_MaxBeat);
             this.groupBox_Setting.Controls.Add(this.textBox_BPM);
-            this.groupBox_Setting.Controls.Add(this.label4);
-            this.groupBox_Setting.Controls.Add(this.label3);
+            this.groupBox_Setting.Controls.Add(this.label_MaxBeat);
+            this.groupBox_Setting.Controls.Add(this.label_BPM);
             this.groupBox_Setting.Location = new System.Drawing.Point(433, 32);
             this.groupBox_Setting.Name = "groupBox_Setting";
             this.groupBox_Setting.Size = new System.Drawing.Size(270, 54);
@@ -354,23 +364,23 @@
             this.textBox_BPM.TabIndex = 0;
             this.textBox_BPM.TextChanged += new System.EventHandler(this.textBox_BPM_TextChanged);
             // 
-            // label4
+            // label_MaxBeat
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "최대 비트 :";
+            this.label_MaxBeat.AutoSize = true;
+            this.label_MaxBeat.Location = new System.Drawing.Point(131, 22);
+            this.label_MaxBeat.Name = "label_MaxBeat";
+            this.label_MaxBeat.Size = new System.Drawing.Size(65, 12);
+            this.label_MaxBeat.TabIndex = 3;
+            this.label_MaxBeat.Text = "최대 비트 :";
             // 
-            // label3
+            // label_BPM
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "BPM :";
+            this.label_BPM.AutoSize = true;
+            this.label_BPM.Location = new System.Drawing.Point(11, 22);
+            this.label_BPM.Name = "label_BPM";
+            this.label_BPM.Size = new System.Drawing.Size(40, 12);
+            this.label_BPM.TabIndex = 2;
+            this.label_BPM.Text = "BPM :";
             // 
             // groupBox_Type
             // 
@@ -446,11 +456,95 @@
             this.radioButton_Tap.UseVisualStyleBackColor = true;
             this.radioButton_Tap.Click += new System.EventHandler(this.ChangeNoteType);
             // 
+            // textBox_LongNoteLength
+            // 
+            this.textBox_LongNoteLength.Location = new System.Drawing.Point(47, 19);
+            this.textBox_LongNoteLength.Name = "textBox_LongNoteLength";
+            this.textBox_LongNoteLength.Size = new System.Drawing.Size(28, 21);
+            this.textBox_LongNoteLength.TabIndex = 0;
+            this.textBox_LongNoteLength.TextChanged += new System.EventHandler(this.textBox_LongNoteLength_TextChanged);
+            // 
+            // label_LongNoteLength
+            // 
+            this.label_LongNoteLength.AutoSize = true;
+            this.label_LongNoteLength.Location = new System.Drawing.Point(11, 22);
+            this.label_LongNoteLength.Name = "label_LongNoteLength";
+            this.label_LongNoteLength.Size = new System.Drawing.Size(37, 12);
+            this.label_LongNoteLength.TabIndex = 1;
+            this.label_LongNoteLength.Text = "길이 :";
+            // 
+            // groupBox_LongNoteOption
+            // 
+            this.groupBox_LongNoteOption.Controls.Add(this.textBox_LongNoteLength);
+            this.groupBox_LongNoteOption.Controls.Add(this.label_LongNoteLength);
+            this.groupBox_LongNoteOption.Location = new System.Drawing.Point(433, 362);
+            this.groupBox_LongNoteOption.Name = "groupBox_LongNoteOption";
+            this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 69);
+            this.groupBox_LongNoteOption.TabIndex = 7;
+            this.groupBox_LongNoteOption.TabStop = false;
+            this.groupBox_LongNoteOption.Text = "롱 노트 옵션";
+            // 
+            // radioButton_LeftWay
+            // 
+            this.radioButton_LeftWay.AutoSize = true;
+            this.radioButton_LeftWay.Location = new System.Drawing.Point(11, 20);
+            this.radioButton_LeftWay.Name = "radioButton_LeftWay";
+            this.radioButton_LeftWay.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_LeftWay.TabIndex = 0;
+            this.radioButton_LeftWay.TabStop = true;
+            this.radioButton_LeftWay.Text = "좌";
+            this.radioButton_LeftWay.UseVisualStyleBackColor = true;
+            this.radioButton_LeftWay.CheckedChanged += new System.EventHandler(this.ChangeSlideWay);
+            // 
+            // radioButton_RightWay
+            // 
+            this.radioButton_RightWay.AutoSize = true;
+            this.radioButton_RightWay.Location = new System.Drawing.Point(52, 20);
+            this.radioButton_RightWay.Name = "radioButton_RightWay";
+            this.radioButton_RightWay.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_RightWay.TabIndex = 1;
+            this.radioButton_RightWay.TabStop = true;
+            this.radioButton_RightWay.Text = "우";
+            this.radioButton_RightWay.UseVisualStyleBackColor = true;
+            this.radioButton_RightWay.CheckedChanged += new System.EventHandler(this.ChangeSlideWay);
+            // 
+            // groupBox_SlideNoteOption
+            // 
+            this.groupBox_SlideNoteOption.Controls.Add(this.textBox_SlideNoteLength);
+            this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideNoteLength);
+            this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_LeftWay);
+            this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_RightWay);
+            this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(540, 362);
+            this.groupBox_SlideNoteOption.Name = "groupBox_SlideNoteOption";
+            this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(127, 69);
+            this.groupBox_SlideNoteOption.TabIndex = 8;
+            this.groupBox_SlideNoteOption.TabStop = false;
+            this.groupBox_SlideNoteOption.Text = "슬라이드 노트 옵션";
+            // 
+            // textBox_SlideNoteLength
+            // 
+            this.textBox_SlideNoteLength.Location = new System.Drawing.Point(45, 41);
+            this.textBox_SlideNoteLength.Name = "textBox_SlideNoteLength";
+            this.textBox_SlideNoteLength.Size = new System.Drawing.Size(28, 21);
+            this.textBox_SlideNoteLength.TabIndex = 2;
+            this.textBox_SlideNoteLength.TextChanged += new System.EventHandler(this.textBox_SlideNoteLength_TextChanged);
+            // 
+            // label_SlideNoteLength
+            // 
+            this.label_SlideNoteLength.AutoSize = true;
+            this.label_SlideNoteLength.Location = new System.Drawing.Point(9, 44);
+            this.label_SlideNoteLength.Name = "label_SlideNoteLength";
+            this.label_SlideNoteLength.Size = new System.Drawing.Size(37, 12);
+            this.label_SlideNoteLength.TabIndex = 3;
+            this.label_SlideNoteLength.Text = "길이 :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 759);
+            this.Controls.Add(this.groupBox_SlideNoteOption);
+            this.Controls.Add(this.groupBox_LongNoteOption);
             this.Controls.Add(this.groupBox_Type);
             this.Controls.Add(this.groupBox_Setting);
             this.Controls.Add(this.groupBox_Page);
@@ -479,6 +573,10 @@
             this.groupBox_Setting.PerformLayout();
             this.groupBox_Type.ResumeLayout(false);
             this.groupBox_Type.PerformLayout();
+            this.groupBox_LongNoteOption.ResumeLayout(false);
+            this.groupBox_LongNoteOption.PerformLayout();
+            this.groupBox_SlideNoteOption.ResumeLayout(false);
+            this.groupBox_SlideNoteOption.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,12 +591,12 @@
         private System.Windows.Forms.Panel panel_Screen;
         private System.Windows.Forms.GroupBox groupBox_Page;
         private System.Windows.Forms.NumericUpDown numericUpDown_Bar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_Beat;
         private System.Windows.Forms.NumericUpDown numericUpDown_Beat;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Bar;
         private System.Windows.Forms.GroupBox groupBox_Setting;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_BPM;
+        private System.Windows.Forms.Label label_MaxBeat;
         private System.Windows.Forms.TextBox textBox_MaxBeat;
         private System.Windows.Forms.TextBox textBox_BPM;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
@@ -519,6 +617,14 @@
         private System.Windows.Forms.PictureBox pictureBox_Note2;
         private System.Windows.Forms.PictureBox pictureBox_Note9;
         private System.Windows.Forms.RadioButton radioButton_None;
+        private System.Windows.Forms.TextBox textBox_LongNoteLength;
+        private System.Windows.Forms.Label label_LongNoteLength;
+        private System.Windows.Forms.GroupBox groupBox_LongNoteOption;
+        private System.Windows.Forms.RadioButton radioButton_RightWay;
+        private System.Windows.Forms.RadioButton radioButton_LeftWay;
+        private System.Windows.Forms.GroupBox groupBox_SlideNoteOption;
+        private System.Windows.Forms.TextBox textBox_SlideNoteLength;
+        private System.Windows.Forms.Label label_SlideNoteLength;
     }
 }
 
