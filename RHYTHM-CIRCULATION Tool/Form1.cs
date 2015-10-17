@@ -211,9 +211,21 @@ namespace RHYTHM_CIRCULATION_Tool
         {
             PictureBox pictureBox = (PictureBox)sender;
             int noteNum = int.Parse((string)pictureBox.Tag);
+            NoteData noteData = m_noteList[m_nowBar, m_nowBeat, noteNum];
 
             pictureBox.Image = m_noteImageList[(int)m_noteType];
-            m_noteList[m_nowBar, m_nowBeat, noteNum].Type = m_noteType;
+            noteData.Type = m_noteType;
+
+            switch (m_noteType)
+            {
+                case NoteType.LONG:
+                    noteData.Length = m_longNoteLength;
+                    break;
+                case NoteType.SLIDE:
+                    noteData.Length = m_slideNoteLength;
+                    noteData.SlideWay = m_slideWay;
+                    break;
+            }
         }
     }
 }
