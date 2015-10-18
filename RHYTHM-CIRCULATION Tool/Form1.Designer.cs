@@ -36,7 +36,6 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Screen = new System.Windows.Forms.Panel();
-            this.pictureBox_Note9 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note8 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note7 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note6 = new System.Windows.Forms.PictureBox();
@@ -64,14 +63,13 @@
             this.textBox_LongNoteLength = new System.Windows.Forms.TextBox();
             this.label_LongNoteLength = new System.Windows.Forms.Label();
             this.groupBox_LongNoteOption = new System.Windows.Forms.GroupBox();
-            this.radioButton_LeftWay = new System.Windows.Forms.RadioButton();
-            this.radioButton_RightWay = new System.Windows.Forms.RadioButton();
+            this.radioButton_Anticlockwise = new System.Windows.Forms.RadioButton();
+            this.radioButton_Clockwise = new System.Windows.Forms.RadioButton();
             this.groupBox_SlideNoteOption = new System.Windows.Forms.GroupBox();
             this.textBox_SlideNoteLength = new System.Windows.Forms.TextBox();
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note6)).BeginInit();
@@ -144,7 +142,6 @@
             // panel_Screen
             // 
             this.panel_Screen.BackColor = System.Drawing.Color.Black;
-            this.panel_Screen.Controls.Add(this.pictureBox_Note9);
             this.panel_Screen.Controls.Add(this.pictureBox_Note8);
             this.panel_Screen.Controls.Add(this.pictureBox_Note7);
             this.panel_Screen.Controls.Add(this.pictureBox_Note6);
@@ -157,18 +154,6 @@
             this.panel_Screen.Name = "panel_Screen";
             this.panel_Screen.Size = new System.Drawing.Size(405, 720);
             this.panel_Screen.TabIndex = 1;
-            // 
-            // pictureBox_Note9
-            // 
-            this.pictureBox_Note9.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_Note9.ImageLocation = "";
-            this.pictureBox_Note9.Location = new System.Drawing.Point(170, 190);
-            this.pictureBox_Note9.Name = "pictureBox_Note9";
-            this.pictureBox_Note9.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox_Note9.TabIndex = 7;
-            this.pictureBox_Note9.TabStop = false;
-            this.pictureBox_Note9.Tag = "8";
-            this.pictureBox_Note9.Click += new System.EventHandler(this.FixedNote);
             // 
             // pictureBox_Note8
             // 
@@ -484,39 +469,39 @@
             this.groupBox_LongNoteOption.TabStop = false;
             this.groupBox_LongNoteOption.Text = "롱 노트 옵션";
             // 
-            // radioButton_LeftWay
+            // radioButton_Anticlockwise
             // 
-            this.radioButton_LeftWay.AutoSize = true;
-            this.radioButton_LeftWay.Location = new System.Drawing.Point(11, 20);
-            this.radioButton_LeftWay.Name = "radioButton_LeftWay";
-            this.radioButton_LeftWay.Size = new System.Drawing.Size(35, 16);
-            this.radioButton_LeftWay.TabIndex = 0;
-            this.radioButton_LeftWay.TabStop = true;
-            this.radioButton_LeftWay.Text = "좌";
-            this.radioButton_LeftWay.UseVisualStyleBackColor = true;
-            this.radioButton_LeftWay.CheckedChanged += new System.EventHandler(this.ChangeSlideWay);
+            this.radioButton_Anticlockwise.AutoSize = true;
+            this.radioButton_Anticlockwise.Location = new System.Drawing.Point(11, 20);
+            this.radioButton_Anticlockwise.Name = "radioButton_Anticlockwise";
+            this.radioButton_Anticlockwise.Size = new System.Drawing.Size(59, 16);
+            this.radioButton_Anticlockwise.TabIndex = 0;
+            this.radioButton_Anticlockwise.TabStop = true;
+            this.radioButton_Anticlockwise.Text = "반시계";
+            this.radioButton_Anticlockwise.UseVisualStyleBackColor = true;
+            this.radioButton_Anticlockwise.CheckedChanged += new System.EventHandler(this.ChangeSlideWay);
             // 
-            // radioButton_RightWay
+            // radioButton_Clockwise
             // 
-            this.radioButton_RightWay.AutoSize = true;
-            this.radioButton_RightWay.Location = new System.Drawing.Point(52, 20);
-            this.radioButton_RightWay.Name = "radioButton_RightWay";
-            this.radioButton_RightWay.Size = new System.Drawing.Size(35, 16);
-            this.radioButton_RightWay.TabIndex = 1;
-            this.radioButton_RightWay.TabStop = true;
-            this.radioButton_RightWay.Text = "우";
-            this.radioButton_RightWay.UseVisualStyleBackColor = true;
-            this.radioButton_RightWay.CheckedChanged += new System.EventHandler(this.ChangeSlideWay);
+            this.radioButton_Clockwise.AutoSize = true;
+            this.radioButton_Clockwise.Location = new System.Drawing.Point(78, 20);
+            this.radioButton_Clockwise.Name = "radioButton_Clockwise";
+            this.radioButton_Clockwise.Size = new System.Drawing.Size(47, 16);
+            this.radioButton_Clockwise.TabIndex = 1;
+            this.radioButton_Clockwise.TabStop = true;
+            this.radioButton_Clockwise.Text = "시계";
+            this.radioButton_Clockwise.UseVisualStyleBackColor = true;
+            this.radioButton_Clockwise.CheckedChanged += new System.EventHandler(this.ChangeSlideWay);
             // 
             // groupBox_SlideNoteOption
             // 
             this.groupBox_SlideNoteOption.Controls.Add(this.textBox_SlideNoteLength);
             this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideNoteLength);
-            this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_LeftWay);
-            this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_RightWay);
+            this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Anticlockwise);
+            this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Clockwise);
             this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(540, 362);
             this.groupBox_SlideNoteOption.Name = "groupBox_SlideNoteOption";
-            this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(127, 69);
+            this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(134, 69);
             this.groupBox_SlideNoteOption.TabIndex = 8;
             this.groupBox_SlideNoteOption.TabStop = false;
             this.groupBox_SlideNoteOption.Text = "슬라이드 노트 옵션";
@@ -556,7 +541,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel_Screen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note6)).EndInit();
@@ -615,13 +599,12 @@
         private System.Windows.Forms.PictureBox pictureBox_Note4;
         private System.Windows.Forms.PictureBox pictureBox_Note3;
         private System.Windows.Forms.PictureBox pictureBox_Note2;
-        private System.Windows.Forms.PictureBox pictureBox_Note9;
         private System.Windows.Forms.RadioButton radioButton_None;
         private System.Windows.Forms.TextBox textBox_LongNoteLength;
         private System.Windows.Forms.Label label_LongNoteLength;
         private System.Windows.Forms.GroupBox groupBox_LongNoteOption;
-        private System.Windows.Forms.RadioButton radioButton_RightWay;
-        private System.Windows.Forms.RadioButton radioButton_LeftWay;
+        private System.Windows.Forms.RadioButton radioButton_Clockwise;
+        private System.Windows.Forms.RadioButton radioButton_Anticlockwise;
         private System.Windows.Forms.GroupBox groupBox_SlideNoteOption;
         private System.Windows.Forms.TextBox textBox_SlideNoteLength;
         private System.Windows.Forms.Label label_SlideNoteLength;

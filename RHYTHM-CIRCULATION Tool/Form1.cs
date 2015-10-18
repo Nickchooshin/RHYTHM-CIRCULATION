@@ -15,6 +15,7 @@ namespace RHYTHM_CIRCULATION_Tool
     public partial class Form1 : Form
     {
         private const int MAX_BAR = 500;
+        private const int MAX_NOTE = 8;
 
         private int m_bpm = 120;
         private int m_maxBeat = 16;
@@ -23,11 +24,11 @@ namespace RHYTHM_CIRCULATION_Tool
         private NoteType m_noteType = NoteType.TAP;
         private int m_longNoteLength = 1;
         private int m_slideNoteLength = 1;
-        private SlideWay m_slideWay = SlideWay.LEFT;
+        private SlideWay m_slideWay = SlideWay.ANTI_CLOCKWISE;
 
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
-        private PictureBox[] m_notePictureBoxList = new PictureBox[9];
+        private PictureBox[] m_notePictureBoxList = new PictureBox[MAX_NOTE];
 
         public Form1()
         {
@@ -72,11 +73,11 @@ namespace RHYTHM_CIRCULATION_Tool
             textBox_SlideNoteLength.Text = m_slideNoteLength.ToString();
             switch (m_slideWay)
             {
-                case SlideWay.LEFT:
-                    radioButton_LeftWay.Checked = true;
+                case SlideWay.ANTI_CLOCKWISE:
+                    radioButton_Anticlockwise.Checked = true;
                     break;
-                case SlideWay.RIGHT:
-                    radioButton_RightWay.Checked = true;
+                case SlideWay.CLOCKWISE:
+                    radioButton_Clockwise.Checked = true;
                     break;
             }
 
@@ -85,13 +86,13 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void InitNote()
         {
-            m_noteList = new NoteData[MAX_BAR * m_maxBeat, 9];
+            m_noteList = new NoteData[MAX_BAR * m_maxBeat, MAX_NOTE];
 
             for (int i = 0; i < MAX_BAR; i++)
             {
                 for (int j = 0; j < m_maxBeat; j++)
                 {
-                    for (int k = 0; k < 9; k++)
+                    for (int k = 0; k < MAX_NOTE; k++)
                     {
                         m_noteList[(i * m_maxBeat) + j, k] = new NoteData();
                     }
@@ -117,7 +118,6 @@ namespace RHYTHM_CIRCULATION_Tool
             m_notePictureBoxList[5] = pictureBox_Note6;
             m_notePictureBoxList[6] = pictureBox_Note7;
             m_notePictureBoxList[7] = pictureBox_Note8;
-            m_notePictureBoxList[8] = pictureBox_Note9;
 
             ReloadNote();
         }
@@ -189,10 +189,10 @@ namespace RHYTHM_CIRCULATION_Tool
             switch (radioButton.TabIndex)
             {
                 case 0:
-                    m_slideWay = SlideWay.LEFT;
+                    m_slideWay = SlideWay.ANTI_CLOCKWISE;
                     break;
                 case 1:
-                    m_slideWay = SlideWay.RIGHT;
+                    m_slideWay = SlideWay.CLOCKWISE;
                     break;
             }
         }
@@ -205,7 +205,7 @@ namespace RHYTHM_CIRCULATION_Tool
         // Note
         private void ReloadNote()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < MAX_NOTE; i++)
             {
                 int index = GetNowBarBeatIndex();
                 int imageNum = (int)m_noteList[index, i].Type;
@@ -257,10 +257,10 @@ namespace RHYTHM_CIRCULATION_Tool
                     {
                         int noteNumIndex;
 
-                        if (m_slideWay == SlideWay.LEFT)
-                            noteNumIndex = (noteNum + (9 - j)) % 9;
+                        if (m_slideWay == SlideWay.ANTI_CLOCKWISE)
+                            noteNumIndex = (noteNum + (MAX_NOTE - j)) % MAX_NOTE;
                         else
-                            noteNumIndex = (noteNum + j) % 9;
+                            noteNumIndex = (noteNum + j) % MAX_NOTE;
 
                         if (i != 0 || j != 0)
                         {
@@ -282,7 +282,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
             m_noteList[index, noteNum].Type = NoteType.NONE;
             m_noteList[index, noteNum].Length = 0;
-            m_noteList[index, noteNum].SlideWay = SlideWay.LEFT;
+            m_noteList[index, noteNum].SlideWay = SlideWay.ANTI_CLOCKWISE;
 
             // Delete Note Shadow(Long/Slide)
             if (type == NoteType.LONG)
@@ -298,10 +298,10 @@ namespace RHYTHM_CIRCULATION_Tool
                     {
                         int noteNumIndex;
 
-                        if (slideWay == SlideWay.LEFT)
-                            noteNumIndex = (noteNum + (9 - j)) % 9;
+                        if (slideWay == SlideWay.ANTI_CLOCKWISE)
+                            noteNumIndex = (noteNum + (MAX_NOTE - j)) % MAX_NOTE;
                         else
-                            noteNumIndex = (noteNum + j) % 9;
+                            noteNumIndex = (noteNum + j) % MAX_NOTE;
 
                         if (i != 0 || j != 0)
                             m_noteList[index + i, noteNumIndex].Type = NoteType.NONE;

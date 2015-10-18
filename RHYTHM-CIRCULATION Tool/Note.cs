@@ -19,15 +19,15 @@ namespace Note
 
     public enum SlideWay
     {
-        LEFT = 0,
-        RIGHT,
+        ANTI_CLOCKWISE = 0,
+        CLOCKWISE,
     }
 
     class NoteData
     {
         private NoteType m_type = NoteType.NONE;
         private int m_length = 0;
-        private SlideWay m_slideWay = SlideWay.LEFT;
+        private SlideWay m_slideWay = SlideWay.ANTI_CLOCKWISE;
 
         public NoteData()
         {
