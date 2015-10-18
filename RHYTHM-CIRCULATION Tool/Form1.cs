@@ -223,36 +223,93 @@ namespace RHYTHM_CIRCULATION_Tool
             PictureBox pictureBox = (PictureBox)sender;
             int noteNum = int.Parse((string)pictureBox.Tag);
             int index = GetNowBarBeatIndex();
+            //NoteData noteData = m_noteList[index, noteNum];
+
+            DeleteNote(index, noteNum);
+            InsertNote(index, noteNum, m_noteType);
+            pictureBox.Image = m_noteImageList[(int)m_noteType];
+        }
+
+        private void InsertNote(int index, int noteNum, NoteType noteType)
+        {
             NoteData noteData = m_noteList[index, noteNum];
 
-            pictureBox.Image = m_noteImageList[(int)m_noteType];
-            if (noteData.Length > 0)
-                DeleteNoteShadow(noteNum);
-            noteData.Type = m_noteType;
-            noteData.Length = 0;
+            noteData.Type = noteType;
 
-            if (m_noteType == NoteType.LONG)
+            // Insert Note Shadow(Long/Slide)
+            if (noteType == NoteType.LONG)
             {
                 noteData.Length = m_longNoteLength;
                 for (int i = 1; i <= m_longNoteLength; i++)
+                {
+                    DeleteNote(index + i, noteNum);
                     m_noteList[index + i, noteNum].Type = NoteType.LONG_SHADOW;
+                }
             }
-            else if (m_noteType == NoteType.SLIDE)
+            else if (noteType == NoteType.SLIDE)
             {
                 noteData.Length = m_slideNoteLength;
                 noteData.SlideWay = m_slideWay;
-                for (int i = 1; i <= m_slideNoteLength; i++)
-                    m_noteList[index + i, noteNum].Type = NoteType.SLIDE_SHADOW;
+
+                for (int i = 0; i <= m_slideNoteLength; i++)
+                {
+                    for (int j = 0; j <= m_slideNoteLength; j++)
+                    {
+                        int noteNumIndex;
+
+                        if (m_slideWay == SlideWay.LEFT)
+                            noteNumIndex = (noteNum + (9 - j)) % 9;
+                        else
+                            noteNumIndex = (noteNum + j) % 9;
+
+                        if (i != 0 || j != 0)
+                        {
+                            DeleteNote(index + i, noteNumIndex);
+                            m_noteList[index + i, noteNumIndex].Type = NoteType.SLIDE_SHADOW;
+                        }
+                    }
+                }
+
+                ReloadNote();
             }
         }
 
-        private void DeleteNoteShadow(int noteNum)
+        private void DeleteNote(int index, int noteNum)
         {
-            int index = GetNowBarBeatIndex();
+            NoteType type = m_noteList[index, noteNum].Type;
+            SlideWay slideWay = m_noteList[index, noteNum].SlideWay;
             int length = m_noteList[index, noteNum].Length;
 
-            for (int i = 1; i <= length; i++)
-                m_noteList[(m_nowBar * m_maxBeat) + (m_nowBeat + i), noteNum].Type = NoteType.NONE;
+            m_noteList[index, noteNum].Type = NoteType.NONE;
+            m_noteList[index, noteNum].Length = 0;
+            m_noteList[index, noteNum].SlideWay = SlideWay.LEFT;
+
+            // Delete Note Shadow(Long/Slide)
+            if (type == NoteType.LONG)
+            {
+                for (int i = 1; i <= length; i++)
+                    m_noteList[index + i, noteNum].Type = NoteType.NONE;
+            }
+            else if (type == NoteType.SLIDE)
+            {
+                for (int i = 0; i <= length; i++)
+                {
+                    for (int j = 0; j <= length; j++)
+                    {
+                        int noteNumIndex;
+
+                        if (slideWay == SlideWay.LEFT)
+                            noteNumIndex = (noteNum + (9 - j)) % 9;
+                        else
+                            noteNumIndex = (noteNum + j) % 9;
+
+                        if (i != 0 || j != 0)
+                            m_noteList[index + i, noteNumIndex].Type = NoteType.NONE;
+                    }
+                }
+
+                ReloadNote();
+            }
         }
 
         // Utils
