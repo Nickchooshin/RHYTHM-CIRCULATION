@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.IO;
+
 using Note;
+using LitJson;
 
 namespace RHYTHM_CIRCULATION_Tool
 {
@@ -29,6 +32,32 @@ namespace RHYTHM_CIRCULATION_Tool
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
         private PictureBox[] m_notePictureBoxList = new PictureBox[MAX_NOTE];
+
+        private int BPM_Value
+        {
+            get
+            {
+                return int.Parse(textBox_BPM.Text);
+            }
+            set
+            {
+                textBox_BPM.Text = value.ToString();
+            }
+        }
+
+        private int MaxBeat_Value
+        {
+            get
+            {
+                return int.Parse(textBox_MaxBeat.Text);
+            }
+            set
+            {
+                textBox_MaxBeat.Text = value.ToString();
+
+                numericUpDown_Beat.Maximum = value;
+            }
+        }
 
         public Form1()
         {
@@ -125,14 +154,13 @@ namespace RHYTHM_CIRCULATION_Tool
         // Value Changed
         private void textBox_BPM_TextChanged(object sender, EventArgs e)
         {
-            m_bpm = int.Parse(textBox_BPM.Text);
+            m_bpm = BPM_Value;
         }
 
         private void textBox_MaxBeat_TextChanged(object sender, EventArgs e)
         {
-            m_maxBeat = int.Parse(textBox_MaxBeat.Text);
-
-            numericUpDown_Beat.Maximum = m_maxBeat;
+            m_maxBeat = MaxBeat_Value;
+            MaxBeat_Value = m_maxBeat;
         }
 
         private void ChangePageValue(object sender, EventArgs e)
@@ -310,6 +338,127 @@ namespace RHYTHM_CIRCULATION_Tool
 
                 ReloadNote();
             }
+        }
+
+        // Open
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+                return;
+            string filePath = openFileDialog1.FileName;
+
+            FileStream file = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(file);
+
+            JsonReader jsonReader = new JsonReader(reader);
+            JsonData jsonData = JsonMapper.ToObject(jsonReader);
+
+            m_bpm = (int)jsonData["BPM"];
+            m_maxBeat = (int)jsonData["MaxBeat"];
+            BPM_Value = m_bpm;
+            MaxBeat_Value = m_maxBeat;
+            InitNote();
+
+            JsonData jsonBar = jsonData["Note"];
+
+            for (int i = 0; i < jsonBar.Count; i++) // Bar
+            {
+                JsonData jsonBeat = jsonBar[i];
+
+                for (int j = 0; j < jsonBeat.Count; j++) // Beat
+                {
+                    JsonData jsonNote = jsonBeat[j];
+
+                    for (int k = 0; k < jsonNote.Count; k++) // Note
+                    {
+                        m_noteList[(i * m_maxBeat) + j, k].Type = (NoteType)(int)jsonNote[k]["Type"];
+                        m_noteList[(i * m_maxBeat) + j, k].Length = (int)jsonNote[k]["Length"];
+                        m_noteList[(i * m_maxBeat) + j, k].SlideWay = (SlideWay)(int)jsonNote[k]["SlideWay"];
+                    }
+                }
+            }
+
+            reader.Close();
+
+            ReloadNote();
+        }
+
+        // Save
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+                return;
+            string filePath = saveFileDialog1.FileName;
+
+            // Find last bar/beat number
+            int lastBar = 0;
+            int lastBeat = 0;
+            for (int i = MAX_BAR - 1; i >= 0; i--)
+            {
+                for (int j = m_maxBeat - 1; j >= 0; j--)
+                {
+                    for (int k = 0; k < MAX_NOTE; k++)
+                    {
+                        if (m_noteList[(i * m_maxBeat) + j, k].Type != NoteType.NONE)
+                        {
+                            lastBar = i + 1;
+                            lastBeat = j + 1;
+                            break;
+                        }
+                    }
+
+                    if (lastBar != 0 || lastBeat != 0)
+                        break;
+                }
+
+                if (lastBar != 0 || lastBeat != 0)
+                    break;
+            }
+
+            FileStream file = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(file);
+
+            JsonWriter jsonWriter = new JsonWriter(writer);
+            jsonWriter.PrettyPrint = true;
+
+            jsonWriter.WriteObjectStart();
+
+            jsonWriter.WritePropertyName("BPM");
+            jsonWriter.Write(m_bpm);
+            jsonWriter.WritePropertyName("MaxBeat");
+            jsonWriter.Write(m_maxBeat);
+            jsonWriter.WritePropertyName("Note");
+
+            jsonWriter.WriteArrayStart();
+
+            for (int i = 0; i < lastBar; i++) // Bar
+            {
+                jsonWriter.WriteArrayStart();
+
+                for (int j = 0; j < m_maxBeat; j++) // Beat
+                {
+                    jsonWriter.WriteArrayStart();
+
+                    for (int k = 0; k < MAX_NOTE; k++) // Note
+                    {
+                        NoteData noteData = m_noteList[(i * m_maxBeat) + j, k];
+                        JsonMapper.ToJson(noteData, jsonWriter);
+                    }
+
+                    jsonWriter.WriteArrayEnd();
+
+                    if (i == (lastBar - 1) && j == (lastBeat - 1))
+                        break;
+                }
+
+                jsonWriter.WriteArrayEnd();
+            }
+
+            jsonWriter.WriteArrayEnd();
+
+            jsonWriter.WriteObjectEnd();
+
+            writer.Close();
         }
 
         // Utils
