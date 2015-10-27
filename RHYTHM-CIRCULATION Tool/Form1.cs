@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using System.IO;
 
-using Note;
+using Rhythm_Circulation;
 using LitJson;
 
 namespace RHYTHM_CIRCULATION_Tool

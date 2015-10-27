@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Note
+namespace Rhythm_Circulation
 {
     public enum NoteType
     {
@@ -23,7 +22,7 @@ namespace Note
         CLOCKWISE,
     }
 
-    class NoteData
+    public class NoteData
     {
         private NoteType m_type = NoteType.NONE;
         private int m_length = 0;
