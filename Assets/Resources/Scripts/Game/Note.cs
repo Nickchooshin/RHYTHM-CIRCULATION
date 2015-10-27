@@ -20,6 +20,27 @@ public class Note : MonoBehaviour {
         set
         {
             m_noteData.Type = value;
+
+            SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            Sprite sprite = null;
+
+            switch (m_noteData.Type)
+            {
+                case NoteType.TAP:
+                    sprite = Resources.Load("Images/Game/Note/note_base_tap", typeof(Sprite)) as Sprite;
+                    spriteRenderer.sprite = sprite;
+                    break;
+
+                case NoteType.LONG:
+                    sprite = Resources.Load("Images/Game/Note/note_base_long", typeof(Sprite)) as Sprite;
+                    spriteRenderer.sprite = sprite;
+                    break;
+
+                case NoteType.SLIDE:
+                    sprite = Resources.Load("Images/Game/Note/note_base_slide", typeof(Sprite)) as Sprite;
+                    spriteRenderer.sprite = sprite;
+                    break;
+            }
         }
     }
 
@@ -73,30 +94,45 @@ public class Note : MonoBehaviour {
     {
         float time = Time.time;
 
-        if (!m_isAppear)
+        if (m_noteData.Type == NoteType.TAP)
         {
-            if (time <= m_noteTimeSeen)
+            if (!m_isAppear)
             {
-                float scale = (APPEAR_TIME - (m_noteTimeSeen - time)) / APPEAR_TIME;
+                if (time <= m_noteTimeSeen)
+                {
+                    float scale = (APPEAR_TIME - (m_noteTimeSeen - time)) / APPEAR_TIME;
 
-                gameObject.transform.localScale = new Vector3(scale, scale, 1.0f);
+                    gameObject.transform.localScale = new Vector3(scale, scale, 1.0f);
 
-                return;
+                    return;
+                }
+                else
+                {
+                    gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+                    m_isAppear = true;
+                }
             }
-            else
-            {
-                gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-                m_isAppear = true;
+            if (m_isAppear)
+            {
+                if (time > m_noteTimeSeen + (APPEAR_TIME / 2.0f))
+                {
+                    Destroy(gameObject);
+                }
             }
         }
-
-        if (m_isAppear)
+        else if (m_noteData.Type == NoteType.LONG)
         {
-            if (time > m_noteTimeSeen + (APPEAR_TIME / 2.0f))
-            {
-                Destroy(gameObject);
-            }
         }
+        else if (m_noteData.Type == NoteType.SLIDE)
+        {
+        }
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("down");
+        Destroy(gameObject);
     }
 }

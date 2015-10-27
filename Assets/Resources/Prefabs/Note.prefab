@@ -82,6 +82,21 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 0d087be6fc1cc904e969b13075855ecf,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: noteSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b22552d25b764e544b5685d1da9e6b6c,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: noteSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d087be6fc1cc904e969b13075855ecf,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: noteSprite.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 05b54f2ce0e872c43b39dabf09fd256c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145426}
