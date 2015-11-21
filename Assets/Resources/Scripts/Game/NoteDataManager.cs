@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 using System.IO;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ public class NoteDataManager : MonoBehaviour {
     private float m_startTime = 0.0f;
 
     public Transform[] notePosition = new Transform[8];
+
+    public Canvas canvas;
 
     /*
     public static NoteDataManager Instance
@@ -101,6 +104,8 @@ public class NoteDataManager : MonoBehaviour {
 
                         note.gameObject.SetActive(false);
                         note.gameObject.transform.position = notePosition[k].position;
+
+                        note.gameObject.transform.SetParent(canvas.transform);
 
                         m_noteList.Add(note);
                     }
