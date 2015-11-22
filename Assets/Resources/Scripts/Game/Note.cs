@@ -5,15 +5,28 @@ using UnityEngine.EventSystems;
 
 using Rhythm_Circulation;
 
-public class Note : MonoBehaviour, IPointerDownHandler {
+public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+
+    enum NoteJudge
+    {
+        PERFECT,
+        GREAT,
+        GOOD,
+        BAD
+    }
 
     public const float APPEAR_TIME = 0.2f;
 
-    private NoteData m_noteData = new NoteData();
-    private float m_noteTimeSeen = 0.0f;
-    private bool m_isAppear = false;
+    public const float PERFECT_TIMING = 0.1f;
+    public const float GREAT_TIMING = 0.2f;
+    public const float GOOD_TIMING = 0.3f;
 
-    private Image m_image;
+    private NoteData m_noteData = new NoteData();
+    NoteJudge m_noteJudge = NoteJudge.BAD;
+    private float m_noteTimeSeen = 0.0f;
+
+    public Image noteImage;
+    public Image iconImage;
 
     public NoteType Type
     {
@@ -25,32 +38,34 @@ public class Note : MonoBehaviour, IPointerDownHandler {
         {
             m_noteData.Type = value;
 
-            Image noteImage = gameObject.GetComponent<Image>();
-            Image iconImage = gameObject.transform.FindChild("Icon").GetComponent<Image>();
-            Sprite noteSprite = null;
-            Sprite iconSprite = null;
-
             switch (m_noteData.Type)
             {
                 case NoteType.TAP:
-                    noteSprite = Resources.Load("Images/Game/Note/note_base_tap", typeof(Sprite)) as Sprite;
-                    iconSprite = Resources.Load("Images/Game/Note/note_icon_tap", typeof(Sprite)) as Sprite;
-                    noteImage.sprite = noteSprite;
-                    iconImage.sprite = iconSprite;
+                    noteImage.sprite = Resources.Load("Images/Game/Note/note_base_tap", typeof(Sprite)) as Sprite;
+                    iconImage.sprite = Resources.Load("Images/Game/Note/note_icon_tap", typeof(Sprite)) as Sprite;
                     break;
 
                 case NoteType.LONG:
-                    noteSprite = Resources.Load("Images/Game/Note/note_base_long", typeof(Sprite)) as Sprite;
-                    iconSprite = Resources.Load("Images/Game/Note/note_icon_long", typeof(Sprite)) as Sprite;
-                    noteImage.sprite = noteSprite;
-                    iconImage.sprite = iconSprite;
+                    noteImage.sprite = Resources.Load("Images/Game/Note/note_base_long", typeof(Sprite)) as Sprite;
+                    iconImage.sprite = Resources.Load("Images/Game/Note/note_icon_long", typeof(Sprite)) as Sprite;
+
+                    GameObject gaugeObject = Instantiate(Resources.Load<GameObject>("Prefabs/UI_Image"));
+                    Image gaugeImage = gaugeObject.GetComponent<Image>();
+
+                    gaugeImage.sprite = Resources.Load("Images/Game/Note/note_long", typeof(Sprite)) as Sprite;
+                    gaugeImage.type = Image.Type.Filled;
+                    gaugeImage.fillMethod = Image.FillMethod.Radial360;
+                    gaugeImage.fillOrigin = 2;
+                    gaugeImage.fillClockwise = true;
+                    gaugeImage.fillAmount = 0.0f;
+
+                    gaugeImage.name = "Gauge";
+                    gaugeImage.transform.SetParent(gameObject.transform);
                     break;
 
                 case NoteType.SLIDE:
-                    noteSprite = Resources.Load("Images/Game/Note/note_base_slide", typeof(Sprite)) as Sprite;
-                    iconSprite = Resources.Load("Images/Game/Note/note_icon_slide", typeof(Sprite)) as Sprite;
-                    noteImage.sprite = noteSprite;
-                    iconImage.sprite = iconSprite;
+                    noteImage.sprite = Resources.Load("Images/Game/Note/note_base_slide", typeof(Sprite)) as Sprite;
+                    iconImage.sprite = Resources.Load("Images/Game/Note/note_icon_slide", typeof(Sprite)) as Sprite;
                     break;
             }
         }
@@ -99,57 +114,104 @@ public class Note : MonoBehaviour, IPointerDownHandler {
 
     void Start()
     {
-        m_image = gameObject.GetComponent<Image>();
-        m_image.fillAmount = 0.0f;
+        noteImage = gameObject.GetComponent<Image>();
+        noteImage.fillAmount = 0.0f;
 
         gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+        StartCoroutine("NoteAppear");
     }
 
-    void Update()
+    IEnumerator NoteAppear()
     {
-        float time = Time.time;
-
-        if (m_noteData.Type == NoteType.TAP || m_noteData.Type == NoteType.LONG)
+        while (true)
         {
-            if (!m_isAppear)
+            float time = Time.time;
+
+            if (time <= m_noteTimeSeen)
             {
-                if (time <= m_noteTimeSeen)
-                {
-                    float fillAmount = (APPEAR_TIME - (m_noteTimeSeen - time)) / APPEAR_TIME;
+                float fillAmount = (APPEAR_TIME - (m_noteTimeSeen - time)) / APPEAR_TIME;
 
-                    m_image.fillAmount = fillAmount;
+                noteImage.fillAmount = fillAmount;
+            }
+            else
+            {
+                noteImage.fillAmount = 1.0f;
 
-                    return;
-                }
-                else
-                {
-                    m_image.fillAmount = 1.0f;
+                yield return new WaitForSeconds((APPEAR_TIME / 2.0f) - (time - m_noteTimeSeen));
 
-                    m_isAppear = true;
-                }
+                DeleteNote();
             }
 
-            if (m_isAppear)
-            {
-                if (time > m_noteTimeSeen + (APPEAR_TIME / 2.0f))
-                {
-                    Destroy(gameObject);
-                }
-            }
+            yield return null;
         }
-        //else if (m_noteData.Type == NoteType.LONG)
-        //{
-        //}
-        else if (m_noteData.Type == NoteType.SLIDE)
+    }
+
+    IEnumerator NoteJudge_Long()
+    {
+        int bpm = NoteDataLoader.Instance.BPM;
+        int maxBeat = NoteDataLoader.Instance.MaxBeat;
+        float timeLength = ((60.0f / bpm) / (maxBeat / 4)) * m_noteData.Length;
+        float endTime = Time.time + timeLength;
+
+        Image gaugeImage = gameObject.transform.FindChild("Gauge").GetComponent<Image>();
+
+        noteImage.fillAmount = 1.0f;
+
+        while (true)
         {
+            float time = endTime - Time.time;
+
+            gaugeImage.fillAmount = 1.0f - (time / timeLength);
+
+            if (time < 0.0f)
+                DeleteNote();
+
+            yield return null;
         }
+    }
+
+    private void DeleteNote()
+    {
+        Debug.Log(m_noteJudge);
+
+        Destroy(gameObject);
     }
 
     // Event System
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Down");
-        Destroy(gameObject);
+        float timing = Time.time - m_noteTimeSeen;
+
+        if (timing < 0.0f)
+            timing = -timing;
+
+        if (timing <= PERFECT_TIMING)
+            m_noteJudge = NoteJudge.PERFECT;
+        else if (timing <= GREAT_TIMING)
+            m_noteJudge = NoteJudge.GREAT;
+        else if (timing <= GOOD_TIMING)
+            m_noteJudge = NoteJudge.GOOD;
+
+        switch (m_noteData.Type)
+        {
+            case NoteType.TAP:
+                DeleteNote();
+                break;
+
+            case NoteType.LONG:
+                StopCoroutine("NoteAppear");
+                StartCoroutine("NoteJudge_Long");
+                break;
+
+            case NoteType.SLIDE:
+                break;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        DeleteNote();
     }
 }

@@ -12,8 +12,7 @@ public class CircleBeat : MonoBehaviour {
 
     void Start()
     {
-        //float bpm = NoteDataManager.Instance.BPM;
-        float bpm = 120.0f;
+        float bpm = NoteDataLoader.Instance.BPM;
         m_beatTime = 60.0f / bpm;
     }
 
