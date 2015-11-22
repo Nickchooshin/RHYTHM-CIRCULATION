@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 
 using Rhythm_Circulation;
 
-public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-    enum NoteJudge
+    protected enum NoteJudge
     {
         PERFECT,
         GREAT,
@@ -21,12 +21,11 @@ public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     public const float GREAT_TIMING = 0.2f;
     public const float GOOD_TIMING = 0.3f;
 
-    private NoteData m_noteData = new NoteData();
-    NoteJudge m_noteJudge = NoteJudge.BAD;
-    private float m_noteTimeSeen = 0.0f;
+    protected NoteData m_noteData = new NoteData();
+    protected NoteJudge m_noteJudge = NoteJudge.BAD;
+    protected float m_noteTimeSeen = 0.0f;
 
     public Image noteImage;
-    public Image iconImage;
 
     public NoteType Type
     {
@@ -37,37 +36,6 @@ public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
         set
         {
             m_noteData.Type = value;
-
-            switch (m_noteData.Type)
-            {
-                case NoteType.TAP:
-                    noteImage.sprite = Resources.Load("Images/Game/Note/note_base_tap", typeof(Sprite)) as Sprite;
-                    iconImage.sprite = Resources.Load("Images/Game/Note/note_icon_tap", typeof(Sprite)) as Sprite;
-                    break;
-
-                case NoteType.LONG:
-                    noteImage.sprite = Resources.Load("Images/Game/Note/note_base_long", typeof(Sprite)) as Sprite;
-                    iconImage.sprite = Resources.Load("Images/Game/Note/note_icon_long", typeof(Sprite)) as Sprite;
-
-                    GameObject gaugeObject = Instantiate(Resources.Load<GameObject>("Prefabs/UI_Image"));
-                    Image gaugeImage = gaugeObject.GetComponent<Image>();
-
-                    gaugeImage.sprite = Resources.Load("Images/Game/Note/note_long", typeof(Sprite)) as Sprite;
-                    gaugeImage.type = Image.Type.Filled;
-                    gaugeImage.fillMethod = Image.FillMethod.Radial360;
-                    gaugeImage.fillOrigin = 2;
-                    gaugeImage.fillClockwise = true;
-                    gaugeImage.fillAmount = 0.0f;
-
-                    gaugeImage.name = "Gauge";
-                    gaugeImage.transform.SetParent(gameObject.transform);
-                    break;
-
-                case NoteType.SLIDE:
-                    noteImage.sprite = Resources.Load("Images/Game/Note/note_base_slide", typeof(Sprite)) as Sprite;
-                    iconImage.sprite = Resources.Load("Images/Game/Note/note_icon_slide", typeof(Sprite)) as Sprite;
-                    break;
-            }
         }
     }
 
@@ -112,9 +80,8 @@ public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
         m_noteTimeSeen += delayedTime;
     }
 
-    void Start()
+    protected void Init()
     {
-        noteImage = gameObject.GetComponent<Image>();
         noteImage.fillAmount = 0.0f;
 
         gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -122,7 +89,7 @@ public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
         StartCoroutine("NoteAppear");
     }
 
-    IEnumerator NoteAppear()
+    protected virtual IEnumerator NoteAppear()
     {
         while (true)
         {
@@ -147,31 +114,7 @@ public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
         }
     }
 
-    IEnumerator NoteJudge_Long()
-    {
-        int bpm = NoteDataLoader.Instance.BPM;
-        int maxBeat = NoteDataLoader.Instance.MaxBeat;
-        float timeLength = ((60.0f / bpm) / (maxBeat / 4)) * m_noteData.Length;
-        float endTime = Time.time + timeLength;
-
-        Image gaugeImage = gameObject.transform.FindChild("Gauge").GetComponent<Image>();
-
-        noteImage.fillAmount = 1.0f;
-
-        while (true)
-        {
-            float time = endTime - Time.time;
-
-            gaugeImage.fillAmount = 1.0f - (time / timeLength);
-
-            if (time < 0.0f)
-                DeleteNote();
-
-            yield return null;
-        }
-    }
-
-    private void DeleteNote()
+    protected void DeleteNote()
     {
         Debug.Log(m_noteJudge);
 
@@ -180,36 +123,7 @@ public class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     // Event System
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        float timing = Time.time - m_noteTimeSeen;
-
-        if (timing < 0.0f)
-            timing = -timing;
-
-        if (timing <= PERFECT_TIMING)
-            m_noteJudge = NoteJudge.PERFECT;
-        else if (timing <= GREAT_TIMING)
-            m_noteJudge = NoteJudge.GREAT;
-        else if (timing <= GOOD_TIMING)
-            m_noteJudge = NoteJudge.GOOD;
-
-        switch (m_noteData.Type)
-        {
-            case NoteType.TAP:
-                DeleteNote();
-                break;
-
-            case NoteType.LONG:
-                StopCoroutine("NoteAppear");
-                StartCoroutine("NoteJudge_Long");
-                break;
-
-            case NoteType.SLIDE:
-                break;
-        }
-    }
-
+    public abstract void OnPointerDown(PointerEventData eventData);
     public void OnPointerUp(PointerEventData eventData)
     {
         DeleteNote();

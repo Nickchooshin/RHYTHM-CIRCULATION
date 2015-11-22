@@ -67,21 +67,46 @@ public class NoteManager : MonoBehaviour {
                     int length = (int)jsonNoteData["Length"];
                     SlideWay slideWay = (SlideWay)(int)jsonNoteData["SlideWay"];
 
-                    if (type == NoteType.TAP || type == NoteType.LONG || type == NoteType.SLIDE)
-                    {
-                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/Note");
-                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
+                    GameObject notePrefab = null;
+                    GameObject noteObject = null;
+                    Note note = null;
 
-                        Note note = noteObject.GetComponent<Note>();
+                    if (type == NoteType.TAP)
+                    {
+                        notePrefab = Resources.Load<GameObject>("Prefabs/TapNote");
+                        noteObject = Instantiate<GameObject>(notePrefab);
+
+                        note = noteObject.GetComponent<TapNote>();
+                        note.Type = type;
+                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                    }
+                    else if (type == NoteType.LONG)
+                    {
+                        notePrefab = Resources.Load<GameObject>("Prefabs/LongNote");
+                        noteObject = Instantiate<GameObject>(notePrefab);
+
+                        note = noteObject.GetComponent<LongNote>();
+                        note.Type = type;
+                        note.Length = length;
+                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                    }
+                    else if (type == NoteType.SLIDE)
+                    {
+                        notePrefab = Resources.Load<GameObject>("Prefabs/SlideNote");
+                        noteObject = Instantiate<GameObject>(notePrefab);
+
+                        note = noteObject.GetComponent<SlideNote>();
                         note.Type = type;
                         note.Length = length;
                         note.SlideWay = slideWay;
                         note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                    }
 
-                        note.gameObject.SetActive(false);
-                        note.gameObject.transform.position = notePosition[k].position;
-
-                        note.gameObject.transform.SetParent(canvas.transform);
+                    if (noteObject != null)
+                    {
+                        noteObject.SetActive(false);
+                        noteObject.transform.position = notePosition[k].position;
+                        noteObject.transform.SetParent(canvas.transform);
 
                         m_noteList.Add(note);
                     }
