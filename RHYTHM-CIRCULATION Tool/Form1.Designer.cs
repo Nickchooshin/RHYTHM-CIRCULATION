@@ -70,6 +70,7 @@
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.checkBox_RoundTrip = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -114,20 +115,20 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.newToolStripMenuItem.Text = "새 파일";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.openToolStripMenuItem.Text = "열기";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem.Text = "저장";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -447,7 +448,7 @@
             // 
             // textBox_LongNoteLength
             // 
-            this.textBox_LongNoteLength.Location = new System.Drawing.Point(47, 19);
+            this.textBox_LongNoteLength.Location = new System.Drawing.Point(47, 41);
             this.textBox_LongNoteLength.Name = "textBox_LongNoteLength";
             this.textBox_LongNoteLength.Size = new System.Drawing.Size(28, 21);
             this.textBox_LongNoteLength.TabIndex = 0;
@@ -456,7 +457,7 @@
             // label_LongNoteLength
             // 
             this.label_LongNoteLength.AutoSize = true;
-            this.label_LongNoteLength.Location = new System.Drawing.Point(11, 22);
+            this.label_LongNoteLength.Location = new System.Drawing.Point(11, 44);
             this.label_LongNoteLength.Name = "label_LongNoteLength";
             this.label_LongNoteLength.Size = new System.Drawing.Size(37, 12);
             this.label_LongNoteLength.TabIndex = 1;
@@ -468,7 +469,7 @@
             this.groupBox_LongNoteOption.Controls.Add(this.label_LongNoteLength);
             this.groupBox_LongNoteOption.Location = new System.Drawing.Point(433, 362);
             this.groupBox_LongNoteOption.Name = "groupBox_LongNoteOption";
-            this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 69);
+            this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 100);
             this.groupBox_LongNoteOption.TabIndex = 7;
             this.groupBox_LongNoteOption.TabStop = false;
             this.groupBox_LongNoteOption.Text = "롱 노트 옵션";
@@ -499,13 +500,14 @@
             // 
             // groupBox_SlideNoteOption
             // 
+            this.groupBox_SlideNoteOption.Controls.Add(this.checkBox_RoundTrip);
             this.groupBox_SlideNoteOption.Controls.Add(this.textBox_SlideNoteLength);
             this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideNoteLength);
             this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Anticlockwise);
             this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Clockwise);
             this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(540, 362);
             this.groupBox_SlideNoteOption.Name = "groupBox_SlideNoteOption";
-            this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(134, 69);
+            this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(163, 100);
             this.groupBox_SlideNoteOption.TabIndex = 8;
             this.groupBox_SlideNoteOption.TabStop = false;
             this.groupBox_SlideNoteOption.Text = "슬라이드 노트 옵션";
@@ -524,7 +526,7 @@
             this.label_SlideNoteLength.Location = new System.Drawing.Point(9, 44);
             this.label_SlideNoteLength.Name = "label_SlideNoteLength";
             this.label_SlideNoteLength.Size = new System.Drawing.Size(37, 12);
-            this.label_SlideNoteLength.TabIndex = 3;
+            this.label_SlideNoteLength.TabIndex = 4;
             this.label_SlideNoteLength.Text = "길이 :";
             // 
             // saveFileDialog1
@@ -535,6 +537,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "json 파일|*.json|모든 파일|*.*";
+            // 
+            // checkBox_RoundTrip
+            // 
+            this.checkBox_RoundTrip.AutoSize = true;
+            this.checkBox_RoundTrip.Location = new System.Drawing.Point(11, 68);
+            this.checkBox_RoundTrip.Name = "checkBox_RoundTrip";
+            this.checkBox_RoundTrip.Size = new System.Drawing.Size(48, 16);
+            this.checkBox_RoundTrip.TabIndex = 3;
+            this.checkBox_RoundTrip.Text = "왕복";
+            this.checkBox_RoundTrip.UseVisualStyleBackColor = true;
+            this.checkBox_RoundTrip.CheckedChanged += new System.EventHandler(this.checkBox_RoundTrip_CheckedChanged);
             // 
             // Form1
             // 
@@ -623,6 +636,7 @@
         private System.Windows.Forms.Label label_SlideNoteLength;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckBox checkBox_RoundTrip;
     }
 }
 

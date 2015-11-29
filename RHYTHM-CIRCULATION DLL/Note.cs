@@ -27,6 +27,7 @@ namespace Rhythm_Circulation
         private NoteType m_type = NoteType.NONE;
         private int m_length = 0;
         private SlideWay m_slideWay = SlideWay.ANTI_CLOCKWISE;
+        private bool m_roundTrip = false;
 
         public NoteData()
         {
@@ -68,6 +69,18 @@ namespace Rhythm_Circulation
             set
             {
                 m_slideWay = value;
+            }
+        }
+
+        public bool RoundTrip
+        {
+            get
+            {
+                return m_roundTrip;
+            }
+            set
+            {
+                m_roundTrip = value;
             }
         }
     }

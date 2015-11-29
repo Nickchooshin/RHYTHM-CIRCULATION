@@ -28,6 +28,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private int m_longNoteLength = 1;
         private int m_slideNoteLength = 1;
         private SlideWay m_slideWay = SlideWay.ANTI_CLOCKWISE;
+        private bool m_roundTrip = false;
 
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
@@ -222,12 +223,19 @@ namespace RHYTHM_CIRCULATION_Tool
                 case 1:
                     m_slideWay = SlideWay.CLOCKWISE;
                     break;
+                case 2:
+                    break;
             }
         }
 
         private void textBox_SlideNoteLength_TextChanged(object sender, EventArgs e)
         {
             m_slideNoteLength = int.Parse(textBox_SlideNoteLength.Text);
+        }
+
+        private void checkBox_RoundTrip_CheckedChanged(object sender, EventArgs e)
+        {
+            m_roundTrip = checkBox_RoundTrip.Checked;
         }
 
         // Note
@@ -278,8 +286,13 @@ namespace RHYTHM_CIRCULATION_Tool
             {
                 noteData.Length = m_slideNoteLength;
                 noteData.SlideWay = m_slideWay;
+                noteData.RoundTrip = m_roundTrip;
 
-                for (int i = 0; i <= m_slideNoteLength; i++)
+                int roundTripLength = 0;
+                if (m_roundTrip)
+                    roundTripLength = m_slideNoteLength;
+
+                for (int i = 0; i <= m_slideNoteLength + roundTripLength; i++)
                 {
                     for (int j = 0; j <= m_slideNoteLength; j++)
                     {
@@ -320,7 +333,11 @@ namespace RHYTHM_CIRCULATION_Tool
             }
             else if (type == NoteType.SLIDE)
             {
-                for (int i = 0; i <= length; i++)
+                int roundTripLength = 0;
+                if (m_roundTrip)
+                    roundTripLength = length;
+
+                for (int i = 0; i <= length + roundTripLength; i++)
                 {
                     for (int j = 0; j <= length; j++)
                     {
@@ -374,6 +391,7 @@ namespace RHYTHM_CIRCULATION_Tool
                         m_noteList[(i * m_maxBeat) + j, k].Type = (NoteType)(int)jsonNote[k]["Type"];
                         m_noteList[(i * m_maxBeat) + j, k].Length = (int)jsonNote[k]["Length"];
                         m_noteList[(i * m_maxBeat) + j, k].SlideWay = (SlideWay)(int)jsonNote[k]["SlideWay"];
+                        m_noteList[(i * m_maxBeat) + j, k].RoundTrip = (bool)jsonNote[k]["RoundTrip"];
                     }
                 }
             }
