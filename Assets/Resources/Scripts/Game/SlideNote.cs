@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class SlideNote : Note {
 
@@ -8,7 +9,7 @@ public class SlideNote : Note {
         Init();
     }
 
-    public override void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    public override void OnPointerDown(PointerEventData eventData)
     {
         float timing = Time.time - m_noteTimeSeen;
 

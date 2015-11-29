@@ -63,6 +63,18 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
     }
 
+    public bool RoundTrip
+    {
+        get
+        {
+            return m_noteData.RoundTrip;
+        }
+        set
+        {
+            m_noteData.RoundTrip = value;
+        }
+    }
+
     public float TimeSeen
     {
         get
