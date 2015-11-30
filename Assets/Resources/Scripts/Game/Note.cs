@@ -51,7 +51,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
     }
 
-    public SlideWay SlideWay
+    public NoteSlideWay SlideWay
     {
         get
         {
@@ -92,7 +92,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         m_noteTimeSeen += delayedTime;
     }
 
-    protected void Init()
+    protected virtual void Init()
     {
         noteImage.fillAmount = 0.0f;
 

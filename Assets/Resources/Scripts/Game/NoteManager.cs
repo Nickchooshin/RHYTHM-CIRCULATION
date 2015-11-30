@@ -65,7 +65,7 @@ public class NoteManager : MonoBehaviour {
 
                     NoteType type = (NoteType)(int)jsonNoteData["Type"];
                     int length = (int)jsonNoteData["Length"];
-                    SlideWay slideWay = (SlideWay)(int)jsonNoteData["SlideWay"];
+                    NoteSlideWay slideWay = (NoteSlideWay)(int)jsonNoteData["SlideWay"];
                     bool roundTrip = (bool)jsonNoteData["RoundTrip"];
 
                     GameObject notePrefab = null;
@@ -107,6 +107,11 @@ public class NoteManager : MonoBehaviour {
                     if (noteObject != null)
                     {
                         noteObject.SetActive(false);
+                        if (type == NoteType.SLIDE)
+                        {
+                            noteObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
+                            //note.noteImage.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                        }
                         noteObject.transform.position = notePosition[k].position;
                         noteObject.transform.SetParent(canvas.transform);
 
