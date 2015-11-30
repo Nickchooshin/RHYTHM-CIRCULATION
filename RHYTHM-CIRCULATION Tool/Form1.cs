@@ -27,7 +27,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private NoteType m_noteType = NoteType.TAP;
         private int m_longNoteLength = 1;
         private int m_slideNoteLength = 1;
-        private SlideWay m_slideWay = SlideWay.ANTI_CLOCKWISE;
+        private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
 
         private NoteData[,] m_noteList;
@@ -103,10 +103,10 @@ namespace RHYTHM_CIRCULATION_Tool
             textBox_SlideNoteLength.Text = m_slideNoteLength.ToString();
             switch (m_slideWay)
             {
-                case SlideWay.ANTI_CLOCKWISE:
+                case NoteSlideWay.ANTI_CLOCKWISE:
                     radioButton_Anticlockwise.Checked = true;
                     break;
-                case SlideWay.CLOCKWISE:
+                case NoteSlideWay.CLOCKWISE:
                     radioButton_Clockwise.Checked = true;
                     break;
             }
@@ -218,10 +218,10 @@ namespace RHYTHM_CIRCULATION_Tool
             switch (radioButton.TabIndex)
             {
                 case 0:
-                    m_slideWay = SlideWay.ANTI_CLOCKWISE;
+                    m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
                     break;
                 case 1:
-                    m_slideWay = SlideWay.CLOCKWISE;
+                    m_slideWay = NoteSlideWay.CLOCKWISE;
                     break;
                 case 2:
                     break;
@@ -298,7 +298,7 @@ namespace RHYTHM_CIRCULATION_Tool
                     {
                         int noteNumIndex;
 
-                        if (m_slideWay == SlideWay.ANTI_CLOCKWISE)
+                        if (m_slideWay == NoteSlideWay.ANTI_CLOCKWISE)
                             noteNumIndex = (noteNum + (MAX_NOTE - j)) % MAX_NOTE;
                         else
                             noteNumIndex = (noteNum + j) % MAX_NOTE;
@@ -318,12 +318,12 @@ namespace RHYTHM_CIRCULATION_Tool
         private void DeleteNote(int index, int noteNum)
         {
             NoteType type = m_noteList[index, noteNum].Type;
-            SlideWay slideWay = m_noteList[index, noteNum].SlideWay;
+            NoteSlideWay slideWay = m_noteList[index, noteNum].SlideWay;
             int length = m_noteList[index, noteNum].Length;
 
             m_noteList[index, noteNum].Type = NoteType.NONE;
             m_noteList[index, noteNum].Length = 0;
-            m_noteList[index, noteNum].SlideWay = SlideWay.ANTI_CLOCKWISE;
+            m_noteList[index, noteNum].SlideWay = NoteSlideWay.ANTI_CLOCKWISE;
 
             // Delete Note Shadow(Long/Slide)
             if (type == NoteType.LONG)
@@ -343,7 +343,7 @@ namespace RHYTHM_CIRCULATION_Tool
                     {
                         int noteNumIndex;
 
-                        if (slideWay == SlideWay.ANTI_CLOCKWISE)
+                        if (slideWay == NoteSlideWay.ANTI_CLOCKWISE)
                             noteNumIndex = (noteNum + (MAX_NOTE - j)) % MAX_NOTE;
                         else
                             noteNumIndex = (noteNum + j) % MAX_NOTE;
@@ -390,7 +390,7 @@ namespace RHYTHM_CIRCULATION_Tool
                     {
                         m_noteList[(i * m_maxBeat) + j, k].Type = (NoteType)(int)jsonNote[k]["Type"];
                         m_noteList[(i * m_maxBeat) + j, k].Length = (int)jsonNote[k]["Length"];
-                        m_noteList[(i * m_maxBeat) + j, k].SlideWay = (SlideWay)(int)jsonNote[k]["SlideWay"];
+                        m_noteList[(i * m_maxBeat) + j, k].SlideWay = (NoteSlideWay)(int)jsonNote[k]["SlideWay"];
                         m_noteList[(i * m_maxBeat) + j, k].RoundTrip = (bool)jsonNote[k]["RoundTrip"];
                     }
                 }

@@ -16,7 +16,7 @@ namespace Rhythm_Circulation
         SLIDE_SHADOW,
     }
 
-    public enum SlideWay
+    public enum NoteSlideWay
     {
         ANTI_CLOCKWISE = 0,
         CLOCKWISE,
@@ -26,7 +26,7 @@ namespace Rhythm_Circulation
     {
         private NoteType m_type = NoteType.NONE;
         private int m_length = 0;
-        private SlideWay m_slideWay = SlideWay.ANTI_CLOCKWISE;
+        private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
 
         public NoteData()
@@ -60,7 +60,7 @@ namespace Rhythm_Circulation
             }
         }
 
-        public SlideWay SlideWay
+        public NoteSlideWay SlideWay
         {
             get
             {
