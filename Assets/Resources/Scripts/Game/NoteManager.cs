@@ -96,7 +96,7 @@ public class NoteManager : MonoBehaviour {
                         notePrefab = Resources.Load<GameObject>("Prefabs/SlideNote");
                         noteObject = Instantiate<GameObject>(notePrefab);
 
-                        note = noteObject.GetComponent<SlideNote>();
+                        note = noteObject.GetComponentInChildren<SlideNote>();
                         note.Type = type;
                         note.Length = length;
                         note.SlideWay = slideWay;
@@ -106,14 +106,15 @@ public class NoteManager : MonoBehaviour {
 
                     if (noteObject != null)
                     {
-                        noteObject.SetActive(false);
+                        note.gameObject.SetActive(false);
+                        noteObject.transform.position = notePosition[k].position;
+                        noteObject.transform.SetParent(canvas.transform);
+                        noteObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                         if (type == NoteType.SLIDE)
                         {
                             noteObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
-                            //note.noteImage.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                            note.noteImage.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                         }
-                        noteObject.transform.position = notePosition[k].position;
-                        noteObject.transform.SetParent(canvas.transform);
 
                         m_noteList.Add(note);
                     }

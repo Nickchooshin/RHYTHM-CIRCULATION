@@ -31,6 +31,13 @@ public class SlideNote : Note {
         StartCoroutine("NoteAppear");
     }
 
+    protected override void DeleteNote()
+    {
+        Debug.Log(m_noteJudge);
+
+        Destroy(gameObject.transform.parent.gameObject);
+    }
+
     protected override IEnumerator NoteAppear()
     {
         while (true)

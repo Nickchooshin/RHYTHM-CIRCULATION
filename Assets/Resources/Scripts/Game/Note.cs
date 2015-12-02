@@ -101,6 +101,13 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         StartCoroutine("NoteAppear");
     }
 
+    protected virtual void DeleteNote()
+    {
+        Debug.Log(m_noteJudge);
+
+        Destroy(gameObject);
+    }
+
     protected virtual IEnumerator NoteAppear()
     {
         while (true)
@@ -124,13 +131,6 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
             yield return null;
         }
-    }
-
-    protected void DeleteNote()
-    {
-        Debug.Log(m_noteJudge);
-
-        Destroy(gameObject);
     }
 
     // Event System
