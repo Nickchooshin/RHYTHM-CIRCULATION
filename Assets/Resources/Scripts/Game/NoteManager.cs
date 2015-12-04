@@ -10,22 +10,24 @@ using Rhythm_Circulation;
 public class NoteManager : MonoBehaviour {
 
     private List<Note> m_noteList = new List<Note>();
+    private List<GameObject> m_pathList = new List<GameObject>();
     private float m_startTime = 0.0f;
 
     public Transform[] notePosition = new Transform[8];
 
     public Canvas canvas;
 
-    public void Start()
+    void Start()
     {
         // 게임 진입 Scene을 만들기 전까지 임시 방편으로 여기서 NoteDataLoader를 작동시킨다.
-        NoteDataLoader.Instance.LoadNoteData("hahi");
+        NoteDataLoader.Instance.LoadNoteData("hahi2");
         CreateNoteList();
-
+        InsertNoteList();
+        
         m_startTime = Time.time;
     }
 
-    public void Update()
+    void Update()
     {
         float nowTime = Time.time;
 
@@ -36,7 +38,7 @@ public class NoteManager : MonoBehaviour {
             if (nowTime >= (note.TimeSeen + m_startTime - Note.APPEAR_TIME))
             {
                 note.AddDelayedTime(m_startTime);
-                note.gameObject.SetActive(true);
+                note.SetNoteActive(true);
                 m_noteList.Remove(note);
                 --i;
             }
@@ -45,7 +47,7 @@ public class NoteManager : MonoBehaviour {
         }
     }
 
-    public void CreateNoteList()
+    private void CreateNoteList()
     {
         int bpm = NoteDataLoader.Instance.BPM;
         int maxBeat = NoteDataLoader.Instance.MaxBeat;
@@ -68,14 +70,12 @@ public class NoteManager : MonoBehaviour {
                     NoteSlideWay slideWay = (NoteSlideWay)(int)jsonNoteData["SlideWay"];
                     bool roundTrip = (bool)jsonNoteData["RoundTrip"];
 
-                    GameObject notePrefab = null;
-                    GameObject noteObject = null;
                     Note note = null;
 
                     if (type == NoteType.TAP)
                     {
-                        notePrefab = Resources.Load<GameObject>("Prefabs/TapNote");
-                        noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/TapNote");
+                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
 
                         note = noteObject.GetComponent<TapNote>();
                         note.Type = type;
@@ -83,8 +83,8 @@ public class NoteManager : MonoBehaviour {
                     }
                     else if (type == NoteType.LONG)
                     {
-                        notePrefab = Resources.Load<GameObject>("Prefabs/LongNote");
-                        noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/LongNote");
+                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
 
                         note = noteObject.GetComponent<LongNote>();
                         note.Type = type;
@@ -93,10 +93,23 @@ public class NoteManager : MonoBehaviour {
                     }
                     else if (type == NoteType.SLIDE)
                     {
-                        notePrefab = Resources.Load<GameObject>("Prefabs/SlideNote");
-                        noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/SlideNote");
+                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject pathPrefab = Resources.Load<GameObject>("Prefabs/Path");
+                        GameObject pathObject = Instantiate<GameObject>(pathPrefab);
 
-                        note = noteObject.GetComponentInChildren<SlideNote>();
+                        SlideNote slideNote = noteObject.GetComponent<SlideNote>();
+                        slideNote.maskImage = pathObject.GetComponent<Image>();
+                        slideNote.pathImage = pathObject.transform.FindChild("PathImage").GetComponent<Image>();
+
+                        pathObject.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
+                        if(slideWay == NoteSlideWay.ANTI_CLOCKWISE)
+                            pathObject.transform.eulerAngles = new Vector3(0.0f, 180.0f, 45.0f * k);
+                        else
+                            pathObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
+                        m_pathList.Add(pathObject);
+
+                        note = slideNote;
                         note.Type = type;
                         note.Length = length;
                         note.SlideWay = slideWay;
@@ -104,22 +117,32 @@ public class NoteManager : MonoBehaviour {
                         note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
                     }
 
-                    if (noteObject != null)
+                    if (note != null)
                     {
-                        note.gameObject.SetActive(false);
-                        noteObject.transform.position = notePosition[k].position;
-                        noteObject.transform.SetParent(canvas.transform);
-                        noteObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                        if (type == NoteType.SLIDE)
-                        {
-                            noteObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
-                            note.noteImage.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-                        }
+                        note.SetNoteActive(false);
+                        note.transform.position = notePosition[k].position;
 
                         m_noteList.Add(note);
                     }
                 }
             }
         }
+    }
+
+    private void InsertNoteList()
+    {
+        foreach (GameObject path in m_pathList)
+        {
+            path.transform.SetParent(canvas.transform);
+            path.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        foreach (Note note in m_noteList)
+        {
+            note.transform.SetParent(canvas.transform);
+            note.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        m_pathList.Clear();
     }
 }

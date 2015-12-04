@@ -101,6 +101,11 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         StartCoroutine("NoteAppear");
     }
 
+    public virtual void SetNoteActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
+
     protected virtual void DeleteNote()
     {
         Debug.Log(m_noteJudge);

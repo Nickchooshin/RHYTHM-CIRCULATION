@@ -24,18 +24,22 @@ public class SlideNote : Note {
         noteImage.fillAmount = 0.0f;
         pathImage.fillAmount = m_pathAmountMax;
 
-        gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        if (SlideWay == NoteSlideWay.ANTI_CLOCKWISE)
-            maskImage.transform.transform.localEulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
-
         StartCoroutine("NoteAppear");
+    }
+
+    public override void SetNoteActive(bool isActive)
+    {
+        base.SetNoteActive(isActive);
+
+        maskImage.gameObject.SetActive(isActive);
     }
 
     protected override void DeleteNote()
     {
         Debug.Log(m_noteJudge);
 
-        Destroy(gameObject.transform.parent.gameObject);
+        Destroy(maskImage.gameObject);
+        Destroy(gameObject);
     }
 
     protected override IEnumerator NoteAppear()
@@ -79,9 +83,9 @@ public class SlideNote : Note {
         else if (timing <= GOOD_TIMING)
             m_noteJudge = NoteJudge.GOOD;
 
+        Debug.Log("Slide");
+
         StopCoroutine("NoteAppear");
         //StartCoroutine("NoteJudge_Slide");
-
-        Debug.Log("fdsfsf");
     }
 }
