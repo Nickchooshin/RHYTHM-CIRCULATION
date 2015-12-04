@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using Rhythm_Circulation;
 
 public class SlideNote : Note {
-
+    
     public Image maskImage;
     public Image pathImage;
 
@@ -29,7 +29,8 @@ public class SlideNote : Note {
 
     public override void SetNoteActive(bool isActive)
     {
-        base.SetNoteActive(isActive);
+        //base.SetNoteActive(isActive);
+        gameObject.transform.parent.gameObject.SetActive(isActive);
 
         maskImage.gameObject.SetActive(isActive);
     }
@@ -39,7 +40,8 @@ public class SlideNote : Note {
         Debug.Log(m_noteJudge);
 
         Destroy(maskImage.gameObject);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     protected override IEnumerator NoteAppear()

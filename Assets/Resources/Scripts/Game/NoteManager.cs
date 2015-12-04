@@ -98,7 +98,7 @@ public class NoteManager : MonoBehaviour {
                         GameObject pathPrefab = Resources.Load<GameObject>("Prefabs/Path");
                         GameObject pathObject = Instantiate<GameObject>(pathPrefab);
 
-                        SlideNote slideNote = noteObject.GetComponent<SlideNote>();
+                        SlideNote slideNote = noteObject.transform.FindChild("NoteImage").GetComponent<SlideNote>();
                         slideNote.maskImage = pathObject.GetComponent<Image>();
                         slideNote.pathImage = pathObject.transform.FindChild("PathImage").GetComponent<Image>();
 
@@ -120,7 +120,14 @@ public class NoteManager : MonoBehaviour {
                     if (note != null)
                     {
                         note.SetNoteActive(false);
-                        note.transform.position = notePosition[k].position;
+                        if (type == NoteType.SLIDE)
+                        {
+                            note.transform.parent.position = new Vector3(0.0f, 0.0f, -0.99f);
+                            note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
+                            note.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                        }
+                        else
+                            note.transform.position = notePosition[k].position;
 
                         m_noteList.Add(note);
                     }
@@ -139,8 +146,16 @@ public class NoteManager : MonoBehaviour {
 
         foreach (Note note in m_noteList)
         {
-            note.transform.SetParent(canvas.transform);
-            note.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            if (note.Type == NoteType.SLIDE)
+            {
+                note.transform.parent.SetParent(canvas.transform);
+                note.transform.parent.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            else
+            {
+                note.transform.SetParent(canvas.transform);
+                note.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
         }
 
         m_pathList.Clear();
