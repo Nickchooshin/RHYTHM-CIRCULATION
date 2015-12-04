@@ -11,6 +11,7 @@ public class NoteManager : MonoBehaviour {
 
     private List<Note> m_noteList = new List<Note>();
     private List<GameObject> m_pathList = new List<GameObject>();
+    private Dictionary<GameObject, GameObject> m_roundTripDictionary = new Dictionary<GameObject, GameObject>();
     private float m_startTime = 0.0f;
 
     public Transform[] notePosition = new Transform[8];
@@ -95,19 +96,13 @@ public class NoteManager : MonoBehaviour {
                     {
                         GameObject notePrefab = Resources.Load<GameObject>("Prefabs/SlideNote");
                         GameObject noteObject = Instantiate<GameObject>(notePrefab);
-                        GameObject pathPrefab = Resources.Load<GameObject>("Prefabs/Path");
-                        GameObject pathObject = Instantiate<GameObject>(pathPrefab);
+                        GameObject pathObject = null;
+
+                        CreateSlidePath(ref pathObject, length, slideWay, roundTrip, k);
 
                         SlideNote slideNote = noteObject.transform.FindChild("NoteImage").GetComponent<SlideNote>();
                         slideNote.maskImage = pathObject.GetComponent<Image>();
                         slideNote.pathImage = pathObject.transform.FindChild("PathImage").GetComponent<Image>();
-
-                        pathObject.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
-                        if(slideWay == NoteSlideWay.ANTI_CLOCKWISE)
-                            pathObject.transform.eulerAngles = new Vector3(0.0f, 180.0f, 45.0f * k);
-                        else
-                            pathObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
-                        m_pathList.Add(pathObject);
 
                         note = slideNote;
                         note.Type = type;
@@ -144,6 +139,18 @@ public class NoteManager : MonoBehaviour {
             path.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
 
+        foreach (KeyValuePair<GameObject, GameObject> roundTripPair in m_roundTripDictionary)
+        {
+            GameObject roundTripObject = roundTripPair.Key;
+            GameObject pathObject = roundTripPair.Value;
+
+            roundTripObject.transform.SetParent(pathObject.transform);
+            roundTripObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        m_pathList.Clear();
+        m_roundTripDictionary.Clear();
+
         foreach (Note note in m_noteList)
         {
             if (note.Type == NoteType.SLIDE)
@@ -157,7 +164,36 @@ public class NoteManager : MonoBehaviour {
                 note.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
+    }
 
-        m_pathList.Clear();
+    private void CreateSlidePath(ref GameObject pathObject, int length, NoteSlideWay slideWay, bool roundTrip, int index)
+    {
+        GameObject pathPrefab = Resources.Load<GameObject>("Prefabs/Path");
+        GameObject roundTripPrefab = Resources.Load<GameObject>("Prefabs/RoundTripNote");
+
+        pathObject = Instantiate<GameObject>(pathPrefab);
+
+        pathObject.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
+        if (slideWay == NoteSlideWay.CLOCKWISE)
+            pathObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, (-45.0f * index) + 11.25f);
+        else
+            pathObject.transform.eulerAngles = new Vector3(0.0f, 180.0f, (45.0f * index) + 11.25f);
+
+        for (int i = 0; i <= length; i++)
+        {
+            GameObject roundTripObject = Instantiate<GameObject>(roundTripPrefab);
+            roundTripObject.transform.position = notePosition[i + 1].position;
+            m_roundTripDictionary.Add(roundTripObject, pathObject);
+
+            if (roundTrip)
+            {
+                if (slideWay == NoteSlideWay.CLOCKWISE && i == length)
+                    roundTripObject.transform.FindChild("Icon").GetComponent<Image>().enabled = true;
+                else if (slideWay == NoteSlideWay.ANTI_CLOCKWISE && i == 0)
+                    roundTripObject.transform.FindChild("Icon").GetComponent<Image>().enabled = true;
+            }
+        }
+
+        m_pathList.Add(pathObject);
     }
 }
