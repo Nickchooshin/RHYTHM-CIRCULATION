@@ -64,7 +64,8 @@ public class SlideNote : Note {
 
                 yield return new WaitForSeconds((APPEAR_TIME / 2.0f) - (time - m_noteTimeSeen));
 
-                DeleteNote();
+                //DeleteNote();
+                StartCoroutine("NoteJudge_Slide");
             }
 
             yield return null;
@@ -88,6 +89,36 @@ public class SlideNote : Note {
         Debug.Log("Slide");
 
         StopCoroutine("NoteAppear");
-        //StartCoroutine("NoteJudge_Slide");
+        StartCoroutine("NoteJudge_Slide");
+    }
+
+    private IEnumerator NoteJudge_Slide()
+    {
+        int bpm = NoteDataLoader.Instance.BPM;
+        int maxBeat = NoteDataLoader.Instance.MaxBeat;
+        float timeLength = ((60.0f / bpm) / (maxBeat / 4)) * m_noteData.Length;
+        float endTime = Time.time + timeLength;
+        Vector3 startAngle = gameObject.transform.parent.eulerAngles;
+
+        noteImage.fillAmount = 1.0f;
+
+        while (true)
+        {
+            float time = endTime - Time.time;
+
+            float angle = (-45.0f * Length) * (1.0f - (time / timeLength));
+            Vector3 vectorAngle = new Vector3(0.0f, 0.0f, angle);
+
+            //gameObject.transform.parent.eulerAngles = startAngle + new Vector3(0.0f, 0.0f, angle);
+            if (SlideWay == NoteSlideWay.CLOCKWISE)
+                gameObject.transform.parent.eulerAngles = startAngle + vectorAngle;
+            else
+                gameObject.transform.parent.eulerAngles = startAngle - vectorAngle;
+
+            if (time < 0.0f)
+                DeleteNote();
+
+            yield return null;
+        }
     }
 }
