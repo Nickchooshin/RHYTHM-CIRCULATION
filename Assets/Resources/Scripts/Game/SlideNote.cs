@@ -29,7 +29,6 @@ public class SlideNote : Note, IPointerExitHandler {
 
     public override void SetNoteActive(bool isActive)
     {
-        //base.SetNoteActive(isActive);
         gameObject.transform.parent.gameObject.SetActive(isActive);
 
         maskImage.gameObject.SetActive(isActive);
@@ -40,7 +39,6 @@ public class SlideNote : Note, IPointerExitHandler {
         Debug.Log(m_noteJudge);
 
         Destroy(maskImage.gameObject);
-        //Destroy(gameObject);
         Destroy(gameObject.transform.parent.gameObject);
     }
 

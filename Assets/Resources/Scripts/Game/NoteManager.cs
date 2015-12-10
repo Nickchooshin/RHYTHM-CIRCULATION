@@ -14,14 +14,24 @@ public class NoteManager : MonoBehaviour {
     private Dictionary<GameObject, GameObject> m_roundTripDictionary = new Dictionary<GameObject, GameObject>();
     private float m_startTime = 0.0f;
 
-    public Transform[] notePosition = new Transform[8];
-
     public Canvas canvas;
+    
+    public GameObject TapNotePrefab;
+    public GameObject LongNotePrefab;
+    public GameObject SlideNotePrefab;
+    public GameObject SnapNotePrefab;
+    public GameObject PathPrefab;
+    public GameObject RoundTripNotePrefab;
+
+    public Transform[] notePosition = new Transform[8];
 
     void Start()
     {
         // 게임 진입 Scene을 만들기 전까지 임시 방편으로 여기서 NoteDataLoader를 작동시킨다.
         NoteDataLoader.Instance.LoadNoteData("hahi2");
+        // 또한, 마찬가지로 임시 방편으로 자이로 센서를 여기서 작동시킨다.
+        Input.gyro.enabled = true;
+
         CreateNoteList();
         InsertNoteList();
         
@@ -75,8 +85,7 @@ public class NoteManager : MonoBehaviour {
 
                     if (type == NoteType.TAP)
                     {
-                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/TapNote");
-                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject noteObject = Instantiate<GameObject>(TapNotePrefab);
 
                         note = noteObject.GetComponent<TapNote>();
                         note.Type = type;
@@ -84,8 +93,7 @@ public class NoteManager : MonoBehaviour {
                     }
                     else if (type == NoteType.LONG)
                     {
-                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/LongNote");
-                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject noteObject = Instantiate<GameObject>(LongNotePrefab);
 
                         note = noteObject.GetComponent<LongNote>();
                         note.Type = type;
@@ -94,8 +102,7 @@ public class NoteManager : MonoBehaviour {
                     }
                     else if (type == NoteType.SLIDE)
                     {
-                        GameObject notePrefab = Resources.Load<GameObject>("Prefabs/SlideNote");
-                        GameObject noteObject = Instantiate<GameObject>(notePrefab);
+                        GameObject noteObject = Instantiate<GameObject>(SlideNotePrefab);
                         GameObject pathObject = null;
 
                         CreateSlidePath(ref pathObject, length, slideWay, roundTrip, k);
@@ -111,6 +118,14 @@ public class NoteManager : MonoBehaviour {
                         note.RoundTrip = roundTrip;
                         note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
                     }
+                    else if (type == NoteType.SNAP)
+                    {
+                        GameObject noteObject = Instantiate<GameObject>(SnapNotePrefab);
+
+                        note = noteObject.GetComponent<SnapNote>();
+                        note.Type = type;
+                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                    }
 
                     if (note != null)
                     {
@@ -121,10 +136,17 @@ public class NoteManager : MonoBehaviour {
                             note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
                             note.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                         }
+                        else if (type == NoteType.SNAP)
+                        {
+                            note.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
+                        }
                         else
                             note.transform.position = notePosition[k].position;
 
                         m_noteList.Add(note);
+
+                        if (type == NoteType.SNAP)
+                            break;
                     }
                 }
             }
@@ -168,10 +190,7 @@ public class NoteManager : MonoBehaviour {
 
     private void CreateSlidePath(ref GameObject pathObject, int length, NoteSlideWay slideWay, bool roundTrip, int index)
     {
-        GameObject pathPrefab = Resources.Load<GameObject>("Prefabs/Path");
-        GameObject roundTripPrefab = Resources.Load<GameObject>("Prefabs/RoundTripNote");
-
-        pathObject = Instantiate<GameObject>(pathPrefab);
+        pathObject = Instantiate<GameObject>(PathPrefab);
 
         pathObject.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
         if (slideWay == NoteSlideWay.CLOCKWISE)
@@ -181,7 +200,7 @@ public class NoteManager : MonoBehaviour {
 
         for (int i = 0; i <= length; i++)
         {
-            GameObject roundTripObject = Instantiate<GameObject>(roundTripPrefab);
+            GameObject roundTripObject = Instantiate<GameObject>(RoundTripNotePrefab);
             roundTripObject.transform.position = notePosition[i + 1].position;
             m_roundTripDictionary.Add(roundTripObject, pathObject);
 

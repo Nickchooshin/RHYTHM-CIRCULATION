@@ -96,8 +96,6 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         noteImage.fillAmount = 0.0f;
 
-        gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-
         StartCoroutine("NoteAppear");
     }
 
@@ -141,7 +139,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     // Event System
 
     public abstract void OnPointerDown(PointerEventData eventData);
-    public void OnPointerUp(PointerEventData eventData)
+    public virtual void OnPointerUp(PointerEventData eventData)
     {
         DeleteNote();
     }
