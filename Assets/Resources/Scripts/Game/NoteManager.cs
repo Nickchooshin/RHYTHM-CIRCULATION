@@ -25,13 +25,16 @@ public class NoteManager : MonoBehaviour {
 
     public Transform[] notePosition = new Transform[8];
 
-    void Start()
+    void Awake()
     {
         // 게임 진입 Scene을 만들기 전까지 임시 방편으로 여기서 NoteDataLoader를 작동시킨다.
         NoteDataLoader.Instance.LoadNoteData("hahi2");
         // 또한, 마찬가지로 임시 방편으로 자이로 센서를 여기서 작동시킨다.
         Input.gyro.enabled = true;
+    }
 
+    void Start()
+    {
         CreateNoteList();
         InsertNoteList();
         

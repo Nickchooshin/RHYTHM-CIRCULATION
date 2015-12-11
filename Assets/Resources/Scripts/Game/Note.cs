@@ -7,7 +7,7 @@ using Rhythm_Circulation;
 
 public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-    protected enum NoteJudge
+    public enum NoteJudge
     {
         PERFECT,
         GREAT,
@@ -107,6 +107,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     protected virtual void DeleteNote()
     {
         Debug.Log(m_noteJudge);
+        NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
 
         Destroy(gameObject);
     }

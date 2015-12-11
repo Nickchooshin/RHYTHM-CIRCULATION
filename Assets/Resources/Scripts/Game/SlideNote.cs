@@ -37,6 +37,7 @@ public class SlideNote : Note, IPointerExitHandler {
     protected override void DeleteNote()
     {
         Debug.Log(m_noteJudge);
+        NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
 
         Destroy(maskImage.gameObject);
         Destroy(gameObject.transform.parent.gameObject);
