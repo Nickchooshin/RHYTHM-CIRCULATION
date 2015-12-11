@@ -11,7 +11,7 @@ namespace Rhythm_Circulation
         TAP,
         LONG,
         SLIDE,
-        SHAKE,
+        SNAP,
         LONG_SHADOW,
         SLIDE_SHADOW,
     }

@@ -29,6 +29,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private int m_slideNoteLength = 1;
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
+        private int m_snapNoteLength = 1;
 
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
@@ -76,6 +77,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
             groupBox_LongNoteOption.Enabled = false;
             groupBox_SlideNoteOption.Enabled = false;
+            groupBox_SnapNoteOption.Enabled = false;
         }
 
         private void InitSetting()
@@ -95,12 +97,13 @@ namespace RHYTHM_CIRCULATION_Tool
                 case NoteType.SLIDE:
                     radioButton_Slide.Checked = true;
                     break;
-                case NoteType.SHAKE:
-                    radioButton_Shake.Checked = true;
+                case NoteType.SNAP:
+                    radioButton_Snap.Checked = true;
                     break;
             }
             textBox_LongNoteLength.Text = m_longNoteLength.ToString();
             textBox_SlideNoteLength.Text = m_slideNoteLength.ToString();
+            textBox_SnapNoteLength.Text = m_snapNoteLength.ToString();
             switch (m_slideWay)
             {
                 case NoteSlideWay.ANTI_CLOCKWISE:
@@ -136,7 +139,7 @@ namespace RHYTHM_CIRCULATION_Tool
             m_noteImageList[1] = System.Drawing.Image.FromFile("./Resources/Tap.png");
             m_noteImageList[2] = System.Drawing.Image.FromFile("./Resources/Long.png");
             m_noteImageList[3] = System.Drawing.Image.FromFile("./Resources/Slide.png");
-            m_noteImageList[4] = System.Drawing.Image.FromFile("./Resources/Shake.png");
+            m_noteImageList[4] = System.Drawing.Image.FromFile("./Resources/Snap.png");
             m_noteImageList[5] = System.Drawing.Image.FromFile("./Resources/Long_Shadow.png");
             m_noteImageList[6] = System.Drawing.Image.FromFile("./Resources/Slide_Shadow.png");
 
@@ -183,6 +186,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
             groupBox_LongNoteOption.Enabled = false;
             groupBox_SlideNoteOption.Enabled = false;
+            groupBox_SnapNoteOption.Enabled = false;
 
             switch (radioButton.TabIndex)
             {
@@ -201,7 +205,8 @@ namespace RHYTHM_CIRCULATION_Tool
                     groupBox_SlideNoteOption.Enabled = true;
                     break;
                 case 4:
-                    //m_noteType = NoteType.SHAKE;
+                    m_noteType = NoteType.SNAP;
+                    groupBox_SnapNoteOption.Enabled = true;
                     break;
             }
         }
@@ -238,6 +243,11 @@ namespace RHYTHM_CIRCULATION_Tool
             m_roundTrip = checkBox_RoundTrip.Checked;
         }
 
+        private void textBox_SnapNoteLength_TextChanged(object sender, EventArgs e)
+        {
+            m_snapNoteLength = int.Parse(textBox_SnapNoteLength.Text);
+        }
+
         // Note
         private void ReloadNote()
         {
@@ -259,7 +269,6 @@ namespace RHYTHM_CIRCULATION_Tool
             PictureBox pictureBox = (PictureBox)sender;
             int noteNum = int.Parse((string)pictureBox.Tag);
             int index = GetNowBarBeatIndex();
-            //NoteData noteData = m_noteList[index, noteNum];
 
             DeleteNote(index, noteNum);
             InsertNote(index, noteNum, m_noteType);
@@ -313,6 +322,19 @@ namespace RHYTHM_CIRCULATION_Tool
 
                 ReloadNote();
             }
+            else if (noteType == NoteType.SNAP)
+            {
+                for (int i = 0; i < MAX_NOTE; i++)
+                {
+                    if (i != noteNum)
+                    {
+                        DeleteNote(index, i);
+                        m_noteList[index, i].Type = NoteType.SNAP;
+                    }
+                }
+                
+                ReloadNote();
+            }
         }
 
         private void DeleteNote(int index, int noteNum)
@@ -354,6 +376,13 @@ namespace RHYTHM_CIRCULATION_Tool
                 }
 
                 ReloadNote();
+            }
+            else if (type == NoteType.SNAP)
+            {
+                for (int i = 0; i < MAX_NOTE; i++)
+                {
+                    m_noteList[index, i].Type = NoteType.NONE;
+                }
             }
         }
 

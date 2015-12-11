@@ -56,7 +56,7 @@
             this.label_BPM = new System.Windows.Forms.Label();
             this.groupBox_Type = new System.Windows.Forms.GroupBox();
             this.radioButton_None = new System.Windows.Forms.RadioButton();
-            this.radioButton_Shake = new System.Windows.Forms.RadioButton();
+            this.radioButton_Snap = new System.Windows.Forms.RadioButton();
             this.radioButton_Slide = new System.Windows.Forms.RadioButton();
             this.radioButton_Long = new System.Windows.Forms.RadioButton();
             this.radioButton_Tap = new System.Windows.Forms.RadioButton();
@@ -66,11 +66,14 @@
             this.radioButton_Anticlockwise = new System.Windows.Forms.RadioButton();
             this.radioButton_Clockwise = new System.Windows.Forms.RadioButton();
             this.groupBox_SlideNoteOption = new System.Windows.Forms.GroupBox();
+            this.checkBox_RoundTrip = new System.Windows.Forms.CheckBox();
             this.textBox_SlideNoteLength = new System.Windows.Forms.TextBox();
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox_RoundTrip = new System.Windows.Forms.CheckBox();
+            this.groupBox_SnapNoteOption = new System.Windows.Forms.GroupBox();
+            this.textBox_SnapNoteLength = new System.Windows.Forms.TextBox();
+            this.label_SnapNoteLength = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -88,6 +91,7 @@
             this.groupBox_Type.SuspendLayout();
             this.groupBox_LongNoteOption.SuspendLayout();
             this.groupBox_SlideNoteOption.SuspendLayout();
+            this.groupBox_SnapNoteOption.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -375,7 +379,7 @@
             // groupBox_Type
             // 
             this.groupBox_Type.Controls.Add(this.radioButton_None);
-            this.groupBox_Type.Controls.Add(this.radioButton_Shake);
+            this.groupBox_Type.Controls.Add(this.radioButton_Snap);
             this.groupBox_Type.Controls.Add(this.radioButton_Slide);
             this.groupBox_Type.Controls.Add(this.radioButton_Long);
             this.groupBox_Type.Controls.Add(this.radioButton_Tap);
@@ -398,17 +402,17 @@
             this.radioButton_None.UseVisualStyleBackColor = true;
             this.radioButton_None.Click += new System.EventHandler(this.ChangeNoteType);
             // 
-            // radioButton_Shake
+            // radioButton_Snap
             // 
-            this.radioButton_Shake.AutoSize = true;
-            this.radioButton_Shake.Location = new System.Drawing.Point(13, 113);
-            this.radioButton_Shake.Name = "radioButton_Shake";
-            this.radioButton_Shake.Size = new System.Drawing.Size(59, 16);
-            this.radioButton_Shake.TabIndex = 4;
-            this.radioButton_Shake.Tag = "";
-            this.radioButton_Shake.Text = "흔들기";
-            this.radioButton_Shake.UseVisualStyleBackColor = true;
-            this.radioButton_Shake.Click += new System.EventHandler(this.ChangeNoteType);
+            this.radioButton_Snap.AutoSize = true;
+            this.radioButton_Snap.Location = new System.Drawing.Point(13, 113);
+            this.radioButton_Snap.Name = "radioButton_Snap";
+            this.radioButton_Snap.Size = new System.Drawing.Size(75, 16);
+            this.radioButton_Snap.TabIndex = 4;
+            this.radioButton_Snap.Tag = "";
+            this.radioButton_Snap.Text = "스냅 노트";
+            this.radioButton_Snap.UseVisualStyleBackColor = true;
+            this.radioButton_Snap.Click += new System.EventHandler(this.ChangeNoteType);
             // 
             // radioButton_Slide
             // 
@@ -448,7 +452,7 @@
             // 
             // textBox_LongNoteLength
             // 
-            this.textBox_LongNoteLength.Location = new System.Drawing.Point(47, 41);
+            this.textBox_LongNoteLength.Location = new System.Drawing.Point(47, 19);
             this.textBox_LongNoteLength.Name = "textBox_LongNoteLength";
             this.textBox_LongNoteLength.Size = new System.Drawing.Size(28, 21);
             this.textBox_LongNoteLength.TabIndex = 0;
@@ -457,7 +461,7 @@
             // label_LongNoteLength
             // 
             this.label_LongNoteLength.AutoSize = true;
-            this.label_LongNoteLength.Location = new System.Drawing.Point(11, 44);
+            this.label_LongNoteLength.Location = new System.Drawing.Point(11, 22);
             this.label_LongNoteLength.Name = "label_LongNoteLength";
             this.label_LongNoteLength.Size = new System.Drawing.Size(37, 12);
             this.label_LongNoteLength.TabIndex = 1;
@@ -469,7 +473,7 @@
             this.groupBox_LongNoteOption.Controls.Add(this.label_LongNoteLength);
             this.groupBox_LongNoteOption.Location = new System.Drawing.Point(433, 362);
             this.groupBox_LongNoteOption.Name = "groupBox_LongNoteOption";
-            this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 100);
+            this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 47);
             this.groupBox_LongNoteOption.TabIndex = 7;
             this.groupBox_LongNoteOption.TabStop = false;
             this.groupBox_LongNoteOption.Text = "롱 노트 옵션";
@@ -512,6 +516,17 @@
             this.groupBox_SlideNoteOption.TabStop = false;
             this.groupBox_SlideNoteOption.Text = "슬라이드 노트 옵션";
             // 
+            // checkBox_RoundTrip
+            // 
+            this.checkBox_RoundTrip.AutoSize = true;
+            this.checkBox_RoundTrip.Location = new System.Drawing.Point(11, 68);
+            this.checkBox_RoundTrip.Name = "checkBox_RoundTrip";
+            this.checkBox_RoundTrip.Size = new System.Drawing.Size(48, 16);
+            this.checkBox_RoundTrip.TabIndex = 3;
+            this.checkBox_RoundTrip.Text = "왕복";
+            this.checkBox_RoundTrip.UseVisualStyleBackColor = true;
+            this.checkBox_RoundTrip.CheckedChanged += new System.EventHandler(this.checkBox_RoundTrip_CheckedChanged);
+            // 
             // textBox_SlideNoteLength
             // 
             this.textBox_SlideNoteLength.Location = new System.Drawing.Point(45, 41);
@@ -538,22 +553,40 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "json 파일|*.json|모든 파일|*.*";
             // 
-            // checkBox_RoundTrip
+            // groupBox_SnapNoteOption
             // 
-            this.checkBox_RoundTrip.AutoSize = true;
-            this.checkBox_RoundTrip.Location = new System.Drawing.Point(11, 68);
-            this.checkBox_RoundTrip.Name = "checkBox_RoundTrip";
-            this.checkBox_RoundTrip.Size = new System.Drawing.Size(48, 16);
-            this.checkBox_RoundTrip.TabIndex = 3;
-            this.checkBox_RoundTrip.Text = "왕복";
-            this.checkBox_RoundTrip.UseVisualStyleBackColor = true;
-            this.checkBox_RoundTrip.CheckedChanged += new System.EventHandler(this.checkBox_RoundTrip_CheckedChanged);
+            this.groupBox_SnapNoteOption.Controls.Add(this.textBox_SnapNoteLength);
+            this.groupBox_SnapNoteOption.Controls.Add(this.label_SnapNoteLength);
+            this.groupBox_SnapNoteOption.Location = new System.Drawing.Point(433, 415);
+            this.groupBox_SnapNoteOption.Name = "groupBox_SnapNoteOption";
+            this.groupBox_SnapNoteOption.Size = new System.Drawing.Size(101, 47);
+            this.groupBox_SnapNoteOption.TabIndex = 9;
+            this.groupBox_SnapNoteOption.TabStop = false;
+            this.groupBox_SnapNoteOption.Text = "스냅 옵션";
+            // 
+            // textBox_SnapNoteLength
+            // 
+            this.textBox_SnapNoteLength.Location = new System.Drawing.Point(47, 20);
+            this.textBox_SnapNoteLength.Name = "textBox_SnapNoteLength";
+            this.textBox_SnapNoteLength.Size = new System.Drawing.Size(28, 21);
+            this.textBox_SnapNoteLength.TabIndex = 0;
+            this.textBox_SnapNoteLength.TextChanged += new System.EventHandler(this.textBox_SnapNoteLength_TextChanged);
+            // 
+            // label_SnapNoteLength
+            // 
+            this.label_SnapNoteLength.AutoSize = true;
+            this.label_SnapNoteLength.Location = new System.Drawing.Point(11, 23);
+            this.label_SnapNoteLength.Name = "label_SnapNoteLength";
+            this.label_SnapNoteLength.Size = new System.Drawing.Size(37, 12);
+            this.label_SnapNoteLength.TabIndex = 1;
+            this.label_SnapNoteLength.Text = "길이 :";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 759);
+            this.Controls.Add(this.groupBox_SnapNoteOption);
             this.Controls.Add(this.groupBox_SlideNoteOption);
             this.Controls.Add(this.groupBox_LongNoteOption);
             this.Controls.Add(this.groupBox_Type);
@@ -587,6 +620,8 @@
             this.groupBox_LongNoteOption.PerformLayout();
             this.groupBox_SlideNoteOption.ResumeLayout(false);
             this.groupBox_SlideNoteOption.PerformLayout();
+            this.groupBox_SnapNoteOption.ResumeLayout(false);
+            this.groupBox_SnapNoteOption.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -616,7 +651,7 @@
         private System.Windows.Forms.RadioButton radioButton_Slide;
         private System.Windows.Forms.RadioButton radioButton_Long;
         private System.Windows.Forms.RadioButton radioButton_Tap;
-        private System.Windows.Forms.RadioButton radioButton_Shake;
+        private System.Windows.Forms.RadioButton radioButton_Snap;
         private System.Windows.Forms.PictureBox pictureBox_Note1;
         private System.Windows.Forms.PictureBox pictureBox_Note8;
         private System.Windows.Forms.PictureBox pictureBox_Note7;
@@ -637,6 +672,9 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox_RoundTrip;
+        private System.Windows.Forms.GroupBox groupBox_SnapNoteOption;
+        private System.Windows.Forms.TextBox textBox_SnapNoteLength;
+        private System.Windows.Forms.Label label_SnapNoteLength;
     }
 }
 
