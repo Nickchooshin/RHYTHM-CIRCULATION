@@ -5,12 +5,15 @@ using UnityEngine.EventSystems;
 
 using Rhythm_Circulation;
 
-public class SlideNote : Note, IPointerExitHandler {
+public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
     
     public Image maskImage;
     public Image pathImage;
 
     private float m_pathAmountMax = 0.0f;
+    private bool m_isMoving = false;
+    private bool m_isDown = false;
+    private bool m_isEnter = false;
 
     void Start()
     {
@@ -36,9 +39,6 @@ public class SlideNote : Note, IPointerExitHandler {
 
     protected override void DeleteNote()
     {
-        Debug.Log(m_noteJudge);
-        NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
-
         Destroy(maskImage.gameObject);
         Destroy(gameObject.transform.parent.gameObject);
     }
@@ -63,7 +63,9 @@ public class SlideNote : Note, IPointerExitHandler {
 
                 yield return new WaitForSeconds((APPEAR_TIME / 2.0f) - (time - m_noteTimeSeen));
 
-                DeleteNote();
+                m_isMoving = true;
+                StartCoroutine("NoteJudge_Slide");
+                break;
             }
 
             yield return null;
@@ -72,27 +74,40 @@ public class SlideNote : Note, IPointerExitHandler {
 
     public override void OnPointerDown(PointerEventData eventData)
     {
-        float timing = Time.time - m_noteTimeSeen;
+        m_isDown = true;
 
-        if (timing < 0.0f)
-            timing = -timing;
+        if (!m_isMoving)
+        {
+            float timing = Time.time - m_noteTimeSeen;
 
-        if (timing <= PERFECT_TIMING)
-            m_noteJudge = NoteJudge.PERFECT;
-        else if (timing <= GREAT_TIMING)
-            m_noteJudge = NoteJudge.GREAT;
-        else if (timing <= GOOD_TIMING)
-            m_noteJudge = NoteJudge.GOOD;
+            if (timing < 0.0f)
+                timing = -timing;
 
-        Debug.Log("Slide");
+            if (timing <= PERFECT_TIMING)
+                m_noteJudge = NoteJudge.PERFECT;
+            else if (timing <= GREAT_TIMING)
+                m_noteJudge = NoteJudge.GREAT;
+            else if (timing <= GOOD_TIMING)
+                m_noteJudge = NoteJudge.GOOD;
 
-        StopCoroutine("NoteAppear");
-        StartCoroutine("NoteJudge_Slide");
+            NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
+            m_isMoving = true;
+        }
+    }
+
+    public override void OnPointerUp(PointerEventData eventData)
+    {
+        m_isDown = false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        m_isEnter = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        DeleteNote();
+        m_isEnter = false;
     }
 
     private IEnumerator NoteJudge_Slide()
@@ -103,6 +118,7 @@ public class SlideNote : Note, IPointerExitHandler {
         float endTime = Time.time + timeLength;
         Vector3 startAngle = gameObject.transform.parent.eulerAngles;
         bool isRoundTrip = false;
+        int pathNoteCount = 0;
 
         noteImage.fillAmount = 1.0f;
 
@@ -112,6 +128,15 @@ public class SlideNote : Note, IPointerExitHandler {
 
             float angle = (-45.0f * Length) * (1.0f - (time / timeLength));
             Vector3 vectorAngle;
+
+            if ((int)(angle / -45.0f) > pathNoteCount)
+            {
+                ++pathNoteCount;
+                if (m_isDown && m_isEnter)
+                    NoteJudgeReceiver.Instance.SendNoteJudge(Note.NoteJudge.PERFECT);
+                else
+                    NoteJudgeReceiver.Instance.SendNoteJudge(Note.NoteJudge.BAD);
+            }
 
             if (isRoundTrip)
                 angle = (-45.0f * Length) - angle;
@@ -127,6 +152,7 @@ public class SlideNote : Note, IPointerExitHandler {
                 if (RoundTrip && !isRoundTrip)
                 {
                     isRoundTrip = true;
+                    pathNoteCount = 0;
                     endTime += timeLength;
                 }
                 else

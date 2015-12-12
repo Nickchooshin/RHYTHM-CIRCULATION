@@ -7,8 +7,10 @@ public class CircleBeat : MonoBehaviour {
     private float m_time = 0.0f;
     private bool m_isScale = false;
 
-    private const float SCALE_UP_VALUE = 1.2f;
+    private const float SCALE_UP_VALUE = 1.1f;
     private const float SCALE_DOWN_VALUE = 0.9f;
+
+    public GameObject beat;
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class CircleBeat : MonoBehaviour {
             if (!m_isScale)
             {
                 m_isScale = true;
-                gameObject.transform.localScale = new Vector3(SCALE_UP_VALUE, SCALE_UP_VALUE, 1.0f);
+                beat.transform.localScale = new Vector3(SCALE_UP_VALUE, SCALE_UP_VALUE, 1.0f);
             }
         }
         else
@@ -37,11 +39,11 @@ public class CircleBeat : MonoBehaviour {
             if (m_isScale)
             {
                 m_isScale = false;
-                gameObject.transform.localScale = new Vector3(SCALE_DOWN_VALUE, SCALE_DOWN_VALUE, 1.0f);
+                beat.transform.localScale = new Vector3(SCALE_DOWN_VALUE, SCALE_DOWN_VALUE, 1.0f);
             }
             else
             {
-                gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                beat.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
     }

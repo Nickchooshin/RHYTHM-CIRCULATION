@@ -135,13 +135,13 @@ public class NoteManager : MonoBehaviour {
                         note.SetNoteActive(false);
                         if (type == NoteType.SLIDE)
                         {
-                            note.transform.parent.position = new Vector3(0.0f, 0.0f, -0.99f);
+                            note.transform.parent.position = new Vector3(0.0f, 0.0f, -1.0f);
                             note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
                             note.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                         }
                         else if (type == NoteType.SNAP)
                         {
-                            note.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
+                            note.transform.position = new Vector3(0.0f, 0.0f, -1.0f);
                         }
                         else
                             note.transform.position = notePosition[k].position;
