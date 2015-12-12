@@ -31,6 +31,8 @@ namespace RHYTHM_CIRCULATION_Tool
         private bool m_roundTrip = false;
         private int m_snapNoteLength = 1;
 
+        private int m_noteCount = 0;
+
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
         private PictureBox[] m_notePictureBoxList = new PictureBox[MAX_NOTE];
@@ -335,6 +337,8 @@ namespace RHYTHM_CIRCULATION_Tool
                 
                 ReloadNote();
             }
+
+            ++m_noteCount;
         }
 
         private void DeleteNote(int index, int noteNum)
@@ -383,6 +387,16 @@ namespace RHYTHM_CIRCULATION_Tool
                 {
                     m_noteList[index, i].Type = NoteType.NONE;
                 }
+            }
+
+            switch (type)
+            {
+                case NoteType.TAP:
+                case NoteType.LONG:
+                case NoteType.SLIDE:
+                case NoteType.SNAP:
+                    --m_noteCount;
+                    break;
             }
         }
 
@@ -474,6 +488,8 @@ namespace RHYTHM_CIRCULATION_Tool
             jsonWriter.Write(m_bpm);
             jsonWriter.WritePropertyName("MaxBeat");
             jsonWriter.Write(m_maxBeat);
+            jsonWriter.WritePropertyName("NoteCount");
+            jsonWriter.Write(m_noteCount);
             jsonWriter.WritePropertyName("Note");
 
             jsonWriter.WriteArrayStart();
