@@ -26,6 +26,7 @@ namespace Rhythm_Circulation
     {
         private NoteType m_type = NoteType.NONE;
         private int m_length = 0;
+        private int m_slideTime = 0;
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
 
@@ -57,6 +58,18 @@ namespace Rhythm_Circulation
             set
             {
                 m_length = value;
+            }
+        }
+
+        public int SlideTime
+        {
+            get
+            {
+                return m_slideTime;
+            }
+            set
+            {
+                m_slideTime = value;
             }
         }
 

@@ -27,6 +27,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private NoteType m_noteType = NoteType.TAP;
         private int m_longNoteLength = 1;
         private int m_slideNoteLength = 1;
+        private int m_slideTime = 1;
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
         private int m_snapNoteLength = 1;
@@ -105,6 +106,7 @@ namespace RHYTHM_CIRCULATION_Tool
             }
             textBox_LongNoteLength.Text = m_longNoteLength.ToString();
             textBox_SlideNoteLength.Text = m_slideNoteLength.ToString();
+            textBox_SlideTime.Text = m_slideTime.ToString();
             textBox_SnapNoteLength.Text = m_snapNoteLength.ToString();
             switch (m_slideWay)
             {
@@ -250,6 +252,11 @@ namespace RHYTHM_CIRCULATION_Tool
             m_snapNoteLength = int.Parse(textBox_SnapNoteLength.Text);
         }
 
+        private void textBox_SlideTime_TextChanged(object sender, EventArgs e)
+        {
+            m_slideTime = int.Parse(textBox_SlideTime.Text);
+        }
+
         // Note
         private void ReloadNote()
         {
@@ -296,6 +303,7 @@ namespace RHYTHM_CIRCULATION_Tool
             else if (noteType == NoteType.SLIDE)
             {
                 noteData.Length = m_slideNoteLength;
+                noteData.SlideTime = m_slideTime;
                 noteData.SlideWay = m_slideWay;
                 noteData.RoundTrip = m_roundTrip;
 
@@ -321,6 +329,8 @@ namespace RHYTHM_CIRCULATION_Tool
                         }
                     }
                 }
+
+                m_noteCount += m_slideNoteLength + roundTripLength;
 
                 ReloadNote();
             }
@@ -349,7 +359,9 @@ namespace RHYTHM_CIRCULATION_Tool
 
             m_noteList[index, noteNum].Type = NoteType.NONE;
             m_noteList[index, noteNum].Length = 0;
+            m_noteList[index, noteNum].SlideTime = 0;
             m_noteList[index, noteNum].SlideWay = NoteSlideWay.ANTI_CLOCKWISE;
+            m_noteList[index, noteNum].RoundTrip = false;
 
             // Delete Note Shadow(Long/Slide)
             if (type == NoteType.LONG)

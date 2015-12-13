@@ -66,6 +66,8 @@
             this.radioButton_Anticlockwise = new System.Windows.Forms.RadioButton();
             this.radioButton_Clockwise = new System.Windows.Forms.RadioButton();
             this.groupBox_SlideNoteOption = new System.Windows.Forms.GroupBox();
+            this.textBox_SlideTime = new System.Windows.Forms.TextBox();
+            this.label_SlideTime = new System.Windows.Forms.Label();
             this.checkBox_RoundTrip = new System.Windows.Forms.CheckBox();
             this.textBox_SlideNoteLength = new System.Windows.Forms.TextBox();
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
@@ -504,6 +506,8 @@
             // 
             // groupBox_SlideNoteOption
             // 
+            this.groupBox_SlideNoteOption.Controls.Add(this.textBox_SlideTime);
+            this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideTime);
             this.groupBox_SlideNoteOption.Controls.Add(this.checkBox_RoundTrip);
             this.groupBox_SlideNoteOption.Controls.Add(this.textBox_SlideNoteLength);
             this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideNoteLength);
@@ -515,6 +519,23 @@
             this.groupBox_SlideNoteOption.TabIndex = 8;
             this.groupBox_SlideNoteOption.TabStop = false;
             this.groupBox_SlideNoteOption.Text = "슬라이드 노트 옵션";
+            // 
+            // textBox_SlideTime
+            // 
+            this.textBox_SlideTime.Location = new System.Drawing.Point(117, 42);
+            this.textBox_SlideTime.Name = "textBox_SlideTime";
+            this.textBox_SlideTime.Size = new System.Drawing.Size(28, 21);
+            this.textBox_SlideTime.TabIndex = 4;
+            this.textBox_SlideTime.TextChanged += new System.EventHandler(this.textBox_SlideTime_TextChanged);
+            // 
+            // label_SlideTime
+            // 
+            this.label_SlideTime.AutoSize = true;
+            this.label_SlideTime.Location = new System.Drawing.Point(81, 45);
+            this.label_SlideTime.Name = "label_SlideTime";
+            this.label_SlideTime.Size = new System.Drawing.Size(37, 12);
+            this.label_SlideTime.TabIndex = 6;
+            this.label_SlideTime.Text = "시간 :";
             // 
             // checkBox_RoundTrip
             // 
@@ -541,7 +562,7 @@
             this.label_SlideNoteLength.Location = new System.Drawing.Point(9, 44);
             this.label_SlideNoteLength.Name = "label_SlideNoteLength";
             this.label_SlideNoteLength.Size = new System.Drawing.Size(37, 12);
-            this.label_SlideNoteLength.TabIndex = 4;
+            this.label_SlideNoteLength.TabIndex = 5;
             this.label_SlideNoteLength.Text = "길이 :";
             // 
             // saveFileDialog1
@@ -675,6 +696,8 @@
         private System.Windows.Forms.GroupBox groupBox_SnapNoteOption;
         private System.Windows.Forms.TextBox textBox_SnapNoteLength;
         private System.Windows.Forms.Label label_SnapNoteLength;
+        private System.Windows.Forms.TextBox textBox_SlideTime;
+        private System.Windows.Forms.Label label_SlideTime;
     }
 }
 
