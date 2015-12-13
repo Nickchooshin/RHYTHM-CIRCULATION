@@ -114,7 +114,8 @@ public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
     {
         int bpm = NoteDataLoader.Instance.BPM;
         int maxBeat = NoteDataLoader.Instance.MaxBeat;
-        float timeLength = ((60.0f / bpm) / (maxBeat / 4)) * m_noteData.Length;
+        float slideTime = ((float)SlideTime / (float)Length);
+        float timeLength = ((60.0f / bpm) / (maxBeat / 4)) * Length * slideTime;
         float endTime = Time.time + timeLength;
         Vector3 startAngle = gameObject.transform.parent.eulerAngles;
         bool isRoundTrip = false;

@@ -37,9 +37,9 @@ public class Score : MonoBehaviour, IJudgeReceiver {
 
         ++m_noteJudgeCount;
 
-        float percent = (m_noteJudgePercent / m_noteJudgeCount);
+        float percent = (m_noteJudgePercent / m_noteJudgeCount) * 100.0f;
 
         scoreText.text = m_score.ToString("D6");
-        percentText.text = percent.ToString() + " %";
+        percentText.text = percent.ToString("F1") + " %";
     }
 }

@@ -51,6 +51,18 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
     }
 
+    public int SlideTime
+    {
+        get
+        {
+            return m_noteData.SlideTime;
+        }
+        set
+        {
+            m_noteData.SlideTime = value;
+        }
+    }
+
     public NoteSlideWay SlideWay
     {
         get

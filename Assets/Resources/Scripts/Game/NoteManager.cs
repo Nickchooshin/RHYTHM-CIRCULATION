@@ -81,6 +81,7 @@ public class NoteManager : MonoBehaviour {
 
                     NoteType type = (NoteType)(int)jsonNoteData["Type"];
                     int length = (int)jsonNoteData["Length"];
+                    int slideTime = (int)jsonNoteData["SlideTime"];
                     NoteSlideWay slideWay = (NoteSlideWay)(int)jsonNoteData["SlideWay"];
                     bool roundTrip = (bool)jsonNoteData["RoundTrip"];
 
@@ -117,6 +118,7 @@ public class NoteManager : MonoBehaviour {
                         note = slideNote;
                         note.Type = type;
                         note.Length = length;
+                        note.SlideTime = slideTime;
                         note.SlideWay = slideWay;
                         note.RoundTrip = roundTrip;
                         note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
