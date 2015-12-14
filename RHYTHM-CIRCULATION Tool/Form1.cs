@@ -341,8 +341,10 @@ namespace RHYTHM_CIRCULATION_Tool
         private void DeleteNote(int index, int noteNum)
         {
             NoteType type = m_noteList[index, noteNum].Type;
-            NoteSlideWay slideWay = m_noteList[index, noteNum].SlideWay;
             int length = m_noteList[index, noteNum].Length;
+            int slideTime = m_noteList[index, noteNum].SlideTime;
+            NoteSlideWay slideWay = m_noteList[index, noteNum].SlideWay;
+            bool roundTrip = m_noteList[index, noteNum].RoundTrip;
 
             m_noteList[index, noteNum].Type = NoteType.NONE;
             m_noteList[index, noteNum].Length = 0;
@@ -359,10 +361,10 @@ namespace RHYTHM_CIRCULATION_Tool
             else if (type == NoteType.SLIDE)
             {
                 int roundTripLength = 0;
-                if (m_roundTrip)
-                    roundTripLength = length;
+                if (roundTrip)
+                    roundTripLength = slideTime;
 
-                for (int i = 0; i <= length + roundTripLength; i++)
+                for (int i = 0; i <= slideTime + roundTripLength; i++)
                 {
                     for (int j = 0; j <= length; j++)
                     {
