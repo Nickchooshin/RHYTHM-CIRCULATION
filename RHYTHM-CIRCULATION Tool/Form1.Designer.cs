@@ -73,9 +73,6 @@
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox_SnapNoteOption = new System.Windows.Forms.GroupBox();
-            this.textBox_SnapNoteLength = new System.Windows.Forms.TextBox();
-            this.label_SnapNoteLength = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -93,7 +90,6 @@
             this.groupBox_Type.SuspendLayout();
             this.groupBox_LongNoteOption.SuspendLayout();
             this.groupBox_SlideNoteOption.SuspendLayout();
-            this.groupBox_SnapNoteOption.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -574,40 +570,11 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "json 파일|*.json|모든 파일|*.*";
             // 
-            // groupBox_SnapNoteOption
-            // 
-            this.groupBox_SnapNoteOption.Controls.Add(this.textBox_SnapNoteLength);
-            this.groupBox_SnapNoteOption.Controls.Add(this.label_SnapNoteLength);
-            this.groupBox_SnapNoteOption.Location = new System.Drawing.Point(463, 415);
-            this.groupBox_SnapNoteOption.Name = "groupBox_SnapNoteOption";
-            this.groupBox_SnapNoteOption.Size = new System.Drawing.Size(101, 47);
-            this.groupBox_SnapNoteOption.TabIndex = 9;
-            this.groupBox_SnapNoteOption.TabStop = false;
-            this.groupBox_SnapNoteOption.Text = "스냅 옵션";
-            // 
-            // textBox_SnapNoteLength
-            // 
-            this.textBox_SnapNoteLength.Location = new System.Drawing.Point(47, 20);
-            this.textBox_SnapNoteLength.Name = "textBox_SnapNoteLength";
-            this.textBox_SnapNoteLength.Size = new System.Drawing.Size(28, 21);
-            this.textBox_SnapNoteLength.TabIndex = 0;
-            this.textBox_SnapNoteLength.TextChanged += new System.EventHandler(this.textBox_SnapNoteLength_TextChanged);
-            // 
-            // label_SnapNoteLength
-            // 
-            this.label_SnapNoteLength.AutoSize = true;
-            this.label_SnapNoteLength.Location = new System.Drawing.Point(11, 23);
-            this.label_SnapNoteLength.Name = "label_SnapNoteLength";
-            this.label_SnapNoteLength.Size = new System.Drawing.Size(37, 12);
-            this.label_SnapNoteLength.TabIndex = 1;
-            this.label_SnapNoteLength.Text = "길이 :";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 759);
-            this.Controls.Add(this.groupBox_SnapNoteOption);
             this.Controls.Add(this.groupBox_SlideNoteOption);
             this.Controls.Add(this.groupBox_LongNoteOption);
             this.Controls.Add(this.groupBox_Type);
@@ -641,8 +608,6 @@
             this.groupBox_LongNoteOption.PerformLayout();
             this.groupBox_SlideNoteOption.ResumeLayout(false);
             this.groupBox_SlideNoteOption.PerformLayout();
-            this.groupBox_SnapNoteOption.ResumeLayout(false);
-            this.groupBox_SnapNoteOption.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -693,9 +658,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox_RoundTrip;
-        private System.Windows.Forms.GroupBox groupBox_SnapNoteOption;
-        private System.Windows.Forms.TextBox textBox_SnapNoteLength;
-        private System.Windows.Forms.Label label_SnapNoteLength;
         private System.Windows.Forms.TextBox textBox_SlideTime;
         private System.Windows.Forms.Label label_SlideTime;
     }

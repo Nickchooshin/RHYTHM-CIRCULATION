@@ -30,7 +30,6 @@ namespace RHYTHM_CIRCULATION_Tool
         private int m_slideTime = 1;
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
-        private int m_snapNoteLength = 1;
 
         private int m_noteCount = 0;
 
@@ -80,7 +79,6 @@ namespace RHYTHM_CIRCULATION_Tool
 
             groupBox_LongNoteOption.Enabled = false;
             groupBox_SlideNoteOption.Enabled = false;
-            groupBox_SnapNoteOption.Enabled = false;
         }
 
         private void InitSetting()
@@ -107,7 +105,6 @@ namespace RHYTHM_CIRCULATION_Tool
             textBox_LongNoteLength.Text = m_longNoteLength.ToString();
             textBox_SlideNoteLength.Text = m_slideNoteLength.ToString();
             textBox_SlideTime.Text = m_slideTime.ToString();
-            textBox_SnapNoteLength.Text = m_snapNoteLength.ToString();
             switch (m_slideWay)
             {
                 case NoteSlideWay.ANTI_CLOCKWISE:
@@ -190,7 +187,6 @@ namespace RHYTHM_CIRCULATION_Tool
 
             groupBox_LongNoteOption.Enabled = false;
             groupBox_SlideNoteOption.Enabled = false;
-            groupBox_SnapNoteOption.Enabled = false;
 
             switch (radioButton.TabIndex)
             {
@@ -207,10 +203,6 @@ namespace RHYTHM_CIRCULATION_Tool
                 case 3:
                     m_noteType = NoteType.SLIDE;
                     groupBox_SlideNoteOption.Enabled = true;
-                    break;
-                case 4:
-                    m_noteType = NoteType.SNAP;
-                    groupBox_SnapNoteOption.Enabled = true;
                     break;
             }
         }
@@ -245,11 +237,6 @@ namespace RHYTHM_CIRCULATION_Tool
         private void checkBox_RoundTrip_CheckedChanged(object sender, EventArgs e)
         {
             m_roundTrip = checkBox_RoundTrip.Checked;
-        }
-
-        private void textBox_SnapNoteLength_TextChanged(object sender, EventArgs e)
-        {
-            m_snapNoteLength = int.Parse(textBox_SnapNoteLength.Text);
         }
 
         private void textBox_SlideTime_TextChanged(object sender, EventArgs e)
@@ -309,9 +296,9 @@ namespace RHYTHM_CIRCULATION_Tool
 
                 int roundTripLength = 0;
                 if (m_roundTrip)
-                    roundTripLength = m_slideNoteLength;
+                    roundTripLength = m_slideTime;
 
-                for (int i = 0; i <= m_slideNoteLength + roundTripLength; i++)
+                for (int i = 0; i <= m_slideTime + roundTripLength; i++)
                 {
                     for (int j = 0; j <= m_slideNoteLength; j++)
                     {
