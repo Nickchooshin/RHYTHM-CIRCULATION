@@ -163,16 +163,16 @@
             this.panel_Screen.Controls.Add(this.pictureBox_Note1);
             this.panel_Screen.Location = new System.Drawing.Point(12, 27);
             this.panel_Screen.Name = "panel_Screen";
-            this.panel_Screen.Size = new System.Drawing.Size(405, 720);
+            this.panel_Screen.Size = new System.Drawing.Size(445, 720);
             this.panel_Screen.TabIndex = 1;
             // 
             // pictureBox_Note8
             // 
             this.pictureBox_Note8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note8.ImageLocation = "";
-            this.pictureBox_Note8.Location = new System.Drawing.Point(58, 78);
+            this.pictureBox_Note8.Location = new System.Drawing.Point(59, 60);
             this.pictureBox_Note8.Name = "pictureBox_Note8";
-            this.pictureBox_Note8.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note8.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note8.TabIndex = 6;
             this.pictureBox_Note8.TabStop = false;
             this.pictureBox_Note8.Tag = "7";
@@ -182,9 +182,9 @@
             // 
             this.pictureBox_Note7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note7.ImageLocation = "";
-            this.pictureBox_Note7.Location = new System.Drawing.Point(10, 190);
+            this.pictureBox_Note7.Location = new System.Drawing.Point(11, 172);
             this.pictureBox_Note7.Name = "pictureBox_Note7";
-            this.pictureBox_Note7.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note7.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note7.TabIndex = 5;
             this.pictureBox_Note7.TabStop = false;
             this.pictureBox_Note7.Tag = "6";
@@ -194,9 +194,9 @@
             // 
             this.pictureBox_Note6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note6.ImageLocation = "";
-            this.pictureBox_Note6.Location = new System.Drawing.Point(58, 302);
+            this.pictureBox_Note6.Location = new System.Drawing.Point(59, 284);
             this.pictureBox_Note6.Name = "pictureBox_Note6";
-            this.pictureBox_Note6.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note6.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note6.TabIndex = 4;
             this.pictureBox_Note6.TabStop = false;
             this.pictureBox_Note6.Tag = "5";
@@ -206,9 +206,9 @@
             // 
             this.pictureBox_Note5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note5.ImageLocation = "";
-            this.pictureBox_Note5.Location = new System.Drawing.Point(170, 350);
+            this.pictureBox_Note5.Location = new System.Drawing.Point(171, 332);
             this.pictureBox_Note5.Name = "pictureBox_Note5";
-            this.pictureBox_Note5.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note5.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note5.TabIndex = 3;
             this.pictureBox_Note5.TabStop = false;
             this.pictureBox_Note5.Tag = "4";
@@ -218,9 +218,9 @@
             // 
             this.pictureBox_Note4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note4.ImageLocation = "";
-            this.pictureBox_Note4.Location = new System.Drawing.Point(282, 302);
+            this.pictureBox_Note4.Location = new System.Drawing.Point(283, 284);
             this.pictureBox_Note4.Name = "pictureBox_Note4";
-            this.pictureBox_Note4.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note4.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note4.TabIndex = 2;
             this.pictureBox_Note4.TabStop = false;
             this.pictureBox_Note4.Tag = "3";
@@ -230,9 +230,9 @@
             // 
             this.pictureBox_Note3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note3.ImageLocation = "";
-            this.pictureBox_Note3.Location = new System.Drawing.Point(330, 190);
+            this.pictureBox_Note3.Location = new System.Drawing.Point(331, 172);
             this.pictureBox_Note3.Name = "pictureBox_Note3";
-            this.pictureBox_Note3.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note3.TabIndex = 2;
             this.pictureBox_Note3.TabStop = false;
             this.pictureBox_Note3.Tag = "2";
@@ -242,9 +242,9 @@
             // 
             this.pictureBox_Note2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note2.ImageLocation = "";
-            this.pictureBox_Note2.Location = new System.Drawing.Point(282, 78);
+            this.pictureBox_Note2.Location = new System.Drawing.Point(283, 60);
             this.pictureBox_Note2.Name = "pictureBox_Note2";
-            this.pictureBox_Note2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note2.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note2.TabIndex = 1;
             this.pictureBox_Note2.TabStop = false;
             this.pictureBox_Note2.Tag = "1";
@@ -254,9 +254,9 @@
             // 
             this.pictureBox_Note1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note1.ImageLocation = "";
-            this.pictureBox_Note1.Location = new System.Drawing.Point(170, 30);
+            this.pictureBox_Note1.Location = new System.Drawing.Point(171, 12);
             this.pictureBox_Note1.Name = "pictureBox_Note1";
-            this.pictureBox_Note1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox_Note1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note1.TabIndex = 0;
             this.pictureBox_Note1.TabStop = false;
             this.pictureBox_Note1.Tag = "0";
@@ -268,7 +268,7 @@
             this.groupBox_Page.Controls.Add(this.numericUpDown_Beat);
             this.groupBox_Page.Controls.Add(this.label_Bar);
             this.groupBox_Page.Controls.Add(this.numericUpDown_Bar);
-            this.groupBox_Page.Location = new System.Drawing.Point(433, 92);
+            this.groupBox_Page.Location = new System.Drawing.Point(463, 92);
             this.groupBox_Page.Name = "groupBox_Page";
             this.groupBox_Page.Size = new System.Drawing.Size(270, 102);
             this.groupBox_Page.TabIndex = 2;
@@ -337,7 +337,7 @@
             this.groupBox_Setting.Controls.Add(this.textBox_BPM);
             this.groupBox_Setting.Controls.Add(this.label_MaxBeat);
             this.groupBox_Setting.Controls.Add(this.label_BPM);
-            this.groupBox_Setting.Location = new System.Drawing.Point(433, 32);
+            this.groupBox_Setting.Location = new System.Drawing.Point(463, 32);
             this.groupBox_Setting.Name = "groupBox_Setting";
             this.groupBox_Setting.Size = new System.Drawing.Size(270, 54);
             this.groupBox_Setting.TabIndex = 3;
@@ -385,7 +385,7 @@
             this.groupBox_Type.Controls.Add(this.radioButton_Slide);
             this.groupBox_Type.Controls.Add(this.radioButton_Long);
             this.groupBox_Type.Controls.Add(this.radioButton_Tap);
-            this.groupBox_Type.Location = new System.Drawing.Point(433, 200);
+            this.groupBox_Type.Location = new System.Drawing.Point(463, 200);
             this.groupBox_Type.Name = "groupBox_Type";
             this.groupBox_Type.Size = new System.Drawing.Size(270, 156);
             this.groupBox_Type.TabIndex = 4;
@@ -473,7 +473,7 @@
             // 
             this.groupBox_LongNoteOption.Controls.Add(this.textBox_LongNoteLength);
             this.groupBox_LongNoteOption.Controls.Add(this.label_LongNoteLength);
-            this.groupBox_LongNoteOption.Location = new System.Drawing.Point(433, 362);
+            this.groupBox_LongNoteOption.Location = new System.Drawing.Point(463, 362);
             this.groupBox_LongNoteOption.Name = "groupBox_LongNoteOption";
             this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 47);
             this.groupBox_LongNoteOption.TabIndex = 7;
@@ -513,7 +513,7 @@
             this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideNoteLength);
             this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Anticlockwise);
             this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Clockwise);
-            this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(540, 362);
+            this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(570, 362);
             this.groupBox_SlideNoteOption.Name = "groupBox_SlideNoteOption";
             this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(163, 100);
             this.groupBox_SlideNoteOption.TabIndex = 8;
@@ -578,7 +578,7 @@
             // 
             this.groupBox_SnapNoteOption.Controls.Add(this.textBox_SnapNoteLength);
             this.groupBox_SnapNoteOption.Controls.Add(this.label_SnapNoteLength);
-            this.groupBox_SnapNoteOption.Location = new System.Drawing.Point(433, 415);
+            this.groupBox_SnapNoteOption.Location = new System.Drawing.Point(463, 415);
             this.groupBox_SnapNoteOption.Name = "groupBox_SnapNoteOption";
             this.groupBox_SnapNoteOption.Size = new System.Drawing.Size(101, 47);
             this.groupBox_SnapNoteOption.TabIndex = 9;

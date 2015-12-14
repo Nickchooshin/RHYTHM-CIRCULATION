@@ -139,7 +139,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void InitNoteImage()
         {
-            m_noteImageList[0] = System.Drawing.Image.FromFile("./Resources/Normal.png");
+            m_noteImageList[0] = System.Drawing.Image.FromFile("./Resources/Base.png");
             m_noteImageList[1] = System.Drawing.Image.FromFile("./Resources/Tap.png");
             m_noteImageList[2] = System.Drawing.Image.FromFile("./Resources/Long.png");
             m_noteImageList[3] = System.Drawing.Image.FromFile("./Resources/Slide.png");
@@ -399,6 +399,8 @@ namespace RHYTHM_CIRCULATION_Tool
                 {
                     m_noteList[index, i].Type = NoteType.NONE;
                 }
+
+                ReloadNote();
             }
 
             switch (type)
