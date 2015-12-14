@@ -23,8 +23,6 @@ public class TapNote : Note {
         else if (timing <= GOOD_TIMING)
             m_noteJudge = NoteJudge.GOOD;
 
-        Debug.Log("Tap");
-
         DeleteNote();
     }
 }

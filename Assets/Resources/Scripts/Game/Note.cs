@@ -19,7 +19,8 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public const float PERFECT_TIMING = 0.1f;
     public const float GREAT_TIMING = 0.2f;
-    public const float GOOD_TIMING = 0.3f;
+    //public const float GOOD_TIMING = 0.3f;
+    public const float GOOD_TIMING = 0.35f;
 
     protected NoteData m_noteData = new NoteData();
     protected NoteJudge m_noteJudge = NoteJudge.BAD;

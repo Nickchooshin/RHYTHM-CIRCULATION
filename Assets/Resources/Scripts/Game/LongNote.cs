@@ -26,8 +26,6 @@ public class LongNote : Note {
         else if (timing <= GOOD_TIMING)
             m_noteJudge = NoteJudge.GOOD;
 
-        Debug.Log("Long");
-
         StopCoroutine("NoteAppear");
         StartCoroutine("NoteJudge_Long");
     }
