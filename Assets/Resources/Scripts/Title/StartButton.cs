@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class StartButton : MonoBehaviour, IPointerClickHandler {
+public class StartButton : MonoBehaviour {
 
     public Text buttonText;
 
@@ -17,6 +17,10 @@ public class StartButton : MonoBehaviour, IPointerClickHandler {
         const float fadeTime = 1.0f;
         float endTime = Time.time + fadeTime;
         bool isFadeIn = true;
+
+        Debug.Log("FadeInOut");
+        Debug.Log("endTime = " + endTime);
+        Debug.Log("time = " + Time.time);
 
         while (true)
         {
@@ -34,12 +38,9 @@ public class StartButton : MonoBehaviour, IPointerClickHandler {
             else
                 buttonText.color = new Color(1.0f, 1.0f, 1.0f, alpha);
 
+            Debug.Log(buttonText.color);
+
             yield return null;
         }
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Application.LoadLevel("sceneGame");
     }
 }
