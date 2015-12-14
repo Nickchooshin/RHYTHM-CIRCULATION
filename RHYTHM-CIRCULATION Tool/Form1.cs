@@ -204,6 +204,9 @@ namespace RHYTHM_CIRCULATION_Tool
                     m_noteType = NoteType.SLIDE;
                     groupBox_SlideNoteOption.Enabled = true;
                     break;
+                case 4:
+                    m_noteType = NoteType.SNAP;
+                    break;
             }
         }
 
