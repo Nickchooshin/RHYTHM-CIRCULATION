@@ -13,6 +13,7 @@ public class NoteManager : MonoBehaviour {
     private List<GameObject> m_pathList = new List<GameObject>();
     private Dictionary<GameObject, GameObject> m_roundTripDictionary = new Dictionary<GameObject, GameObject>();
     private float m_startTime = 0.0f;
+    private float m_musicTime = 0.0f;
 
     public Transform noteParent;
     
@@ -24,6 +25,9 @@ public class NoteManager : MonoBehaviour {
     public GameObject RoundTripNotePrefab;
 
     public Transform[] notePosition = new Transform[8];
+
+    public ResultUI resultUIPanel;
+    public Score score;
 
     void Awake()
     {
@@ -38,29 +42,73 @@ public class NoteManager : MonoBehaviour {
         CreateNoteList();
         InsertNoteList();
 
+        JsonData infoData = NoteDataLoader.Instance.InfoData;
+
         m_startTime = Time.time;
-        Debug.Log("StartTime = " + m_startTime);
+        m_musicTime = (float)(int)infoData["Time"] + 1.5f;
+
+        StartCoroutine("GameStart");
+        StartCoroutine("ShowResult");
     }
 
-    void Update()
+    private IEnumerator GameStart()
     {
-        float nowTime = Time.time;
-        Debug.Log("nowTime = " + nowTime);
-
-        for (int i = 0; i < m_noteList.Count; i++)
+        while (true)
         {
-            Note note = m_noteList[i];
+            float nowTime = Time.time;
 
-            if (nowTime >= (note.TimeSeen + m_startTime - Note.APPEAR_TIME))
+            for (int i = 0; i < m_noteList.Count; i++)
             {
-                note.AddDelayedTime(m_startTime);
-                note.SetNoteActive(true);
-                m_noteList.Remove(note);
-                --i;
+                Note note = m_noteList[i];
+
+                if (nowTime >= (note.TimeSeen + m_startTime - Note.APPEAR_TIME))
+                {
+                    note.AddDelayedTime(m_startTime);
+                    note.SetNoteActive(true);
+                    m_noteList.Remove(note);
+                    --i;
+                }
+                else
+                    break;
             }
-            else
-                break;
+
+            yield return null;
         }
+    }
+
+    private IEnumerator ShowResult()
+    {
+        yield return new WaitForSeconds(m_musicTime);
+
+        StopCoroutine("GameStart");
+
+        AudioManager.Instance.Stop();
+        AudioManager.Instance.SetAudioClip("BGM/04. [BGM] Result");
+        AudioManager.Instance.Play();
+
+        JsonData infoData = NoteDataLoader.Instance.InfoData;
+        float accuracy = score.Accuracy;
+
+        resultUIPanel.Name = infoData["Name"].ToString();
+        resultUIPanel.Singer = infoData["Singer"].ToString();
+        resultUIPanel.Perfect = score.PerfectCount.ToString();
+        resultUIPanel.Great = score.GreatCount.ToString();
+        resultUIPanel.Good = score.GoodCount.ToString();
+        resultUIPanel.Miss = score.MissCount.ToString();
+        resultUIPanel.Accuracy = score.Accuracy.ToString("F1") + "%";
+        resultUIPanel.Score = score.TotalScore.ToString();
+        resultUIPanel.Difficulty = infoData["Note"][NoteDataLoader.Instance.NoteDifficulty]["Difficulty"].ToString();
+        if (accuracy >= 96.0f)
+            resultUIPanel.Rank = "S";
+        else if (accuracy >= 85.0f)
+            resultUIPanel.Rank = "A";
+        else if (accuracy >= 75.0f)
+            resultUIPanel.Rank = "B";
+        else if (accuracy >= 70.0f)
+            resultUIPanel.Rank = "C";
+        else
+            resultUIPanel.Rank = "F";
+        resultUIPanel.gameObject.SetActive(true);
     }
 
     private void CreateNoteList()
