@@ -25,7 +25,7 @@ public class PauseUIButton : MonoBehaviour {
 
     public void ListButtonClick()
     {
-        Application.LoadLevel("sceneSelect");
+        Application.LoadLevel("sceneList");
     }
 
     public void MainButtonClick()

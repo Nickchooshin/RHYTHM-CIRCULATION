@@ -1,0 +1,28 @@
+{
+    "Name" : "M@STERPIECE",
+    "Singer" : "760PRO ALLSTARS",
+    "BPM" : 1,
+    "Time" : 60,
+
+    "List_Cover" : "list_cover_08",
+    "Info_Cover" : "info_cover_08",
+    "Music" : "08. [play] 765PRO ALLSTARS - M@STERPIECE",
+    "Music_Preview" : "16. [sample] 765PRO ALLSTARS - M@STERPIECE",
+    "Note" : [
+        {
+            "Difficulty" : "Basic",
+            "Level" : 1,
+            "Json" : "THE_HERO_BASIC"
+        },
+        {
+            "Difficulty" : "Advanced",
+            "Level" : 1,
+            "Json" : "THE_HERO_ADVANCED"
+        },
+        {
+            "Difficulty" : "Extreme",
+            "Level" : 1,
+            "Json" : "THE_HERO_EXTREME"
+        }
+    ]
+}

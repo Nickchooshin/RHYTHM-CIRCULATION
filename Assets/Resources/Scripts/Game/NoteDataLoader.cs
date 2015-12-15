@@ -63,15 +63,15 @@ public class NoteDataLoader {
 
     public void LoadNoteData(string filePath)
     {
-        //TextAsset textAsset = Resources.Load("Notes/" + filePath) as TextAsset;
-        //TextReader textReader = new StringReader(textAsset.text);
-        FileStream file = new FileStream("./note.json", FileMode.Open);
-        StreamReader reader = new StreamReader(file);
+        TextAsset textAsset = Resources.Load("Data/Notes/" + filePath) as TextAsset;
+        TextReader textReader = new StringReader(textAsset.text);
+        //FileStream file = new FileStream("./note.json", FileMode.Open);
+        //StreamReader reader = new StreamReader(file);
 
         if (m_noteData != null)
             m_noteData.Clear();
-        //m_noteData = JsonMapper.ToObject(textAsset.text);
-        m_noteData = JsonMapper.ToObject(reader.ReadToEnd());
+        m_noteData = JsonMapper.ToObject(textAsset.text);
+        //m_noteData = JsonMapper.ToObject(reader.ReadToEnd());
 
         m_bpm = (int)m_noteData["BPM"];
         m_maxBeat = (int)m_noteData["MaxBeat"];

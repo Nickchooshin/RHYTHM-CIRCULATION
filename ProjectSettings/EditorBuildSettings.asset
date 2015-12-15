@@ -10,4 +10,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/sceneGame.unity
   - enabled: 1
-    path: Assets/Resources/Scenes/sceneSelect.unity
+    path: Assets/Resources/Scenes/sceneList.unity

@@ -1,0 +1,28 @@
+{
+    "Name" : "THE HERO!!¢¦ÒÁªìªëÏëªËûýªòªÄª±ªí¢¦",
+    "Singer" : "JAM Project",
+    "BPM" : 1,
+    "Time" : 60,
+
+    "List_Cover" : "list_cover_06",
+    "Info_Cover" : "info_cover_06",
+    "Music" : "06. [play] JAM Project - THE HERO!!",
+    "Music_Preview" : "14. [sample] JAM Project - THE HERO!!",
+    "Note" : [
+        {
+            "Difficulty" : "Basic",
+            "Level" : 1,
+            "Json" : "THE_HERO_BASIC"
+        },
+        {
+            "Difficulty" : "Advanced",
+            "Level" : 1,
+            "Json" : "THE_HERO_ADVANCED"
+        },
+        {
+            "Difficulty" : "Extreme",
+            "Level" : 1,
+            "Json" : "THE_HERO_EXTREME"
+        }
+    ]
+}

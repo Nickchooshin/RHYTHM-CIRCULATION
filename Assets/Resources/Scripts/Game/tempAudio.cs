@@ -10,6 +10,7 @@ public class tempAudio : MonoBehaviour {
 
     void Start()
     {
+        /*
         WWW www = new WWW("file://" + Application.dataPath + "/music.ogg");
         audioClip = www.audioClip;
 
@@ -18,5 +19,6 @@ public class tempAudio : MonoBehaviour {
         {
         }
         audioSource.Play();
+        */
     }
 }

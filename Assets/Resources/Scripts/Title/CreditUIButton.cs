@@ -9,7 +9,7 @@ public class CreditUIButton : MonoBehaviour {
 
     public void StartButtonClick()
     {
-        Application.LoadLevel("sceneGame");
+        Application.LoadLevel("sceneList");
     }
 
     public void ShowCredit()
