@@ -9,6 +9,8 @@ public class CreditUIButton : MonoBehaviour {
 
     public void StartButtonClick()
     {
+        AudioManager.Instance.Stop();
+
         Application.LoadLevel("sceneList");
     }
 

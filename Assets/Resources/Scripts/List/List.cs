@@ -2,12 +2,29 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using LitJson;
+
 public class List : MonoBehaviour {
+
+    private JsonData m_info;
 
     public Image cover;
     public Text name;
     public Text singer;
     public Text level;
+    public Button button;
+
+    public JsonData Info
+    {
+        get
+        {
+            return m_info;
+        }
+        set
+        {
+            m_info = value;
+        }
+    }
 
     public Sprite Cover
     {
@@ -50,6 +67,14 @@ public class List : MonoBehaviour {
         set
         {
             level.text = value;
+        }
+    }
+
+    public UnityEngine.Events.UnityAction ButtonListener
+    {
+        set
+        {
+            button.onClick.AddListener(value);
         }
     }
 }
