@@ -7,7 +7,8 @@ using LitJson;
 public class ListUIButton : MonoBehaviour {
 
     private bool m_isInformationShow = false;
-    private string m_stringJson = "";
+    private JsonData m_infoData = null;
+    private int m_noteDifficulty = 0;
 
     public InformationUI InformationUIPanel;
 
@@ -19,7 +20,7 @@ public class ListUIButton : MonoBehaviour {
     public void MusicInformationClick(List list)
     {
         JsonData infoData = list.Info;
-        JsonData noteData = infoData["Note"][0];
+        JsonData noteData = infoData["Note"][m_noteDifficulty];
 
         InformationUIPanel.Cover = Resources.Load<Sprite>("Images/List/Cover/" + infoData["Info_Cover"].ToString());
         InformationUIPanel.Name = infoData["Name"].ToString();
@@ -29,7 +30,7 @@ public class ListUIButton : MonoBehaviour {
         InformationUIPanel.Difficulty = noteData["Difficulty"].ToString();
         InformationUIPanel.Level = noteData["Level"].ToString();
 
-        m_stringJson = noteData["Json"].ToString();
+        m_infoData = infoData;
 
         ShowInformation();
 
@@ -52,9 +53,12 @@ public class ListUIButton : MonoBehaviour {
 
     public void StartButtonClick()
     {
-        NoteDataLoader.Instance.LoadNoteData(m_stringJson);
+        NoteDataLoader.Instance.LoadNoteData(m_infoData["Note"][m_noteDifficulty]["Json"].ToString());
+        NoteDataLoader.Instance.InfoData = m_infoData;
+        NoteDataLoader.Instance.NoteDifficulty = m_noteDifficulty;
 
         AudioManager.Instance.Stop();
+
         Application.LoadLevel("sceneGame");
     }
 }

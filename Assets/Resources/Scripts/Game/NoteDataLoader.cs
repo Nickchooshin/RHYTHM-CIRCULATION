@@ -12,6 +12,8 @@ public class NoteDataLoader {
     private int m_maxBeat = 0;
     private int m_noteCount = 0;
     private JsonData m_noteData = null;
+    private JsonData m_infoData = null;
+    private int m_noteDifficulty = 0;
 
     public static NoteDataLoader Instance
     {
@@ -50,6 +52,30 @@ public class NoteDataLoader {
         get
         {
             return m_noteData;
+        }
+    }
+
+    public JsonData InfoData
+    {
+        get
+        {
+            return m_infoData;
+        }
+        set
+        {
+            m_infoData = value;
+        }
+    }
+
+    public int NoteDifficulty
+    {
+        get
+        {
+            return m_noteDifficulty;
+        }
+        set
+        {
+            m_noteDifficulty = value;
         }
     }
 

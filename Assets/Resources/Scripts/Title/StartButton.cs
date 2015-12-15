@@ -18,10 +18,6 @@ public class StartButton : MonoBehaviour {
         float endTime = Time.time + fadeTime;
         bool isFadeIn = true;
 
-        Debug.Log("FadeInOut");
-        Debug.Log("endTime = " + endTime);
-        Debug.Log("time = " + Time.time);
-
         while (true)
         {
             float alpha = ((endTime - Time.time) / fadeTime);
@@ -37,8 +33,6 @@ public class StartButton : MonoBehaviour {
                 buttonText.color = new Color(1.0f, 1.0f, 1.0f, 1.0f - alpha);
             else
                 buttonText.color = new Color(1.0f, 1.0f, 1.0f, alpha);
-
-            Debug.Log(buttonText.color);
 
             yield return null;
         }

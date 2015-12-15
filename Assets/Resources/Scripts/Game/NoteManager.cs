@@ -14,7 +14,7 @@ public class NoteManager : MonoBehaviour {
     private Dictionary<GameObject, GameObject> m_roundTripDictionary = new Dictionary<GameObject, GameObject>();
     private float m_startTime = 0.0f;
 
-    public Canvas canvas;
+    public Transform noteParent;
     
     public GameObject TapNotePrefab;
     public GameObject LongNotePrefab;
@@ -28,7 +28,7 @@ public class NoteManager : MonoBehaviour {
     void Awake()
     {
         // 게임 진입 Scene을 만들기 전까지 임시 방편으로 여기서 NoteDataLoader를 작동시킨다.
-        NoteDataLoader.Instance.LoadNoteData("hahi2");
+        //NoteDataLoader.Instance.LoadNoteData("hahi2");
         // 또한, 마찬가지로 임시 방편으로 자이로 센서를 여기서 작동시킨다.
         Input.gyro.enabled = true;
     }
@@ -37,13 +37,15 @@ public class NoteManager : MonoBehaviour {
     {
         CreateNoteList();
         InsertNoteList();
-        
+
         m_startTime = Time.time;
+        Debug.Log("StartTime = " + m_startTime);
     }
 
     void Update()
     {
         float nowTime = Time.time;
+        Debug.Log("nowTime = " + nowTime);
 
         for (int i = 0; i < m_noteList.Count; i++)
         {
@@ -162,7 +164,7 @@ public class NoteManager : MonoBehaviour {
     {
         foreach (GameObject path in m_pathList)
         {
-            path.transform.SetParent(canvas.transform);
+            path.transform.SetParent(noteParent);
             path.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
 
@@ -182,12 +184,12 @@ public class NoteManager : MonoBehaviour {
         {
             if (note.Type == NoteType.SLIDE)
             {
-                note.transform.parent.SetParent(canvas.transform);
+                note.transform.parent.SetParent(noteParent);
                 note.transform.parent.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
             else
             {
-                note.transform.SetParent(canvas.transform);
+                note.transform.SetParent(noteParent);
                 note.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
