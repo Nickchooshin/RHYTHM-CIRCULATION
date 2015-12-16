@@ -1,0 +1,28 @@
+{
+    "Name" : "Your own miracle",
+    "Singer" : "Christine Jones",
+    "BPM" : 1,
+    "Time" : 85,
+
+    "List_Cover" : "list_cover_03",
+    "Info_Cover" : "info_cover_03",
+    "Music" : "03. [play] Christine Jones - Your own miracle",
+    "Music_Preview" : "11. [sample] Christine Jones - Your own miracle",
+    "Note" : [
+        {
+            "Difficulty" : "BASIC",
+            "Level" : 1,
+            "Json" : "YOUR_OWN_MIRACLE_BASIC"
+        },
+        {
+            "Difficulty" : "ADVANCED",
+            "Level" : 2,
+            "Json" : "YOUR_OWN_MIRACLE_ADVANCED"
+        },
+        {
+            "Difficulty" : "EXTREME",
+            "Level" : 3,
+            "Json" : "YOUR_OWN_MIRACLE_EXTREME"
+        }
+    ]
+}

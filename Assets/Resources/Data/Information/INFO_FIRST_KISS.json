@@ -1,0 +1,28 @@
+{
+    "Name" : "First Kiss",
+    "Singer" : "BJJ",
+    "BPM" : 1,
+    "Time" : 107,
+
+    "List_Cover" : "list_cover_01",
+    "Info_Cover" : "info_cover_01",
+    "Music" : "01. [play] BJJ - First kiss",
+    "Music_Preview" : "09. [sample] BJJ - First Kiss",
+    "Note" : [
+        {
+            "Difficulty" : "BASIC",
+            "Level" : 1,
+            "Json" : "FIRST_KISS_BASIC"
+        },
+        {
+            "Difficulty" : "ADVANCED",
+            "Level" : 2,
+            "Json" : "FIRST_KISS_ADVANCED"
+        },
+        {
+            "Difficulty" : "EXTREME",
+            "Level" : 3,
+            "Json" : "FIRST_KISS_EXTREME"
+        }
+    ]
+}

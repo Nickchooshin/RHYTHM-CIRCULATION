@@ -1,0 +1,28 @@
+{
+    "Name" : "백금 디스코",
+    "Singer" : "ToYou",
+    "BPM" : 1,
+    "Time" : 97,
+
+    "List_Cover" : "list_cover_04",
+    "Info_Cover" : "info_cover_04",
+    "Music" : "04. [play] ToYou - 백금 디스코",
+    "Music_Preview" : "12. [sample] ToYou - 백금 디스코",
+    "Note" : [
+        {
+            "Difficulty" : "BASIC",
+            "Level" : 1,
+            "Json" : "BGD_BASIC"
+        },
+        {
+            "Difficulty" : "ADVANCED",
+            "Level" : 2,
+            "Json" : "BGD_ADVANCED"
+        },
+        {
+            "Difficulty" : "EXTREME",
+            "Level" : 3,
+            "Json" : "BGD_EXTREME"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "Name" : "Èñ¸ÁºÀ",
+    "Singer" : "À±°øÁÖ",
+    "BPM" : 1,
+    "Time" : 109,
+
+    "List_Cover" : "list_cover_02",
+    "Info_Cover" : "info_cover_02",
+    "Music" : "02. [play] Cape of Good Hope",
+    "Music_Preview" : "10. [sample] Cape of Good Hope",
+    "Note" : [
+        {
+            "Difficulty" : "BASIC",
+            "Level" : 1,
+            "Json" : "CAPE_OF_GOOD_HOPE_BASIC"
+        },
+        {
+            "Difficulty" : "ADVANCED",
+            "Level" : 2,
+            "Json" : "CAPE_OF_GOOD_HOPE_ADVANCED"
+        },
+        {
+            "Difficulty" : "EXTREME",
+            "Level" : 3,
+            "Json" : "CAPE_OF_GOOD_HOPE_EXTREME"
+        }
+    ]
+}
