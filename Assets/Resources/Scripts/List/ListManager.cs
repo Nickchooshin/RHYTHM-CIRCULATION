@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 using LitJson;
 
 public class ListManager : MonoBehaviour {
 
-    public Transform listPanel;
+    public RectTransform listPanel;
     public ListUIButton scriptListUIButton;
 
     void Start()
@@ -36,5 +36,7 @@ public class ListManager : MonoBehaviour {
             listObject.transform.localPosition = new Vector3(0.0f, 401.0f - (160.0f * i), 0.0f);
             listObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
+
+        //listPanel.rect.Set(0.0f, 0.0f, 0.0f, 1024 - (160.0f * listNumber));
     }
 }
