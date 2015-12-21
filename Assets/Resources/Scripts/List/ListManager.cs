@@ -6,7 +6,7 @@ using LitJson;
 
 public class ListManager : MonoBehaviour {
 
-    public RectTransform listPanel;
+    public Transform listPanel;
     public ListUIButton scriptListUIButton;
 
     void Start()
@@ -15,6 +15,8 @@ public class ListManager : MonoBehaviour {
         JsonData listData = JsonMapper.ToObject(listTextAsset.text);
 
         int listNumber = listData.Count;
+
+        listPanel.localScale = new Vector3(1.0f, listNumber * 160.0f, 1.0f);
 
         for (int i = 0; i < listNumber; i++)
         {
@@ -32,11 +34,12 @@ public class ListManager : MonoBehaviour {
             list.Level = "LEVEL " + infoData["Note"][0]["Level"].ToString();
             list.ButtonListener = () => scriptListUIButton.MusicInformationClick(list);
 
-            listObject.transform.SetParent(listPanel);
-            listObject.transform.localPosition = new Vector3(0.0f, 401.0f - (160.0f * i), 0.0f);
-            listObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
+            float scaleY = listPanel.localScale.y;
+            float positionY = (-80.0f - (160.0f * i)) / scaleY;
 
-        //listPanel.rect.Set(0.0f, 0.0f, 0.0f, 1024 - (160.0f * listNumber));
+            listObject.transform.SetParent(listPanel);
+            listObject.transform.localPosition = new Vector3(0.0f, positionY, 0.0f);
+            listObject.transform.localScale = new Vector3(1.0f, 1.0f / scaleY, 1.0f);
+        }
     }
 }
