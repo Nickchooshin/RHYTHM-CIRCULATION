@@ -143,7 +143,8 @@ public class NoteManager : MonoBehaviour {
 
                         note = noteObject.GetComponent<TapNote>();
                         note.Type = type;
-                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                        //note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
                     }
                     else if (type == NoteType.LONG)
                     {
@@ -152,7 +153,7 @@ public class NoteManager : MonoBehaviour {
                         note = noteObject.GetComponent<LongNote>();
                         note.Type = type;
                         note.Length = length;
-                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
                     }
                     else if (type == NoteType.SLIDE)
                     {
@@ -171,7 +172,7 @@ public class NoteManager : MonoBehaviour {
                         note.SlideTime = slideTime;
                         note.SlideWay = slideWay;
                         note.RoundTrip = roundTrip;
-                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
                     }
                     else if (type == NoteType.SNAP)
                     {
@@ -179,7 +180,7 @@ public class NoteManager : MonoBehaviour {
 
                         note = noteObject.GetComponent<SnapNote>();
                         note.Type = type;
-                        note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
+                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
                     }
 
                     if (note != null)
