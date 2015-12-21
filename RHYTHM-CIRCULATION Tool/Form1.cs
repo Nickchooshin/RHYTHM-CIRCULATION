@@ -59,7 +59,7 @@ namespace RHYTHM_CIRCULATION_Tool
             {
                 textBox_MaxBeat.Text = value.ToString();
 
-                numericUpDown_Beat.Maximum = value;
+                numericUpDown_Beat.Maximum = value + 1;
             }
         }
 
@@ -73,7 +73,8 @@ namespace RHYTHM_CIRCULATION_Tool
         // Init
         private void Init()
         {
-            InitSetting();
+            InitSettingValue();
+            InitSettingNote();
             InitNote();
             InitNoteImage();
 
@@ -81,12 +82,16 @@ namespace RHYTHM_CIRCULATION_Tool
             groupBox_SlideNoteOption.Enabled = false;
         }
 
-        private void InitSetting()
+        private void InitSettingValue()
         {
-            textBox_BPM.Text = m_bpm.ToString();
-            textBox_MaxBeat.Text = m_maxBeat.ToString();
-            m_nowBar = Convert.ToInt32(numericUpDown_Bar.Value) - 1;
-            m_nowBeat = Convert.ToInt32(numericUpDown_Beat.Value) - 1;
+            BPM_Value = 120;
+            MaxBeat_Value = 16;
+            numericUpDown_Bar.Value = 1;
+            numericUpDown_Beat.Value = 1;
+        }
+
+        private void InitSettingNote()
+        {
             switch (m_noteType)
             {
                 case NoteType.TAP:
@@ -114,8 +119,6 @@ namespace RHYTHM_CIRCULATION_Tool
                     radioButton_Clockwise.Checked = true;
                     break;
             }
-
-            numericUpDown_Beat.Maximum = m_maxBeat;
         }
 
         private void InitNote()
@@ -165,7 +168,6 @@ namespace RHYTHM_CIRCULATION_Tool
         private void textBox_MaxBeat_TextChanged(object sender, EventArgs e)
         {
             m_maxBeat = MaxBeat_Value;
-            MaxBeat_Value = m_maxBeat;
         }
 
         private void ChangePageValue(object sender, EventArgs e)
@@ -174,9 +176,29 @@ namespace RHYTHM_CIRCULATION_Tool
             int value = Convert.ToInt32(numericUpDown.Value) - 1;
 
             if (numericUpDown.TabIndex == 0)
+            {
                 m_nowBar = value;
+            }
             else
-                m_nowBeat = value;
+            {
+                if (value == -1)
+                {
+                    if (m_nowBar != 0)
+                    {
+                        numericUpDown_Beat.Value = m_maxBeat;
+                        numericUpDown_Bar.Value -= 1;
+                    }
+                    else
+                        numericUpDown_Beat.Value = 1;
+                }
+                else if (value == m_maxBeat)
+                {
+                    numericUpDown_Beat.Value = 1;
+                    numericUpDown_Bar.Value += 1;
+                }
+                else
+                    m_nowBeat = value;
+            }
 
             ReloadNote();
         }
@@ -406,6 +428,15 @@ namespace RHYTHM_CIRCULATION_Tool
             }
         }
 
+        // New
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSettingValue();
+            InitNote();
+
+            ReloadNote();
+        }
+
         // Open
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -419,10 +450,8 @@ namespace RHYTHM_CIRCULATION_Tool
             JsonReader jsonReader = new JsonReader(reader);
             JsonData jsonData = JsonMapper.ToObject(jsonReader);
 
-            m_bpm = (int)jsonData["BPM"];
-            m_maxBeat = (int)jsonData["MaxBeat"];
-            BPM_Value = m_bpm;
-            MaxBeat_Value = m_maxBeat;
+            BPM_Value = (int)jsonData["BPM"];
+            MaxBeat_Value = (int)jsonData["MaxBeat"];
             InitNote();
 
             JsonData jsonBar = jsonData["Note"];
@@ -528,6 +557,11 @@ namespace RHYTHM_CIRCULATION_Tool
             jsonWriter.WriteObjectEnd();
 
             writer.Close();
+        }
+
+        // Save As
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
 
         // Utils

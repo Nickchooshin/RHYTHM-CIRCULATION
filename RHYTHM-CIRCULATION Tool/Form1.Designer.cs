@@ -73,6 +73,7 @@
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -109,7 +110,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.fileToolStripMenuItem.Text = "파일";
@@ -117,20 +119,21 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.newToolStripMenuItem.Text = "새 파일";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.openToolStripMenuItem.Text = "열기";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.saveToolStripMenuItem.Text = "저장";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -283,11 +286,6 @@
             // numericUpDown_Beat
             // 
             this.numericUpDown_Beat.Location = new System.Drawing.Point(58, 47);
-            this.numericUpDown_Beat.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDown_Beat.Name = "numericUpDown_Beat";
             this.numericUpDown_Beat.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.numericUpDown_Beat.Size = new System.Drawing.Size(100, 21);
@@ -570,6 +568,13 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "json 파일|*.json|모든 파일|*.*";
             // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.saveAsToolStripMenuItem.Text = "다른 이름으로 저장";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -660,6 +665,7 @@
         private System.Windows.Forms.CheckBox checkBox_RoundTrip;
         private System.Windows.Forms.TextBox textBox_SlideTime;
         private System.Windows.Forms.Label label_SlideTime;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     }
 }
 
