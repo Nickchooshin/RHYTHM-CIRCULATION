@@ -515,10 +515,27 @@ namespace RHYTHM_CIRCULATION_Tool
         // Save
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (saveFileDialog1.FileName == "")
+            {
+                if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+                    return;
+            }
+
+            SaveFile(saveFileDialog1.FileName);
+        }
+
+        // Save As
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             if (saveFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
-            string filePath = saveFileDialog1.FileName;
 
+            SaveFile(saveFileDialog1.FileName);
+        }
+
+        // Save File
+        private void SaveFile(string filePath)
+        {
             // Find last bar/beat number
             int lastBar = 0;
             int lastBeat = 0;
@@ -590,11 +607,6 @@ namespace RHYTHM_CIRCULATION_Tool
             jsonWriter.WriteObjectEnd();
 
             writer.Close();
-        }
-
-        // Save As
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         // Utils

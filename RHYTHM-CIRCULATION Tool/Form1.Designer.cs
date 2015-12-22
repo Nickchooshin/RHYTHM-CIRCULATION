@@ -583,7 +583,6 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "json 파일|*.json|모든 파일|*.*";
             // 
             // trackBar_Music
