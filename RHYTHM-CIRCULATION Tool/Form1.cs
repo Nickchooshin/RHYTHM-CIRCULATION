@@ -12,6 +12,7 @@ using System.IO;
 
 using Rhythm_Circulation;
 using LitJson;
+using Media;
 
 namespace RHYTHM_CIRCULATION_Tool
 {
@@ -36,6 +37,9 @@ namespace RHYTHM_CIRCULATION_Tool
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
         private PictureBox[] m_notePictureBoxList = new PictureBox[MAX_NOTE];
+
+        private MP3Player m_mplayer;
+        private bool m_isPlaying = false;
 
         private int BPM_Value
         {
@@ -63,6 +67,28 @@ namespace RHYTHM_CIRCULATION_Tool
             }
         }
 
+        private bool Playing
+        {
+            get
+            {
+                return m_isPlaying;
+            }
+            set
+            {
+                m_isPlaying = value;
+
+                if (m_isPlaying)
+                    button_Play.Text = "||";
+                else
+                    button_Play.Text = "▶";
+
+                textBox_BPM.Enabled = !m_isPlaying;
+                textBox_MaxBeat.Enabled = !m_isPlaying;
+                numericUpDown_Bar.Enabled = !m_isPlaying;
+                numericUpDown_Beat.Enabled = !m_isPlaying;
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -80,6 +106,12 @@ namespace RHYTHM_CIRCULATION_Tool
 
             groupBox_LongNoteOption.Enabled = false;
             groupBox_SlideNoteOption.Enabled = false;
+
+            m_mplayer = new MP3Player();
+            m_mplayer.OpenFile += new MP3Player.OpenFileEventHandler(mplayer_OpenFile);
+            m_mplayer.PlayFile += new MP3Player.PlayFileEventHandler(mplayer_PlayFile);
+            m_mplayer.StopFile += new MP3Player.StopFileEventHandler(mplayer_StopFile);
+            m_mplayer.PauseFile += new MP3Player.PauseFileEventHandler(mplayer_PauseFile);
         }
 
         private void InitSettingValue()
@@ -568,6 +600,88 @@ namespace RHYTHM_CIRCULATION_Tool
         private int GetNowBarBeatIndex()
         {
             return (m_nowBar * m_maxBeat) + m_nowBeat;
+        }
+
+        private float GetBeatTime()
+        {
+            return (60.0f / m_bpm) / m_maxBeat;
+        }
+
+
+
+        // Music
+        private void button_OpenMusic_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog_Music.ShowDialog() != DialogResult.OK)
+                return;
+            string filePath = openFileDialog_Music.FileName;
+
+            textBox_MusicName.Text = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+
+            m_mplayer.Open(filePath);
+
+            ReloadNote();
+        }
+
+        private void button_Play_Click(object sender, EventArgs e)
+        {
+            if (Playing)
+                m_mplayer.Pause();
+            else
+                m_mplayer.Play();
+        }
+
+        private void button_Stop_Click(object sender, EventArgs e)
+        {
+            Playing = false;
+            m_mplayer.Stop();
+        }
+
+        private void trackBar_Music_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(m_mplayer.IsPlaying)
+                timer_Music.Enabled = false;
+        }
+
+        private void trackBar_Music_MouseUp(object sender, MouseEventArgs e)
+        {
+            m_mplayer.Seek((ulong)(trackBar_Music.Value * 1000));
+
+            if (m_mplayer.IsPlaying)
+                timer_Music.Enabled = true;
+        }
+
+        private void timer_Music_Tick(object sender, EventArgs e)
+        {
+            trackBar_Music.Value = (int)(m_mplayer.CurrentPosition / 1000);
+        }
+
+        private void mplayer_OpenFile(Object sender, MP3Player.OpenFileEventArgs e)
+        {
+            trackBar_Music.Maximum = (int)(m_mplayer.AudioLength / 1000);
+            trackBar_Music.Value = 0;
+            timer_Music.Enabled = false;
+            Playing = false;
+        }
+
+        private void mplayer_PlayFile(Object sender, MP3Player.PlayFileEventArgs e)
+        {
+            trackBar_Music.Maximum = (int)(m_mplayer.AudioLength / 1000);
+            timer_Music.Enabled = true;
+            Playing = true;
+        }
+
+        private void mplayer_StopFile(Object sender, MP3Player.StopFileEventArgs e)
+        {
+            trackBar_Music.Value = 0;
+            timer_Music.Enabled = false;
+            Playing = false;
+        }
+
+        private void mplayer_PauseFile(Object sender, MP3Player.PauseFileEventArgs e)
+        {
+            timer_Music.Enabled = false;
+            Playing = false;
         }
     }
 }

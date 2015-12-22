@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Screen = new System.Windows.Forms.Panel();
@@ -73,7 +75,14 @@
             this.label_SlideNoteLength = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trackBar_Music = new System.Windows.Forms.TrackBar();
+            this.button_Play = new System.Windows.Forms.Button();
+            this.button_Stop = new System.Windows.Forms.Button();
+            this.groupBox_Music = new System.Windows.Forms.GroupBox();
+            this.textBox_MusicName = new System.Windows.Forms.TextBox();
+            this.button_OpenMusic = new System.Windows.Forms.Button();
+            this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
+            this.timer_Music = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -91,6 +100,8 @@
             this.groupBox_Type.SuspendLayout();
             this.groupBox_LongNoteOption.SuspendLayout();
             this.groupBox_SlideNoteOption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Music)).BeginInit();
+            this.groupBox_Music.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -137,6 +148,13 @@
             this.saveToolStripMenuItem.Text = "저장";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.saveAsToolStripMenuItem.Text = "다른 이름으로 저장";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -160,9 +178,9 @@
             this.panel_Screen.Controls.Add(this.pictureBox_Note3);
             this.panel_Screen.Controls.Add(this.pictureBox_Note2);
             this.panel_Screen.Controls.Add(this.pictureBox_Note1);
-            this.panel_Screen.Location = new System.Drawing.Point(12, 27);
+            this.panel_Screen.Location = new System.Drawing.Point(12, 135);
             this.panel_Screen.Name = "panel_Screen";
-            this.panel_Screen.Size = new System.Drawing.Size(445, 720);
+            this.panel_Screen.Size = new System.Drawing.Size(445, 445);
             this.panel_Screen.TabIndex = 1;
             // 
             // pictureBox_Note8
@@ -267,7 +285,7 @@
             this.groupBox_Page.Controls.Add(this.numericUpDown_Beat);
             this.groupBox_Page.Controls.Add(this.label_Bar);
             this.groupBox_Page.Controls.Add(this.numericUpDown_Bar);
-            this.groupBox_Page.Location = new System.Drawing.Point(463, 92);
+            this.groupBox_Page.Location = new System.Drawing.Point(463, 200);
             this.groupBox_Page.Name = "groupBox_Page";
             this.groupBox_Page.Size = new System.Drawing.Size(270, 102);
             this.groupBox_Page.TabIndex = 2;
@@ -331,7 +349,7 @@
             this.groupBox_Setting.Controls.Add(this.textBox_BPM);
             this.groupBox_Setting.Controls.Add(this.label_MaxBeat);
             this.groupBox_Setting.Controls.Add(this.label_BPM);
-            this.groupBox_Setting.Location = new System.Drawing.Point(463, 32);
+            this.groupBox_Setting.Location = new System.Drawing.Point(463, 140);
             this.groupBox_Setting.Name = "groupBox_Setting";
             this.groupBox_Setting.Size = new System.Drawing.Size(270, 54);
             this.groupBox_Setting.TabIndex = 3;
@@ -379,7 +397,7 @@
             this.groupBox_Type.Controls.Add(this.radioButton_Slide);
             this.groupBox_Type.Controls.Add(this.radioButton_Long);
             this.groupBox_Type.Controls.Add(this.radioButton_Tap);
-            this.groupBox_Type.Location = new System.Drawing.Point(463, 200);
+            this.groupBox_Type.Location = new System.Drawing.Point(463, 308);
             this.groupBox_Type.Name = "groupBox_Type";
             this.groupBox_Type.Size = new System.Drawing.Size(270, 156);
             this.groupBox_Type.TabIndex = 4;
@@ -467,7 +485,7 @@
             // 
             this.groupBox_LongNoteOption.Controls.Add(this.textBox_LongNoteLength);
             this.groupBox_LongNoteOption.Controls.Add(this.label_LongNoteLength);
-            this.groupBox_LongNoteOption.Location = new System.Drawing.Point(463, 362);
+            this.groupBox_LongNoteOption.Location = new System.Drawing.Point(463, 470);
             this.groupBox_LongNoteOption.Name = "groupBox_LongNoteOption";
             this.groupBox_LongNoteOption.Size = new System.Drawing.Size(101, 47);
             this.groupBox_LongNoteOption.TabIndex = 7;
@@ -507,7 +525,7 @@
             this.groupBox_SlideNoteOption.Controls.Add(this.label_SlideNoteLength);
             this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Anticlockwise);
             this.groupBox_SlideNoteOption.Controls.Add(this.radioButton_Clockwise);
-            this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(570, 362);
+            this.groupBox_SlideNoteOption.Location = new System.Drawing.Point(570, 470);
             this.groupBox_SlideNoteOption.Name = "groupBox_SlideNoteOption";
             this.groupBox_SlideNoteOption.Size = new System.Drawing.Size(163, 100);
             this.groupBox_SlideNoteOption.TabIndex = 8;
@@ -568,18 +586,81 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "json 파일|*.json|모든 파일|*.*";
             // 
-            // saveAsToolStripMenuItem
+            // trackBar_Music
             // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.saveAsToolStripMenuItem.Text = "다른 이름으로 저장";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            this.trackBar_Music.Location = new System.Drawing.Point(11, 50);
+            this.trackBar_Music.Name = "trackBar_Music";
+            this.trackBar_Music.Size = new System.Drawing.Size(843, 45);
+            this.trackBar_Music.TabIndex = 0;
+            this.trackBar_Music.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBar_Music_MouseDown);
+            this.trackBar_Music.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_Music_MouseUp);
+            // 
+            // button_Play
+            // 
+            this.button_Play.Location = new System.Drawing.Point(428, 20);
+            this.button_Play.Name = "button_Play";
+            this.button_Play.Size = new System.Drawing.Size(30, 24);
+            this.button_Play.TabIndex = 2;
+            this.button_Play.Text = "▶";
+            this.button_Play.UseVisualStyleBackColor = true;
+            this.button_Play.Click += new System.EventHandler(this.button_Play_Click);
+            // 
+            // button_Stop
+            // 
+            this.button_Stop.Location = new System.Drawing.Point(464, 20);
+            this.button_Stop.Name = "button_Stop";
+            this.button_Stop.Size = new System.Drawing.Size(30, 24);
+            this.button_Stop.TabIndex = 3;
+            this.button_Stop.Text = "■";
+            this.button_Stop.UseVisualStyleBackColor = true;
+            this.button_Stop.Click += new System.EventHandler(this.button_Stop_Click);
+            // 
+            // groupBox_Music
+            // 
+            this.groupBox_Music.Controls.Add(this.textBox_MusicName);
+            this.groupBox_Music.Controls.Add(this.button_OpenMusic);
+            this.groupBox_Music.Controls.Add(this.button_Play);
+            this.groupBox_Music.Controls.Add(this.button_Stop);
+            this.groupBox_Music.Controls.Add(this.trackBar_Music);
+            this.groupBox_Music.Location = new System.Drawing.Point(12, 27);
+            this.groupBox_Music.Name = "groupBox_Music";
+            this.groupBox_Music.Size = new System.Drawing.Size(860, 102);
+            this.groupBox_Music.TabIndex = 9;
+            this.groupBox_Music.TabStop = false;
+            // 
+            // textBox_MusicName
+            // 
+            this.textBox_MusicName.Location = new System.Drawing.Point(47, 23);
+            this.textBox_MusicName.Name = "textBox_MusicName";
+            this.textBox_MusicName.ReadOnly = true;
+            this.textBox_MusicName.Size = new System.Drawing.Size(200, 21);
+            this.textBox_MusicName.TabIndex = 4;
+            this.textBox_MusicName.Text = "Note Found Music File";
+            // 
+            // button_OpenMusic
+            // 
+            this.button_OpenMusic.Location = new System.Drawing.Point(11, 20);
+            this.button_OpenMusic.Name = "button_OpenMusic";
+            this.button_OpenMusic.Size = new System.Drawing.Size(30, 24);
+            this.button_OpenMusic.TabIndex = 1;
+            this.button_OpenMusic.Text = "♬";
+            this.button_OpenMusic.UseVisualStyleBackColor = true;
+            this.button_OpenMusic.Click += new System.EventHandler(this.button_OpenMusic_Click);
+            // 
+            // openFileDialog_Music
+            // 
+            this.openFileDialog_Music.Filter = "mp3 파일|*.mp3";
+            // 
+            // timer_Music
+            // 
+            this.timer_Music.Tick += new System.EventHandler(this.timer_Music_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 759);
+            this.ClientSize = new System.Drawing.Size(884, 592);
+            this.Controls.Add(this.groupBox_Music);
             this.Controls.Add(this.groupBox_SlideNoteOption);
             this.Controls.Add(this.groupBox_LongNoteOption);
             this.Controls.Add(this.groupBox_Type);
@@ -613,6 +694,9 @@
             this.groupBox_LongNoteOption.PerformLayout();
             this.groupBox_SlideNoteOption.ResumeLayout(false);
             this.groupBox_SlideNoteOption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Music)).EndInit();
+            this.groupBox_Music.ResumeLayout(false);
+            this.groupBox_Music.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,6 +750,14 @@
         private System.Windows.Forms.TextBox textBox_SlideTime;
         private System.Windows.Forms.Label label_SlideTime;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.TrackBar trackBar_Music;
+        private System.Windows.Forms.Button button_Play;
+        private System.Windows.Forms.Button button_Stop;
+        private System.Windows.Forms.GroupBox groupBox_Music;
+        private System.Windows.Forms.Button button_OpenMusic;
+        private System.Windows.Forms.TextBox textBox_MusicName;
+        private System.Windows.Forms.OpenFileDialog openFileDialog_Music;
+        private System.Windows.Forms.Timer timer_Music;
     }
 }
 
