@@ -119,6 +119,7 @@ namespace RHYTHM_CIRCULATION_Tool
             BPM_Value = 120;
             MaxBeat_Value = 16;
             numericUpDown_Bar.Value = 1;
+            numericUpDown_Bar.Maximum = MAX_BAR;
             numericUpDown_Beat.Value = 1;
         }
 
@@ -647,6 +648,8 @@ namespace RHYTHM_CIRCULATION_Tool
         {
             m_mplayer.Seek((ulong)(trackBar_Music.Value * 1000));
 
+            SetBarBeatPositionBasedByMusic();
+
             if (m_mplayer.IsPlaying)
                 timer_Music.Enabled = true;
         }
@@ -654,6 +657,8 @@ namespace RHYTHM_CIRCULATION_Tool
         private void timer_Music_Tick(object sender, EventArgs e)
         {
             trackBar_Music.Value = (int)(m_mplayer.CurrentPosition / 1000);
+
+            SetBarBeatPositionBasedByMusic();
         }
 
         private void mplayer_OpenFile(Object sender, MP3Player.OpenFileEventArgs e)
@@ -682,6 +687,19 @@ namespace RHYTHM_CIRCULATION_Tool
         {
             timer_Music.Enabled = false;
             Playing = false;
+        }
+
+        private void SetBarBeatPositionBasedByMusic()
+        {
+            float beatTime = GetBeatTime() * 1000.0f;
+            int index = (int)(m_mplayer.CurrentPosition / beatTime);
+            int bar = index / m_maxBeat;
+            int beat = index % m_maxBeat;
+
+            numericUpDown_Bar.Value = bar + 1;
+            numericUpDown_Beat.Value = beat + 1;
+
+            ReloadNote();
         }
     }
 }
