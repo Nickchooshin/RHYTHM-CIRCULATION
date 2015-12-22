@@ -40,6 +40,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private MP3Player m_mplayer;
         private bool m_isPlaying = false;
+        private ulong m_noteDelay = 0;
 
         private int BPM_Value
         {
@@ -86,6 +87,19 @@ namespace RHYTHM_CIRCULATION_Tool
                 textBox_MaxBeat.Enabled = !m_isPlaying;
                 numericUpDown_Bar.Enabled = !m_isPlaying;
                 numericUpDown_Beat.Enabled = !m_isPlaying;
+                textBox_NoteDelay.Enabled = !m_isPlaying;
+            }
+        }
+
+        private ulong NoteDelay_Value
+        {
+            get
+            {
+                return ulong.Parse(textBox_NoteDelay.Text);
+            }
+            set
+            {
+                textBox_NoteDelay.Text = value.ToString();
             }
         }
 
@@ -121,6 +135,7 @@ namespace RHYTHM_CIRCULATION_Tool
             numericUpDown_Bar.Value = 1;
             numericUpDown_Bar.Maximum = MAX_BAR;
             numericUpDown_Beat.Value = 1;
+            NoteDelay_Value = 0;
         }
 
         private void InitSettingNote()
@@ -675,6 +690,11 @@ namespace RHYTHM_CIRCULATION_Tool
             SetMusicPlayTime();
         }
 
+        private void textBox_NoteDelay_TextChanged(object sender, EventArgs e)
+        {
+            m_noteDelay = NoteDelay_Value;
+        }
+
         private void mplayer_OpenFile(Object sender, MP3Player.OpenFileEventArgs e)
         {
             trackBar_Music.Maximum = (int)(m_mplayer.AudioLength / 1000);
@@ -706,12 +726,20 @@ namespace RHYTHM_CIRCULATION_Tool
         private void SetBarBeatPositionBasedByMusic()
         {
             float beatTime = GetBeatTime() * 1000.0f;
-            int index = (int)(m_mplayer.CurrentPosition / beatTime);
+            int index = (int)((m_mplayer.CurrentPosition - m_noteDelay) / beatTime);
             int bar = index / m_maxBeat;
             int beat = index % m_maxBeat;
 
-            numericUpDown_Bar.Value = bar + 1;
-            numericUpDown_Beat.Value = beat + 1;
+            if (index >= 0)
+            {
+                numericUpDown_Bar.Value = bar + 1;
+                numericUpDown_Beat.Value = beat + 1;
+            }
+            else
+            {
+                numericUpDown_Bar.Value = 1;
+                numericUpDown_Beat.Value = 1;
+            }
 
             ReloadNote();
         }

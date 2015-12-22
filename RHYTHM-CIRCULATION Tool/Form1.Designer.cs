@@ -79,11 +79,13 @@
             this.button_Play = new System.Windows.Forms.Button();
             this.button_Stop = new System.Windows.Forms.Button();
             this.groupBox_Music = new System.Windows.Forms.GroupBox();
+            this.label_NoteDelay = new System.Windows.Forms.Label();
+            this.textBox_NoteDelay = new System.Windows.Forms.TextBox();
+            this.textBox_MusicPlayTime = new System.Windows.Forms.TextBox();
             this.textBox_MusicName = new System.Windows.Forms.TextBox();
             this.button_OpenMusic = new System.Windows.Forms.Button();
             this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
             this.timer_Music = new System.Windows.Forms.Timer(this.components);
-            this.textBox_MusicPlayTime = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -360,6 +362,7 @@
             // textBox_MaxBeat
             // 
             this.textBox_MaxBeat.Location = new System.Drawing.Point(202, 19);
+            this.textBox_MaxBeat.MaxLength = 3;
             this.textBox_MaxBeat.Name = "textBox_MaxBeat";
             this.textBox_MaxBeat.Size = new System.Drawing.Size(50, 21);
             this.textBox_MaxBeat.TabIndex = 1;
@@ -368,6 +371,7 @@
             // textBox_BPM
             // 
             this.textBox_BPM.Location = new System.Drawing.Point(57, 19);
+            this.textBox_BPM.MaxLength = 4;
             this.textBox_BPM.Name = "textBox_BPM";
             this.textBox_BPM.Size = new System.Drawing.Size(50, 21);
             this.textBox_BPM.TabIndex = 0;
@@ -617,6 +621,8 @@
             // 
             // groupBox_Music
             // 
+            this.groupBox_Music.Controls.Add(this.label_NoteDelay);
+            this.groupBox_Music.Controls.Add(this.textBox_NoteDelay);
             this.groupBox_Music.Controls.Add(this.textBox_MusicPlayTime);
             this.groupBox_Music.Controls.Add(this.textBox_MusicName);
             this.groupBox_Music.Controls.Add(this.button_OpenMusic);
@@ -628,6 +634,34 @@
             this.groupBox_Music.Size = new System.Drawing.Size(860, 102);
             this.groupBox_Music.TabIndex = 9;
             this.groupBox_Music.TabStop = false;
+            // 
+            // label_NoteDelay
+            // 
+            this.label_NoteDelay.AutoSize = true;
+            this.label_NoteDelay.Location = new System.Drawing.Point(720, 26);
+            this.label_NoteDelay.Name = "label_NoteDelay";
+            this.label_NoteDelay.Size = new System.Drawing.Size(75, 12);
+            this.label_NoteDelay.TabIndex = 7;
+            this.label_NoteDelay.Text = "NoteDelay : ";
+            // 
+            // textBox_NoteDelay
+            // 
+            this.textBox_NoteDelay.Location = new System.Drawing.Point(801, 23);
+            this.textBox_NoteDelay.MaxLength = 6;
+            this.textBox_NoteDelay.Name = "textBox_NoteDelay";
+            this.textBox_NoteDelay.Size = new System.Drawing.Size(53, 21);
+            this.textBox_NoteDelay.TabIndex = 6;
+            this.textBox_NoteDelay.Text = "999999";
+            this.textBox_NoteDelay.TextChanged += new System.EventHandler(this.textBox_NoteDelay_TextChanged);
+            // 
+            // textBox_MusicPlayTime
+            // 
+            this.textBox_MusicPlayTime.Location = new System.Drawing.Point(253, 23);
+            this.textBox_MusicPlayTime.Name = "textBox_MusicPlayTime";
+            this.textBox_MusicPlayTime.ReadOnly = true;
+            this.textBox_MusicPlayTime.Size = new System.Drawing.Size(35, 21);
+            this.textBox_MusicPlayTime.TabIndex = 5;
+            this.textBox_MusicPlayTime.Text = "00:00";
             // 
             // textBox_MusicName
             // 
@@ -654,16 +688,8 @@
             // 
             // timer_Music
             // 
+            this.timer_Music.Interval = 1;
             this.timer_Music.Tick += new System.EventHandler(this.timer_Music_Tick);
-            // 
-            // textBox_MusicPlayTime
-            // 
-            this.textBox_MusicPlayTime.Location = new System.Drawing.Point(819, 23);
-            this.textBox_MusicPlayTime.Name = "textBox_MusicPlayTime";
-            this.textBox_MusicPlayTime.ReadOnly = true;
-            this.textBox_MusicPlayTime.Size = new System.Drawing.Size(35, 21);
-            this.textBox_MusicPlayTime.TabIndex = 5;
-            this.textBox_MusicPlayTime.Text = "00:00";
             // 
             // Form1
             // 
@@ -769,6 +795,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog_Music;
         private System.Windows.Forms.Timer timer_Music;
         private System.Windows.Forms.TextBox textBox_MusicPlayTime;
+        private System.Windows.Forms.Label label_NoteDelay;
+        private System.Windows.Forms.TextBox textBox_NoteDelay;
     }
 }
 
