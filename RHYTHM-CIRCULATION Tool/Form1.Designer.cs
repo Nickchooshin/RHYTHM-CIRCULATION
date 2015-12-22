@@ -83,6 +83,7 @@
             this.button_OpenMusic = new System.Windows.Forms.Button();
             this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
             this.timer_Music = new System.Windows.Forms.Timer(this.components);
+            this.textBox_MusicPlayTime = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -616,6 +617,7 @@
             // 
             // groupBox_Music
             // 
+            this.groupBox_Music.Controls.Add(this.textBox_MusicPlayTime);
             this.groupBox_Music.Controls.Add(this.textBox_MusicName);
             this.groupBox_Music.Controls.Add(this.button_OpenMusic);
             this.groupBox_Music.Controls.Add(this.button_Play);
@@ -653,6 +655,15 @@
             // timer_Music
             // 
             this.timer_Music.Tick += new System.EventHandler(this.timer_Music_Tick);
+            // 
+            // textBox_MusicPlayTime
+            // 
+            this.textBox_MusicPlayTime.Location = new System.Drawing.Point(819, 23);
+            this.textBox_MusicPlayTime.Name = "textBox_MusicPlayTime";
+            this.textBox_MusicPlayTime.ReadOnly = true;
+            this.textBox_MusicPlayTime.Size = new System.Drawing.Size(35, 21);
+            this.textBox_MusicPlayTime.TabIndex = 5;
+            this.textBox_MusicPlayTime.Text = "00:00";
             // 
             // Form1
             // 
@@ -757,6 +768,7 @@
         private System.Windows.Forms.TextBox textBox_MusicName;
         private System.Windows.Forms.OpenFileDialog openFileDialog_Music;
         private System.Windows.Forms.Timer timer_Music;
+        private System.Windows.Forms.TextBox textBox_MusicPlayTime;
     }
 }
 

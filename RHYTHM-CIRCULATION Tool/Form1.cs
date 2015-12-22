@@ -661,6 +661,7 @@ namespace RHYTHM_CIRCULATION_Tool
             m_mplayer.Seek((ulong)(trackBar_Music.Value * 1000));
 
             SetBarBeatPositionBasedByMusic();
+            SetMusicPlayTime();
 
             if (m_mplayer.IsPlaying)
                 timer_Music.Enabled = true;
@@ -671,6 +672,7 @@ namespace RHYTHM_CIRCULATION_Tool
             trackBar_Music.Value = (int)(m_mplayer.CurrentPosition / 1000);
 
             SetBarBeatPositionBasedByMusic();
+            SetMusicPlayTime();
         }
 
         private void mplayer_OpenFile(Object sender, MP3Player.OpenFileEventArgs e)
@@ -712,6 +714,15 @@ namespace RHYTHM_CIRCULATION_Tool
             numericUpDown_Beat.Value = beat + 1;
 
             ReloadNote();
+        }
+
+        private void SetMusicPlayTime()
+        {
+            int seconds = (int)(m_mplayer.CurrentPosition / 1000);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            textBox_MusicPlayTime.Text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
         }
     }
 }
