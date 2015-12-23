@@ -44,7 +44,7 @@ public class NoteManager : MonoBehaviour {
 
         JsonData infoData = NoteDataLoader.Instance.InfoData;
 
-        m_startTime = Time.time;
+        m_startTime = Time.time + NoteDataLoader.Instance.NoteDelay;
         m_musicTime = (float)(int)infoData["Time"] + 1.5f;
 
         StartCoroutine("GameStart");
@@ -61,7 +61,8 @@ public class NoteManager : MonoBehaviour {
             {
                 Note note = m_noteList[i];
 
-                if (nowTime >= (note.TimeSeen + m_startTime - Note.APPEAR_TIME))
+                //if (nowTime >= (note.TimeSeen + m_startTime - Note.APPEAR_TIME))
+                if (nowTime >= (m_startTime + note.TimeSeen) - Note.APPEAR_TIME)
                 {
                     note.AddDelayedTime(m_startTime);
                     note.SetNoteActive(true);
