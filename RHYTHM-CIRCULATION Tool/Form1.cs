@@ -500,6 +500,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
             BPM_Value = (int)jsonData["BPM"];
             MaxBeat_Value = (int)jsonData["MaxBeat"];
+            NoteDelay_Value = (ulong)(int)jsonData["NoteDelay"];
             InitNote();
 
             JsonData jsonBar = jsonData["Note"];
@@ -588,6 +589,8 @@ namespace RHYTHM_CIRCULATION_Tool
             jsonWriter.Write(m_bpm);
             jsonWriter.WritePropertyName("MaxBeat");
             jsonWriter.Write(m_maxBeat);
+            jsonWriter.WritePropertyName("NoteDelay");
+            jsonWriter.Write(m_noteDelay);
             jsonWriter.WritePropertyName("NoteCount");
             jsonWriter.Write(m_noteCount);
             jsonWriter.WritePropertyName("Note");
