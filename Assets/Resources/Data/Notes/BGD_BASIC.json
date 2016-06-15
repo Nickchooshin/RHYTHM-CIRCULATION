@@ -3,6 +3,7 @@
     "BPM" : 115,
     "MaxBeat" : 16,
     "NoteCount" : 505,
+    "NoteDelay" : 0,
     "Note"      : [
         [
             [
