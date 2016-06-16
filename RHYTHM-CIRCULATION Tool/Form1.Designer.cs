@@ -79,6 +79,7 @@
             this.button_Play = new System.Windows.Forms.Button();
             this.button_Stop = new System.Windows.Forms.Button();
             this.groupBox_Music = new System.Windows.Forms.GroupBox();
+            this.checkBox_BeatCorrection = new System.Windows.Forms.CheckBox();
             this.label_NoteDelay = new System.Windows.Forms.Label();
             this.textBox_NoteDelay = new System.Windows.Forms.TextBox();
             this.textBox_MusicPlayTime = new System.Windows.Forms.TextBox();
@@ -86,7 +87,6 @@
             this.button_OpenMusic = new System.Windows.Forms.Button();
             this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
             this.timer_Music = new System.Windows.Forms.Timer(this.components);
-            this.checkBox_BeatCorrection = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -637,6 +637,18 @@
             this.groupBox_Music.TabIndex = 9;
             this.groupBox_Music.TabStop = false;
             // 
+            // checkBox_BeatCorrection
+            // 
+            this.checkBox_BeatCorrection.AutoSize = true;
+            this.checkBox_BeatCorrection.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox_BeatCorrection.Location = new System.Drawing.Point(587, 25);
+            this.checkBox_BeatCorrection.Name = "checkBox_BeatCorrection";
+            this.checkBox_BeatCorrection.Size = new System.Drawing.Size(116, 16);
+            this.checkBox_BeatCorrection.TabIndex = 9;
+            this.checkBox_BeatCorrection.Text = "비트 타이밍 보정";
+            this.checkBox_BeatCorrection.UseVisualStyleBackColor = true;
+            this.checkBox_BeatCorrection.CheckedChanged += new System.EventHandler(this.checkBox_BeatCorrection_CheckedChanged);
+            // 
             // label_NoteDelay
             // 
             this.label_NoteDelay.AutoSize = true;
@@ -693,18 +705,6 @@
             this.timer_Music.Interval = 1;
             this.timer_Music.Tick += new System.EventHandler(this.timer_Music_Tick);
             // 
-            // checkBox_BeatCorrection
-            // 
-            this.checkBox_BeatCorrection.AutoSize = true;
-            this.checkBox_BeatCorrection.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox_BeatCorrection.Location = new System.Drawing.Point(587, 25);
-            this.checkBox_BeatCorrection.Name = "checkBox_BeatCorrection";
-            this.checkBox_BeatCorrection.Size = new System.Drawing.Size(116, 16);
-            this.checkBox_BeatCorrection.TabIndex = 9;
-            this.checkBox_BeatCorrection.Text = "비트 타이밍 보정";
-            this.checkBox_BeatCorrection.UseVisualStyleBackColor = true;
-            this.checkBox_BeatCorrection.CheckedChanged += new System.EventHandler(this.checkBox_BeatCorrection_CheckedChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -718,9 +718,11 @@
             this.Controls.Add(this.groupBox_Page);
             this.Controls.Add(this.panel_Screen);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "RHYTHM-CIRCULATION Tool";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel_Screen.ResumeLayout(false);

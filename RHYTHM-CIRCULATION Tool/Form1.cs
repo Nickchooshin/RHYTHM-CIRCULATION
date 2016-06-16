@@ -483,6 +483,55 @@ namespace RHYTHM_CIRCULATION_Tool
             }
         }
 
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (m_isPlaying)
+            {
+                int noteNum = -1;
+                int index = GetNowBarBeatIndex();
+                NoteType noteType = m_noteType;
+
+                switch (e.KeyChar)
+                {
+                    case '8':
+                        noteNum = 0;
+                        break;
+                    case '9':
+                        noteNum = 1;
+                        break;
+                    case '6':
+                        noteNum = 2;
+                        break;
+                    case '3':
+                        noteNum = 3;
+                        break;
+                    case '2':
+                        noteNum = 4;
+                        break;
+                    case '1':
+                        noteNum = 5;
+                        break;
+                    case '4':
+                        noteNum = 6;
+                        break;
+                    case '7':
+                        noteNum = 7;
+                        break;
+                    case '5':
+                        noteNum = 0;
+                        noteType = NoteType.SNAP;
+                        break;
+                }
+
+                if (noteNum != -1)
+                {
+                    DeleteNote(index, noteNum);
+                    InsertNote(index, noteNum, noteType);
+                    //pictureBox.Image = m_noteImageList[(int)noteType];
+                }
+            }
+        }
+
         // New
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
