@@ -30,7 +30,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private int m_slideNoteLength = 1;
         private int m_slideTime = 1;
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
-        private bool m_roundTrip = false;
+        private bool m_isRoundTrip = false;
 
         private int m_noteCount = 0;
 
@@ -41,6 +41,7 @@ namespace RHYTHM_CIRCULATION_Tool
         private MP3Player m_mplayer;
         private bool m_isPlaying = false;
         private ulong m_noteDelay = 0;
+        private bool m_isBeatCorrection = false;
 
         private int BPM_Value
         {
@@ -88,6 +89,7 @@ namespace RHYTHM_CIRCULATION_Tool
                 numericUpDown_Bar.Enabled = !m_isPlaying;
                 numericUpDown_Beat.Enabled = !m_isPlaying;
                 textBox_NoteDelay.Enabled = !m_isPlaying;
+                checkBox_BeatCorrection.Enabled = !m_isPlaying;
             }
         }
 
@@ -309,12 +311,17 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void checkBox_RoundTrip_CheckedChanged(object sender, EventArgs e)
         {
-            m_roundTrip = checkBox_RoundTrip.Checked;
+            m_isRoundTrip = checkBox_RoundTrip.Checked;
         }
 
         private void textBox_SlideTime_TextChanged(object sender, EventArgs e)
         {
             m_slideTime = int.Parse(textBox_SlideTime.Text);
+        }
+
+        private void checkBox_BeatCorrection_CheckedChanged(object sender, EventArgs e)
+        {
+            m_isBeatCorrection = checkBox_BeatCorrection.Checked;
         }
 
         // Note
@@ -365,10 +372,10 @@ namespace RHYTHM_CIRCULATION_Tool
                 noteData.Length = m_slideNoteLength;
                 noteData.SlideTime = m_slideTime;
                 noteData.SlideWay = m_slideWay;
-                noteData.RoundTrip = m_roundTrip;
+                noteData.RoundTrip = m_isRoundTrip;
 
                 int roundTripLength = 0;
-                if (m_roundTrip)
+                if (m_isRoundTrip)
                     roundTripLength = m_slideTime;
 
                 for (int i = 0; i <= m_slideTime + roundTripLength; i++)
@@ -729,9 +736,17 @@ namespace RHYTHM_CIRCULATION_Tool
         private void SetBarBeatPositionBasedByMusic()
         {
             float beatTime = GetBeatTime() * 1000.0f;
-            int index = (int)((m_mplayer.CurrentPosition - m_noteDelay) / beatTime);
-            int bar = index / m_maxBeat;
-            int beat = index % m_maxBeat;
+            int index;
+            int bar;
+            int beat;
+
+            if (m_isBeatCorrection)
+                index = (int)(((m_mplayer.CurrentPosition - m_noteDelay) + (beatTime / 2.0f)) / beatTime);
+            else
+                index = (int)((m_mplayer.CurrentPosition - m_noteDelay) / beatTime);
+
+            bar = index / m_maxBeat;
+            beat = index % m_maxBeat;
 
             if (index >= 0)
             {

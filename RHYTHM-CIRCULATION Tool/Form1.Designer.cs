@@ -86,6 +86,7 @@
             this.button_OpenMusic = new System.Windows.Forms.Button();
             this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
             this.timer_Music = new System.Windows.Forms.Timer(this.components);
+            this.checkBox_BeatCorrection = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -621,6 +622,7 @@
             // 
             // groupBox_Music
             // 
+            this.groupBox_Music.Controls.Add(this.checkBox_BeatCorrection);
             this.groupBox_Music.Controls.Add(this.label_NoteDelay);
             this.groupBox_Music.Controls.Add(this.textBox_NoteDelay);
             this.groupBox_Music.Controls.Add(this.textBox_MusicPlayTime);
@@ -690,6 +692,18 @@
             // 
             this.timer_Music.Interval = 1;
             this.timer_Music.Tick += new System.EventHandler(this.timer_Music_Tick);
+            // 
+            // checkBox_BeatCorrection
+            // 
+            this.checkBox_BeatCorrection.AutoSize = true;
+            this.checkBox_BeatCorrection.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox_BeatCorrection.Location = new System.Drawing.Point(587, 25);
+            this.checkBox_BeatCorrection.Name = "checkBox_BeatCorrection";
+            this.checkBox_BeatCorrection.Size = new System.Drawing.Size(116, 16);
+            this.checkBox_BeatCorrection.TabIndex = 9;
+            this.checkBox_BeatCorrection.Text = "비트 타이밍 보정";
+            this.checkBox_BeatCorrection.UseVisualStyleBackColor = true;
+            this.checkBox_BeatCorrection.CheckedChanged += new System.EventHandler(this.checkBox_BeatCorrection_CheckedChanged);
             // 
             // Form1
             // 
@@ -797,6 +811,7 @@
         private System.Windows.Forms.TextBox textBox_MusicPlayTime;
         private System.Windows.Forms.Label label_NoteDelay;
         private System.Windows.Forms.TextBox textBox_NoteDelay;
+        private System.Windows.Forms.CheckBox checkBox_BeatCorrection;
     }
 }
 
