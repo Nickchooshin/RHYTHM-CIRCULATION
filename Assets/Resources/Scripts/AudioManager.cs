@@ -69,4 +69,12 @@ public class AudioManager : MonoBehaviour {
             m_audioSource.UnPause();
         }
     }
+
+    public float GetTime()
+    {
+        if (m_audioSource != null)
+            return m_audioSource.time;
+
+        return 0.0f;
+    }
 }

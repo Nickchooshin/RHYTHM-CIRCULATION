@@ -907,6 +907,7 @@ MonoBehaviour:
   name: {fileID: 1269741646}
   singer: {fileID: 1502329440}
   difficulty: {fileID: 363774574}
+  noteManager: {fileID: 700256875}
 --- !u!4 &380035641
 Transform:
   m_ObjectHideFlags: 0
@@ -3623,7 +3624,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -10,6 +10,7 @@ public class GameStart : MonoBehaviour {
     public Text name;
     public Text singer;
     public Text difficulty;
+    public NoteManager noteManager;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class GameStart : MonoBehaviour {
         difficulty.text = difficultyData["Difficulty"].ToString() + " / LEVEL : " + difficultyData["Level"].ToString();
 
         AudioManager.Instance.SetAudioClip("Music/" + infoData["Music"].ToString());
-        AudioManager.Instance.Play();
+
+        noteManager.SendMessage("StartInit");
     }
 }
