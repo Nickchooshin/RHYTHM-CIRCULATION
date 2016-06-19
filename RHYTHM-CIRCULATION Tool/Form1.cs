@@ -251,6 +251,14 @@ namespace RHYTHM_CIRCULATION_Tool
             }
 
             ReloadNote();
+
+            // Music Time Position
+            float beatTime = GetBeatTime();
+            float time = beatTime * ((m_nowBar * m_maxBeat) + m_nowBeat) + (m_noteDelay / 1000.0f);
+
+            trackBar_Music.Value = (int)time;
+
+            SetMusicPosition((ulong)(time * 1000.0f));
         }
 
         private void ChangeNoteType(object sender, EventArgs e)
@@ -732,10 +740,9 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void trackBar_Music_MouseUp(object sender, MouseEventArgs e)
         {
-            m_mplayer.Seek((ulong)(trackBar_Music.Value * 1000));
+            SetMusicPosition((ulong)(trackBar_Music.Value * 1000));
 
             SetBarBeatPositionBasedByMusic();
-            SetMusicPlayTime();
 
             if (m_mplayer.IsPlaying)
                 timer_Music.Enabled = true;
@@ -780,6 +787,13 @@ namespace RHYTHM_CIRCULATION_Tool
         {
             timer_Music.Enabled = false;
             Playing = false;
+        }
+
+        private void SetMusicPosition(ulong milliseconds)
+        {
+            m_mplayer.Seek(milliseconds);
+
+            SetMusicPlayTime();
         }
 
         private void SetBarBeatPositionBasedByMusic()
