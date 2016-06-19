@@ -673,9 +673,9 @@
             this.textBox_MusicPlayTime.Location = new System.Drawing.Point(253, 23);
             this.textBox_MusicPlayTime.Name = "textBox_MusicPlayTime";
             this.textBox_MusicPlayTime.ReadOnly = true;
-            this.textBox_MusicPlayTime.Size = new System.Drawing.Size(35, 21);
+            this.textBox_MusicPlayTime.Size = new System.Drawing.Size(50, 21);
             this.textBox_MusicPlayTime.TabIndex = 5;
-            this.textBox_MusicPlayTime.Text = "00:00";
+            this.textBox_MusicPlayTime.Text = "00:00.00";
             // 
             // textBox_MusicName
             // 

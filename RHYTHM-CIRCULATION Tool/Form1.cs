@@ -813,11 +813,11 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void SetMusicPlayTime()
         {
-            int seconds = (int)(m_mplayer.CurrentPosition / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
+            float seconds = (float)(m_mplayer.CurrentPosition / 1000.0f);
+            int minutes = (int)(seconds / 60);
+            seconds -= (float)(minutes * 60);
 
-            textBox_MusicPlayTime.Text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+            textBox_MusicPlayTime.Text = minutes.ToString("D2") + ":" + seconds.ToString("00.00");
         }
     }
 }
