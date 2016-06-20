@@ -258,7 +258,8 @@ namespace RHYTHM_CIRCULATION_Tool
 
             trackBar_Music.Value = (int)time;
 
-            SetMusicPosition((ulong)(time * 1000.0f));
+            if (!Playing)
+                SetMusicPosition((ulong)(time * 1000.0f));
         }
 
         private void ChangeNoteType(object sender, EventArgs e)
@@ -734,7 +735,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
         private void trackBar_Music_MouseDown(object sender, MouseEventArgs e)
         {
-            if(m_mplayer.IsPlaying)
+            if(Playing)
                 timer_Music.Enabled = false;
         }
 
@@ -744,7 +745,7 @@ namespace RHYTHM_CIRCULATION_Tool
 
             SetBarBeatPositionBasedByMusic();
 
-            if (m_mplayer.IsPlaying)
+            if (Playing)
                 timer_Music.Enabled = true;
         }
 
