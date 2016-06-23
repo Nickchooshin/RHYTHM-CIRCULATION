@@ -29,6 +29,9 @@ namespace Rhythm_Circulation
         private int m_slideTime = 0;
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_roundTrip = false;
+        private int m_number = 0;
+        private int m_bar = 0;
+        private int m_beat = 0;
 
         public NoteData()
         {
@@ -94,6 +97,42 @@ namespace Rhythm_Circulation
             set
             {
                 m_roundTrip = value;
+            }
+        }
+
+        public int Number
+        {
+            get
+            {
+                return m_number;
+            }
+            set
+            {
+                m_number = value;
+            }
+        }
+
+        public int Bar
+        {
+            get
+            {
+                return m_bar;
+            }
+            set
+            {
+                m_bar = value;
+            }
+        }
+
+        public int Beat
+        {
+            get
+            {
+                return m_beat;
+            }
+            set
+            {
+                m_beat = value;
             }
         }
     }

@@ -32,8 +32,6 @@ namespace RHYTHM_CIRCULATION_Tool
         private NoteSlideWay m_slideWay = NoteSlideWay.ANTI_CLOCKWISE;
         private bool m_isRoundTrip = false;
 
-        private int m_noteCount = 0;
-
         private NoteData[,] m_noteList;
         private Image[] m_noteImageList = new Image[7];
         private PictureBox[] m_notePictureBoxList = new PictureBox[MAX_NOTE];
@@ -365,6 +363,9 @@ namespace RHYTHM_CIRCULATION_Tool
             NoteData noteData = m_noteList[index, noteNum];
 
             noteData.Type = noteType;
+            noteData.Number = noteNum;
+            noteData.Bar = (index / m_maxBeat);
+            noteData.Beat = index - (noteData.Bar * m_maxBeat);
 
             // Insert Note Shadow(Long/Slide)
             if (noteType == NoteType.LONG)
@@ -406,8 +407,6 @@ namespace RHYTHM_CIRCULATION_Tool
                     }
                 }
 
-                m_noteCount += m_slideNoteLength + roundTripLength;
-
                 ReloadNote();
             }
             else if (noteType == NoteType.SNAP)
@@ -423,8 +422,6 @@ namespace RHYTHM_CIRCULATION_Tool
                 
                 ReloadNote();
             }
-
-            ++m_noteCount;
         }
 
         private void DeleteNote(int index, int noteNum)
@@ -440,6 +437,9 @@ namespace RHYTHM_CIRCULATION_Tool
             m_noteList[index, noteNum].SlideTime = 0;
             m_noteList[index, noteNum].SlideWay = NoteSlideWay.ANTI_CLOCKWISE;
             m_noteList[index, noteNum].RoundTrip = false;
+            m_noteList[index, noteNum].Number = 0;
+            m_noteList[index, noteNum].Bar = 0;
+            m_noteList[index, noteNum].Beat = 0;
 
             // Delete Note Shadow(Long/Slide)
             if (type == NoteType.LONG)
@@ -479,16 +479,6 @@ namespace RHYTHM_CIRCULATION_Tool
                 }
 
                 ReloadNote();
-            }
-
-            switch (type)
-            {
-                case NoteType.TAP:
-                case NoteType.LONG:
-                case NoteType.SLIDE:
-                case NoteType.SNAP:
-                    --m_noteCount;
-                    break;
             }
         }
 
@@ -568,25 +558,47 @@ namespace RHYTHM_CIRCULATION_Tool
             NoteDelay_Value = (ulong)(int)jsonData["NoteDelay"];
             InitNote();
 
-            JsonData jsonBar = jsonData["Note"];
+            JsonData jsonNoteList = jsonData["Note"];
+            int bakLongNoteLength = m_longNoteLength;
+            int bakSlideNoteLength = m_slideNoteLength;
+            int bakSlideTime = m_slideTime;
+            NoteSlideWay bakSlideWay = m_slideWay;
 
-            for (int i = 0; i < jsonBar.Count; i++) // Bar
+            for (int i = 0; i < jsonNoteList.Count; i++)
             {
-                JsonData jsonBeat = jsonBar[i];
+                JsonData jsonNote = jsonNoteList[i];
 
-                for (int j = 0; j < jsonBeat.Count; j++) // Beat
+                NoteType type = (NoteType)(int)jsonNote["Type"];
+                int length = (int)jsonNote["Length"];
+                int slideTime = (int)jsonNote["SlideTime"];
+                NoteSlideWay slideWay = (NoteSlideWay)(int)jsonNote["SlideWay"];
+                int number = (int)jsonNote["Number"];
+                int bar = (int)jsonNote["Bar"];
+                int beat = (int)jsonNote["Beat"];
+                int index = (bar * m_maxBeat) + beat;
+
+                m_noteList[index, number].Type = type;
+                m_noteList[index, number].Length = length;
+                m_noteList[index, number].SlideTime = slideTime;
+                m_noteList[index, number].SlideWay = slideWay;
+                m_noteList[index, number].RoundTrip = (bool)jsonNote["RoundTrip"];
+                m_noteList[index, number].Number = number;
+                m_noteList[index, number].Bar = bar;
+                m_noteList[index, number].Beat = beat;
+
+                if (type == NoteType.LONG || type == NoteType.SLIDE)
                 {
-                    JsonData jsonNote = jsonBeat[j];
-
-                    for (int k = 0; k < jsonNote.Count; k++) // Note
-                    {
-                        m_noteList[(i * m_maxBeat) + j, k].Type = (NoteType)(int)jsonNote[k]["Type"];
-                        m_noteList[(i * m_maxBeat) + j, k].Length = (int)jsonNote[k]["Length"];
-                        m_noteList[(i * m_maxBeat) + j, k].SlideWay = (NoteSlideWay)(int)jsonNote[k]["SlideWay"];
-                        m_noteList[(i * m_maxBeat) + j, k].RoundTrip = (bool)jsonNote[k]["RoundTrip"];
-                    }
+                    m_longNoteLength = m_slideNoteLength = length;
+                    m_slideTime = slideTime;
+                    m_slideWay = slideWay;
+                    InsertNote(index, number, type);
                 }
             }
+
+            m_longNoteLength = bakLongNoteLength;
+            m_slideNoteLength = bakSlideNoteLength;
+            m_slideTime = bakSlideTime;
+            m_slideWay = bakSlideWay;
 
             reader.Close();
 
@@ -617,31 +629,6 @@ namespace RHYTHM_CIRCULATION_Tool
         // Save File
         private void SaveFile(string filePath)
         {
-            // Find last bar/beat number
-            int lastBar = 0;
-            int lastBeat = 0;
-            for (int i = MAX_BAR - 1; i >= 0; i--)
-            {
-                for (int j = m_maxBeat - 1; j >= 0; j--)
-                {
-                    for (int k = 0; k < MAX_NOTE; k++)
-                    {
-                        if (m_noteList[(i * m_maxBeat) + j, k].Type != NoteType.NONE)
-                        {
-                            lastBar = i + 1;
-                            lastBeat = j + 1;
-                            break;
-                        }
-                    }
-
-                    if (lastBar != 0 || lastBeat != 0)
-                        break;
-                }
-
-                if (lastBar != 0 || lastBeat != 0)
-                    break;
-            }
-
             FileStream file = new FileStream(filePath, FileMode.Create, FileAccess.Write);
             StreamWriter writer = new StreamWriter(file);
 
@@ -656,33 +643,24 @@ namespace RHYTHM_CIRCULATION_Tool
             jsonWriter.Write(m_maxBeat);
             jsonWriter.WritePropertyName("NoteDelay");
             jsonWriter.Write(m_noteDelay);
-            jsonWriter.WritePropertyName("NoteCount");
-            jsonWriter.Write(m_noteCount);
             jsonWriter.WritePropertyName("Note");
 
             jsonWriter.WriteArrayStart();
 
-            for (int i = 0; i < lastBar; i++) // Bar
+            for (int i = 0; i < MAX_BAR; i++)
             {
-                jsonWriter.WriteArrayStart();
-
-                for (int j = 0; j < m_maxBeat; j++) // Beat
+                for (int j = 0; j < m_maxBeat; j++)
                 {
-                    jsonWriter.WriteArrayStart();
-
-                    for (int k = 0; k < MAX_NOTE; k++) // Note
+                    for (int k = 0; k < MAX_NOTE; k++)
                     {
                         NoteData noteData = m_noteList[(i * m_maxBeat) + j, k];
-                        JsonMapper.ToJson(noteData, jsonWriter);
+
+                        if (noteData.Type != NoteType.NONE &&
+                            noteData.Type != NoteType.LONG_SHADOW &&
+                            noteData.Type != NoteType.SLIDE_SHADOW)
+                            JsonMapper.ToJson(noteData, jsonWriter);
                     }
-
-                    jsonWriter.WriteArrayEnd();
-
-                    if (i == (lastBar - 1) && j == (lastBeat - 1))
-                        break;
                 }
-
-                jsonWriter.WriteArrayEnd();
             }
 
             jsonWriter.WriteArrayEnd();
