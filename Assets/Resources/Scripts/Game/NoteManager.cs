@@ -121,93 +121,92 @@ public class NoteManager : MonoBehaviour {
 
         JsonData jsonData = NoteDataLoader.Instance.NoteData;
 
-        JsonData jsonBar = jsonData["Note"];
-        for (int i = 0; i < jsonBar.Count; i++)
+        //
+        JsonData jsonNoteList = jsonData["Note"];
+
+        for (int i = 0; i < jsonNoteList.Count; i++)
         {
-            JsonData jsonBeat = jsonBar[i];
-            for (int j = 0; j < jsonBeat.Count; j++)
+            JsonData jsonNote = jsonNoteList[i];
+
+            NoteType type = (NoteType)(int)jsonNote["Type"];
+            int length = (int)jsonNote["Length"];
+            int slideTime = (int)jsonNote["SlideTime"];
+            NoteSlideWay slideWay = (NoteSlideWay)(int)jsonNote["SlideWay"];
+            bool roundTrip = (bool)jsonNote["RoundTrip"];
+            int number = (int)jsonNote["Number"];
+            int bar = (int)jsonNote["Bar"];
+            int beat = (int)jsonNote["Beat"];
+
+            //float time = (float)(((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j));
+            float time = (float)(((60.0f / bpm) / maxBeat) * ((bar * maxBeat) + beat));
+
+            Note note = null;
+
+            if (type == NoteType.TAP)
             {
-                JsonData jsonNote = jsonBeat[j];
-                for (int k = 0; k < jsonNote.Count; k++)
+                GameObject noteObject = Instantiate<GameObject>(TapNotePrefab);
+
+                note = noteObject.GetComponent<TapNote>();
+                note.Type = type;
+                note.TimeSeen = time;
+            }
+            else if (type == NoteType.LONG)
+            {
+                GameObject noteObject = Instantiate<GameObject>(LongNotePrefab);
+
+                note = noteObject.GetComponent<LongNote>();
+                note.Type = type;
+                note.Length = length;
+                note.TimeSeen = time;
+            }
+            else if (type == NoteType.SLIDE)
+            {
+                GameObject noteObject = Instantiate<GameObject>(SlideNotePrefab);
+                GameObject pathObject = null;
+
+                CreateSlidePath(ref pathObject, length, slideWay, roundTrip, number);
+
+                SlideNote slideNote = noteObject.transform.FindChild("NoteImage").GetComponent<SlideNote>();
+                slideNote.maskImage = pathObject.GetComponent<Image>();
+                slideNote.pathImage = pathObject.transform.FindChild("PathImage").GetComponent<Image>();
+
+                note = slideNote;
+                note.Type = type;
+                note.Length = length;
+                note.SlideTime = slideTime;
+                note.SlideWay = slideWay;
+                note.RoundTrip = roundTrip;
+                note.TimeSeen = time;
+            }
+            else if (type == NoteType.SNAP)
+            {
+                GameObject noteObject = Instantiate<GameObject>(SnapNotePrefab);
+
+                note = noteObject.GetComponent<SnapNote>();
+                note.Type = type;
+                note.TimeSeen = time;
+            }
+
+            if (note != null)
+            {
+                note.SetNoteActive(false);
+                if (type == NoteType.SLIDE)
                 {
-                    JsonData jsonNoteData = jsonNote[k];
-
-                    NoteType type = (NoteType)(int)jsonNoteData["Type"];
-                    int length = (int)jsonNoteData["Length"];
-                    int slideTime = (int)jsonNoteData["SlideTime"];
-                    NoteSlideWay slideWay = (NoteSlideWay)(int)jsonNoteData["SlideWay"];
-                    bool roundTrip = (bool)jsonNoteData["RoundTrip"];
-
-                    Note note = null;
-
-                    if (type == NoteType.TAP)
-                    {
-                        GameObject noteObject = Instantiate<GameObject>(TapNotePrefab);
-
-                        note = noteObject.GetComponent<TapNote>();
-                        note.Type = type;
-                        //note.TimeSeen = ((60.0f / bpm) / (maxBeat / 4)) * ((i * maxBeat) + j);
-                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
-                    }
-                    else if (type == NoteType.LONG)
-                    {
-                        GameObject noteObject = Instantiate<GameObject>(LongNotePrefab);
-
-                        note = noteObject.GetComponent<LongNote>();
-                        note.Type = type;
-                        note.Length = length;
-                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
-                    }
-                    else if (type == NoteType.SLIDE)
-                    {
-                        GameObject noteObject = Instantiate<GameObject>(SlideNotePrefab);
-                        GameObject pathObject = null;
-
-                        CreateSlidePath(ref pathObject, length, slideWay, roundTrip, k);
-
-                        SlideNote slideNote = noteObject.transform.FindChild("NoteImage").GetComponent<SlideNote>();
-                        slideNote.maskImage = pathObject.GetComponent<Image>();
-                        slideNote.pathImage = pathObject.transform.FindChild("PathImage").GetComponent<Image>();
-
-                        note = slideNote;
-                        note.Type = type;
-                        note.Length = length;
-                        note.SlideTime = slideTime;
-                        note.SlideWay = slideWay;
-                        note.RoundTrip = roundTrip;
-                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
-                    }
-                    else if (type == NoteType.SNAP)
-                    {
-                        GameObject noteObject = Instantiate<GameObject>(SnapNotePrefab);
-
-                        note = noteObject.GetComponent<SnapNote>();
-                        note.Type = type;
-                        note.TimeSeen = ((60.0f / bpm) / maxBeat) * ((i * maxBeat) + j);
-                    }
-
-                    if (note != null)
-                    {
-                        note.SetNoteActive(false);
-                        if (type == NoteType.SLIDE)
-                        {
-                            note.transform.parent.position = new Vector3(0.0f, 0.0f, -1.0f);
-                            note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * k);
-                            note.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-                        }
-                        else if (type == NoteType.SNAP)
-                        {
-                            note.transform.position = new Vector3(0.0f, 0.0f, -1.0f);
-                        }
-                        else
-                            note.transform.position = notePosition[k].position;
-
-                        m_noteList.Add(note);
-
-                        if (type == NoteType.SNAP)
-                            break;
-                    }
+                    note.transform.parent.position = new Vector3(0.0f, 0.0f, -1.0f);
+                    note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * number);
+                    note.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                 }
+                else if (type == NoteType.SNAP)
+                {
+                    note.transform.position = new Vector3(0.0f, 0.0f, -1.0f);
+                }
+                else
+                    note.transform.position = notePosition[number].position;
+
+                m_noteList.Add(note);
+
+                if (type == NoteType.SNAP)
+                    break;
             }
         }
     }
