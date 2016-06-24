@@ -121,7 +121,6 @@ public class NoteManager : MonoBehaviour {
 
         JsonData jsonData = NoteDataLoader.Instance.NoteData;
 
-        //
         JsonData jsonNoteList = jsonData["Note"];
 
         for (int i = 0; i < jsonNoteList.Count; i++)

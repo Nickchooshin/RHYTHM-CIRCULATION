@@ -10,7 +10,6 @@ public class NoteDataLoader {
     
     private int m_bpm = 60;
     private int m_maxBeat = 0;
-    private int m_noteCount = 0;
     private float m_noteDelay = 0;
     private JsonData m_noteData = null;
     private JsonData m_infoData = null;
@@ -37,14 +36,6 @@ public class NoteDataLoader {
         get
         {
             return m_maxBeat;
-        }
-    }
-
-    public int NoteCount
-    {
-        get
-        {
-            return m_noteCount;
         }
     }
 
@@ -110,7 +101,6 @@ public class NoteDataLoader {
 
         m_bpm = (int)m_noteData["BPM"];
         m_maxBeat = (int)m_noteData["MaxBeat"];
-        m_noteCount = (int)m_noteData["NoteCount"];
         m_noteDelay = (float)(((ulong)(int)m_noteData["NoteDelay"]) / 1000.0f);
     }
 }

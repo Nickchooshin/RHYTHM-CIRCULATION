@@ -34,7 +34,7 @@ public class LongNote : Note {
     {
         int bpm = NoteDataLoader.Instance.BPM;
         int maxBeat = NoteDataLoader.Instance.MaxBeat;
-        float timeLength = ((60.0f / bpm) / (maxBeat / 4)) * m_noteData.Length;
+        float timeLength = ((60.0f / bpm) / maxBeat) * m_noteData.Length;
         float endTime = Time.time + timeLength;
 
         noteImage.fillAmount = 1.0f;
