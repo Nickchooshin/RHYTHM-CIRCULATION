@@ -7,8 +7,6 @@ public class Title : MonoBehaviour {
     {
         Screen.fullScreen = false;
         Screen.SetResolution(720, 1280, false);
-#if UNITY_EDITOR_WIN
-        Screen.SetResolution(359, 639, false);
-#endif
+        //Screen.SetResolution(359, 639, false);
     }
 }

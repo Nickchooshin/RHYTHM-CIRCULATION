@@ -203,9 +203,6 @@ public class NoteManager : MonoBehaviour {
                     note.transform.position = notePosition[number].position;
 
                 m_noteList.Add(note);
-
-                if (type == NoteType.SNAP)
-                    break;
             }
         }
     }
