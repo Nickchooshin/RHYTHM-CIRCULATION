@@ -3,7 +3,6 @@
     "BPM" : 90,
     "MaxBeat" : 16,
     "NoteDelay" : 0,
-    "NoteCount" : 124,
     "Note"      : [
         {
             "Type" : 1,
