@@ -99,4 +99,15 @@ public class Score : MonoBehaviour, IJudgeReceiver {
         scoreText.text = TotalScore.ToString("D6");
         percentText.text = Accuracy.ToString("F1") + " %";
     }
+
+    public void ScoreRecord(string name, string difficulty)
+    {
+        int highScore = HighScoreManager.Instance.GetHighScore(name, difficulty);
+
+        if (m_score > highScore)
+        {
+            HighScoreManager.Instance.SetHighScore(name, difficulty, m_score);
+            HighScoreManager.Instance.SaveHighScore();
+        }
+    }
 }

@@ -114,6 +114,8 @@ public class NoteManager : MonoBehaviour {
         else
             resultUIPanel.Rank = "F";
         resultUIPanel.gameObject.SetActive(true);
+
+        score.ScoreRecord(infoData["Name"].ToString(), infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString());
     }
 
     private void CreateNoteList()

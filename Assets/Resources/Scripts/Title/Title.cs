@@ -8,5 +8,7 @@ public class Title : MonoBehaviour {
         Screen.fullScreen = false;
         Screen.SetResolution(720, 1280, false);
         //Screen.SetResolution(359, 639, false);
+
+        HighScoreManager.Instance.LoadHighScore();
     }
 }

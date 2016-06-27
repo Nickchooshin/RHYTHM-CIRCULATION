@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 
 using LitJson;
+using System.Collections.Generic;
 
 public class NoteDataLoader {
 

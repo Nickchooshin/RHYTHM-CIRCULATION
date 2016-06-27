@@ -68,6 +68,7 @@ public class ListUIButton : MonoBehaviour {
         InformationUIPanel.Time = infoData["Time"].ToString();
         InformationUIPanel.Difficulty = noteData["Difficulty"].ToString();
         InformationUIPanel.Level = noteData["Level"].ToString();
+        InformationUIPanel.HighScore = HighScoreManager.Instance.GetHighScore(InformationUIPanel.Name, InformationUIPanel.Difficulty).ToString();
 
         m_infoData = infoData;
 
