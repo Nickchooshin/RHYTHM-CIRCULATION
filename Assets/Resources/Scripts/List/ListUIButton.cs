@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 using LitJson;
 
@@ -8,19 +9,57 @@ public class ListUIButton : MonoBehaviour {
 
     private bool m_isInformationShow = false;
     private JsonData m_infoData = null;
-    private int m_noteDifficulty = 0;
 
     public InformationUI InformationUIPanel;
+    public GameObject[] DifficultyBackground = new GameObject[3];
+    public Button[] DifficultyButton = new Button[3];
+    public Sprite[] ButtonImageNormal = new Sprite[3];
+    public Sprite[] ButtonImageActive = new Sprite[3];
+
+    void Start()
+    {
+        ChangeDifficulty(NoteDataLoader.Instance.NoteDifficulty);
+    }
 
     public void BackButtonClick()
     {
         Application.LoadLevel("sceneTitle");
     }
 
+    public void BasicButtonClick()
+    {
+        ChangeDifficulty(NoteDataLoader.DifficultyType.BASIC);
+    }
+
+    public void AdvancedButtonClick()
+    {
+        ChangeDifficulty(NoteDataLoader.DifficultyType.ADVANCED);
+    }
+
+    public void ExtremeButtonClick()
+    {
+        ChangeDifficulty(NoteDataLoader.DifficultyType.EXTREME);
+    }
+
+    private void ChangeDifficulty(NoteDataLoader.DifficultyType noteDifficulty)
+    {
+        NoteDataLoader.DifficultyType prevNoteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
+
+        DifficultyBackground[(int)prevNoteDifficulty].SetActive(false);
+        DifficultyBackground[(int)noteDifficulty].SetActive(true);
+
+        DifficultyButton[(int)prevNoteDifficulty].image.sprite = ButtonImageNormal[(int)prevNoteDifficulty];
+        DifficultyButton[(int)noteDifficulty].image.sprite = ButtonImageActive[(int)noteDifficulty];
+
+        NoteDataLoader.Instance.NoteDifficulty = noteDifficulty;
+    }
+
     public void MusicInformationClick(List list)
     {
+        NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
+
         JsonData infoData = list.Info;
-        JsonData noteData = infoData["Note"][m_noteDifficulty];
+        JsonData noteData = infoData["Note"][(int)noteDifficulty];
 
         InformationUIPanel.Cover = Resources.Load<Sprite>("Images/List/Cover/" + infoData["Info_Cover"].ToString());
         InformationUIPanel.Name = infoData["Name"].ToString();
@@ -53,9 +92,10 @@ public class ListUIButton : MonoBehaviour {
 
     public void StartButtonClick()
     {
-        NoteDataLoader.Instance.LoadNoteData(m_infoData["Note"][m_noteDifficulty]["Json"].ToString());
+        NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
+
+        NoteDataLoader.Instance.LoadNoteData(m_infoData["Note"][(int)noteDifficulty]["Json"].ToString());
         NoteDataLoader.Instance.InfoData = m_infoData;
-        NoteDataLoader.Instance.NoteDifficulty = m_noteDifficulty;
 
         AudioManager.Instance.Stop();
 

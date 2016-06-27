@@ -13,7 +13,14 @@ public class NoteDataLoader {
     private float m_noteDelay = 0;
     private JsonData m_noteData = null;
     private JsonData m_infoData = null;
-    private int m_noteDifficulty = 0;
+    private DifficultyType m_noteDifficulty = DifficultyType.BASIC;
+
+    public enum DifficultyType
+    {
+        BASIC = 0,
+        ADVANCED,
+        EXTREME
+    }
 
     public static NoteDataLoader Instance
     {
@@ -67,7 +74,7 @@ public class NoteDataLoader {
         }
     }
 
-    public int NoteDifficulty
+    public DifficultyType NoteDifficulty
     {
         get
         {

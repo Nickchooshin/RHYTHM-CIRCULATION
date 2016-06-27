@@ -15,6 +15,7 @@ public class ListManager : MonoBehaviour {
         JsonData listData = JsonMapper.ToObject(listTextAsset.text);
 
         int listNumber = listData.Count;
+        NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
 
         listPanel.localScale = new Vector3(1.0f, listNumber * 160.0f, 1.0f);
 
@@ -31,7 +32,7 @@ public class ListManager : MonoBehaviour {
             list.Cover = Resources.Load<Sprite>("Images/List/Cover/" + infoData["List_Cover"].ToString());
             list.Name = infoData["Name"].ToString();
             list.Singer = infoData["Singer"].ToString();
-            list.Level = "LEVEL " + infoData["Note"][0]["Level"].ToString();
+            list.Level = "LEVEL " + infoData["Note"][(int)noteDifficulty]["Level"].ToString();
             list.ButtonListener = () => scriptListUIButton.MusicInformationClick(list);
 
             float scaleY = listPanel.localScale.y;
@@ -40,6 +41,25 @@ public class ListManager : MonoBehaviour {
             listObject.transform.SetParent(listPanel);
             listObject.transform.localPosition = new Vector3(0.0f, positionY, 0.0f);
             listObject.transform.localScale = new Vector3(1.0f, 1.0f / scaleY, 1.0f);
+        }
+    }
+
+    public void UpdateListDifficulty()
+    {
+        TextAsset listTextAsset = Resources.Load<TextAsset>("Data/Information/List");
+        JsonData listData = JsonMapper.ToObject(listTextAsset.text);
+
+        NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
+
+        for (int i = 0; i < listPanel.childCount; i++)
+        {
+            TextAsset infoTextAsset = Resources.Load<TextAsset>("Data/Information/" + listData[i].ToString());
+            JsonData infoData = JsonMapper.ToObject(infoTextAsset.text);
+
+            GameObject listObject = listPanel.GetChild(i).gameObject;
+            List list = listObject.GetComponent<List>();
+
+            list.Level = "LEVEL " + infoData["Note"][(int)noteDifficulty]["Level"].ToString();
         }
     }
 }

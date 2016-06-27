@@ -89,6 +89,8 @@ public class NoteManager : MonoBehaviour {
         AudioManager.Instance.SetAudioClip("BGM/04. [BGM] Result");
         AudioManager.Instance.Play();
 
+        NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
+
         JsonData infoData = NoteDataLoader.Instance.InfoData;
         float accuracy = score.Accuracy;
 
@@ -100,7 +102,7 @@ public class NoteManager : MonoBehaviour {
         resultUIPanel.Miss = score.MissCount.ToString();
         resultUIPanel.Accuracy = score.Accuracy.ToString("F1") + "%";
         resultUIPanel.Score = score.TotalScore.ToString();
-        resultUIPanel.Difficulty = infoData["Note"][NoteDataLoader.Instance.NoteDifficulty]["Difficulty"].ToString();
+        resultUIPanel.Difficulty = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
         if (accuracy >= 96.0f)
             resultUIPanel.Rank = "S";
         else if (accuracy >= 85.0f)

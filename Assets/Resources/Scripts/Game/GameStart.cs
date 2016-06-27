@@ -14,8 +14,10 @@ public class GameStart : MonoBehaviour {
 
     void Start()
     {
+        NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
+
         JsonData infoData = NoteDataLoader.Instance.InfoData;
-        JsonData difficultyData = infoData["Note"][NoteDataLoader.Instance.NoteDifficulty];
+        JsonData difficultyData = infoData["Note"][(int)noteDifficulty];
 
         cover.sprite = Resources.Load<Sprite>("Images/List/Cover/" + infoData["List_Cover"].ToString());
         name.text = infoData["Name"].ToString();
