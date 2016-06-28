@@ -42,12 +42,10 @@ public class NoteManager : MonoBehaviour {
         CreateNoteList();
         InsertNoteList();
 
-        JsonData infoData = NoteDataLoader.Instance.InfoData;
-
         AudioManager.Instance.Play();
 
         m_startTime = Time.time + NoteDataLoader.Instance.NoteDelay;
-        m_musicTime = (float)(int)infoData["Time"] + 1.5f;
+        m_musicTime = AudioManager.Instance.GetLength();
 
         StartCoroutine("GameStart");
         StartCoroutine("ShowResult");

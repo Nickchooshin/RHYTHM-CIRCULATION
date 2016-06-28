@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager {
 
     private static readonly AudioManager m_instance = new AudioManager();
 
+    private AudioObject m_audioObject = null;
     private AudioSource m_audioSource = null;
     private AudioClip m_audioClip = null;
 
@@ -14,6 +15,21 @@ public class AudioManager : MonoBehaviour {
         {
             return m_instance;
         }
+    }
+
+    private AudioManager()
+    {
+    }
+
+    ~AudioManager()
+    {
+    }
+
+    public void SetAudioObject(AudioObject audioObject)
+    {
+        m_audioObject = audioObject;
+
+        SetAudioSource(m_audioObject.GetComponent<AudioSource>());
     }
 
     public void SetAudioSource(AudioSource audioSource)
@@ -44,6 +60,7 @@ public class AudioManager : MonoBehaviour {
         {
             if (m_audioSource.clip != m_audioClip)
                 m_audioSource.clip = m_audioClip;
+
             m_audioSource.Play();
         }
     }
@@ -51,22 +68,40 @@ public class AudioManager : MonoBehaviour {
     public void Stop()
     {
         if (m_audioSource != null)
+        {
+            m_audioSource.time = 0.0f;
             m_audioSource.Stop();
+        }
     }
 
     public void Pause()
     {
         if (m_audioSource != null)
-        {
             m_audioSource.Pause();
-        }
     }
 
     public void UnPause()
     {
         if (m_audioSource != null)
-        {
             m_audioSource.UnPause();
+    }
+
+    //public void PlaySection(float startTime, float endTime, bool loop, float fadeInOutTime)
+    public void PlaySection(float startTime, float endTime, bool loop)
+    {
+        if (m_audioClip != null)
+        {
+            while (m_audioClip.loadState != AudioDataLoadState.Loaded)
+            {
+            }
+        }
+
+        if (m_audioObject != null && m_audioSource != null)
+        {
+            if (m_audioSource.clip != m_audioClip)
+                m_audioSource.clip = m_audioClip;
+
+            m_audioObject.PlaySection(startTime, endTime, loop);
         }
     }
 
@@ -74,6 +109,14 @@ public class AudioManager : MonoBehaviour {
     {
         if (m_audioSource != null)
             return m_audioSource.time;
+
+        return 0.0f;
+    }
+
+    public float GetLength()
+    {
+        if (m_audioClip != null)
+            return m_audioClip.length;
 
         return 0.0f;
     }

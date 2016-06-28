@@ -61,11 +61,13 @@ public class ListUIButton : MonoBehaviour {
         JsonData infoData = list.Info;
         JsonData noteData = infoData["Note"][(int)noteDifficulty];
 
+        AudioManager.Instance.SetAudioClip("Music/" + infoData["Music"].ToString());
+
         InformationUIPanel.Cover = Resources.Load<Sprite>("Images/List/Cover/" + infoData["Info_Cover"].ToString());
         InformationUIPanel.Name = infoData["Name"].ToString();
         InformationUIPanel.Singer = infoData["Singer"].ToString();
         InformationUIPanel.BPM = infoData["BPM"].ToString();
-        InformationUIPanel.Time = infoData["Time"].ToString();
+        InformationUIPanel.Time = AudioManager.Instance.GetLength().ToString("00.0") + " s";
         InformationUIPanel.Difficulty = noteData["Difficulty"].ToString();
         InformationUIPanel.Level = noteData["Level"].ToString();
         InformationUIPanel.HighScore = HighScoreManager.Instance.GetHighScore(InformationUIPanel.Name, InformationUIPanel.Difficulty).ToString();
@@ -74,8 +76,9 @@ public class ListUIButton : MonoBehaviour {
 
         ShowInformation();
 
-        AudioManager.Instance.SetAudioClip("Music_Preview/" + infoData["Music_Preview"].ToString());
-        AudioManager.Instance.Play();
+        float previewStartTime = (float)((double)infoData["Preview_Start"]);
+        float previewEndTime = (float)((double)infoData["Preview_End"]);
+        AudioManager.Instance.PlaySection(previewStartTime, previewEndTime, true);
     }
 
     public void ShowInformation()
