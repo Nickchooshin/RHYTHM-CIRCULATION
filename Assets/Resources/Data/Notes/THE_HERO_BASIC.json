@@ -22,7 +22,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 5,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -52,7 +52,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 9,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -82,7 +82,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 13,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -112,7 +112,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 17,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -122,7 +122,7 @@
             "RoundTrip" : false,
             "Number"    : 6,
             "Bar"       : 20,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -132,7 +132,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 21,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -152,7 +152,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 24,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -162,7 +162,7 @@
             "RoundTrip" : false,
             "Number"    : 0,
             "Bar"       : 25,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -192,7 +192,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 29,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -212,7 +212,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 32,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -222,7 +222,7 @@
             "RoundTrip" : false,
             "Number"    : 0,
             "Bar"       : 33,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -252,7 +252,7 @@
             "RoundTrip" : false,
             "Number"    : 4,
             "Bar"       : 38,
-            "Beat"      : 9
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -462,7 +462,7 @@
             "RoundTrip" : false,
             "Number"    : 5,
             "Bar"       : 73,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -482,7 +482,7 @@
             "RoundTrip" : false,
             "Number"    : 7,
             "Bar"       : 77,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -492,7 +492,7 @@
             "RoundTrip" : false,
             "Number"    : 0,
             "Bar"       : 80,
-            "Beat"      : 11
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -502,7 +502,7 @@
             "RoundTrip" : false,
             "Number"    : 5,
             "Bar"       : 84,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -512,7 +512,7 @@
             "RoundTrip" : false,
             "Number"    : 3,
             "Bar"       : 85,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -722,7 +722,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 111,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -732,7 +732,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 112,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -752,7 +752,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 113,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -762,7 +762,7 @@
             "RoundTrip" : false,
             "Number"    : 7,
             "Bar"       : 113,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -782,7 +782,7 @@
             "RoundTrip" : false,
             "Number"    : 5,
             "Bar"       : 116,
-            "Beat"      : 11
+            "Beat"      : 14
         },
         {
             "Type" : 1,
@@ -792,7 +792,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 117,
-            "Beat"      : 7
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -1012,7 +1012,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 143,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -1022,7 +1022,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 144,
-            "Beat"      : 3
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -1042,7 +1042,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 145,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -1052,7 +1052,7 @@
             "RoundTrip" : false,
             "Number"    : 7,
             "Bar"       : 145,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -1062,7 +1062,7 @@
             "RoundTrip" : false,
             "Number"    : 5,
             "Bar"       : 148,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -1082,7 +1082,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 149,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -1112,7 +1112,7 @@
             "RoundTrip" : false,
             "Number"    : 5,
             "Bar"       : 164,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
@@ -1132,7 +1132,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 165,
-            "Beat"      : 9
+            "Beat"      : 10
         },
         {
             "Type" : 1,
