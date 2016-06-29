@@ -141,7 +141,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             {
                 noteImage.fillAmount = 1.0f;
 
-                //yield return new WaitForSeconds((APPEAR_TIME / 2.0f) - (time - m_noteTimeSeen));
+                yield return new WaitForSeconds((APPEAR_TIME / 2.0f) - (time - m_noteTimeSeen));
 
                 DeleteNote();
             }
