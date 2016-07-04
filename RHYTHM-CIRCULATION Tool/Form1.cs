@@ -183,6 +183,8 @@ namespace RHYTHM_CIRCULATION_Tool
                     }
                 }
             }
+
+            ListBoxClear();
         }
 
         private void InitNoteImage()
@@ -422,6 +424,8 @@ namespace RHYTHM_CIRCULATION_Tool
                 
                 ReloadNote();
             }
+
+            ListBoxUpdate(index);
         }
 
         private void DeleteNote(int index, int noteNum)
@@ -480,6 +484,8 @@ namespace RHYTHM_CIRCULATION_Tool
 
                 ReloadNote();
             }
+
+            ListBoxUpdate(index);
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -585,6 +591,7 @@ namespace RHYTHM_CIRCULATION_Tool
                 m_noteList[index, number].Number = number;
                 m_noteList[index, number].Bar = bar;
                 m_noteList[index, number].Beat = beat;
+                ListBoxUpdate(index);
 
                 if (type == NoteType.LONG || type == NoteType.SLIDE)
                 {
@@ -811,6 +818,123 @@ namespace RHYTHM_CIRCULATION_Tool
             seconds -= (float)(minutes * 60);
 
             textBox_MusicPlayTime.Text = minutes.ToString("D2") + ":" + seconds.ToString("00.00");
+        }
+
+        // List Box
+        private void ListBoxClear()
+        {
+            listView_NoteList.Items.Clear();
+        }
+
+        [Flags]
+        enum NoteFlag
+        {
+            NONE = 0x00,
+            TAP = 0x01,
+            LONG = 0x02,
+            SLIDE = 0x04,
+            SNAP = 0x08
+        }
+
+        private void ListBoxUpdate(int index)
+        {
+            int bar = (index / m_maxBeat);
+            int beat = index - (bar * m_maxBeat);
+            string str = (bar + 1).ToString("000") + " / " + (beat + 1).ToString("00");
+            NoteFlag noteFlag = NoteFlag.NONE;
+            int imgIndex = -1;
+
+            for (int i = 0; i < MAX_NOTE; i++)
+            {
+                switch(m_noteList[index, i].Type)
+                {
+                    case NoteType.TAP:
+                        noteFlag |= NoteFlag.TAP;
+                        break;
+
+                    case NoteType.LONG:
+                        noteFlag |= NoteFlag.LONG;
+                        break;
+
+                    case NoteType.SLIDE:
+                        noteFlag |= NoteFlag.SLIDE;
+                        break;
+
+                    case NoteType.SNAP:
+                        noteFlag |= NoteFlag.SNAP;
+                        break;
+                }
+            }
+
+            bool isTap = (noteFlag & NoteFlag.TAP) == NoteFlag.TAP;
+            bool isLong = (noteFlag & NoteFlag.LONG) == NoteFlag.LONG;
+            bool isSlide = (noteFlag & NoteFlag.SLIDE) == NoteFlag.SLIDE;
+            bool isSnap = (noteFlag & NoteFlag.SNAP) == NoteFlag.SNAP;
+
+            if (isTap)
+            {
+                if (isLong)
+                {
+                    if (isSlide)
+                        imgIndex = 7;
+                    else
+                        imgIndex = 4;
+                }
+                else
+                {
+                    if (isSlide)
+                        imgIndex = 5;
+                    else
+                        imgIndex = 0;
+                }
+            }
+            else if (isLong)
+            {
+                if (isSlide)
+                    imgIndex = 6;
+                else
+                    imgIndex = 1;
+            }
+            else if (isSlide)
+            {
+                imgIndex = 2;
+            }
+            else if (isSnap)
+            {
+                imgIndex = 3;
+            }
+
+            if (imgIndex != -1)
+            {
+                ListViewItem item = listView_NoteList.FindItemWithText(str);
+
+                if (item == null)
+                {
+                    item = new ListViewItem(str, imgIndex);
+                    listView_NoteList.Items.Add(item);
+                }
+                else
+                {
+                    item.ImageIndex = imgIndex;
+                }
+            }
+        }
+
+        private void listView_NoteList_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView_NoteList.SelectedItems.Count == 1)
+            {
+                ListViewItem item = listView_NoteList.SelectedItems[0];
+                string str = item.Text;
+                string[] split = System.Text.RegularExpressions.Regex.Split(str, " / ");
+                int bar = int.Parse(split[0]);
+                int beat = int.Parse(split[1]);
+
+                numericUpDown_Bar.Value = bar;
+                numericUpDown_Beat.Value = beat;
+
+                ReloadNote();
+            }
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +88,9 @@
             this.button_OpenMusic = new System.Windows.Forms.Button();
             this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
             this.timer_Music = new System.Windows.Forms.Timer(this.components);
+            this.groupBox_NoteList = new System.Windows.Forms.GroupBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.listView_NoteList = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
@@ -106,6 +110,7 @@
             this.groupBox_SlideNoteOption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Music)).BeginInit();
             this.groupBox_Music.SuspendLayout();
+            this.groupBox_NoteList.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -705,11 +710,47 @@
             this.timer_Music.Interval = 1;
             this.timer_Music.Tick += new System.EventHandler(this.timer_Music_Tick);
             // 
+            // groupBox_NoteList
+            // 
+            this.groupBox_NoteList.Controls.Add(this.listView_NoteList);
+            this.groupBox_NoteList.Location = new System.Drawing.Point(739, 140);
+            this.groupBox_NoteList.Name = "groupBox_NoteList";
+            this.groupBox_NoteList.Size = new System.Drawing.Size(133, 427);
+            this.groupBox_NoteList.TabIndex = 10;
+            this.groupBox_NoteList.TabStop = false;
+            this.groupBox_NoteList.Text = "노트 목록";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "icon_1.png");
+            this.imageList1.Images.SetKeyName(1, "icon_2.png");
+            this.imageList1.Images.SetKeyName(2, "icon_3.png");
+            this.imageList1.Images.SetKeyName(3, "icon_4.png");
+            this.imageList1.Images.SetKeyName(4, "icon_5.png");
+            this.imageList1.Images.SetKeyName(5, "icon_6.png");
+            this.imageList1.Images.SetKeyName(6, "icon_7.png");
+            this.imageList1.Images.SetKeyName(7, "icon_8.png");
+            // 
+            // listView_NoteList
+            // 
+            this.listView_NoteList.Location = new System.Drawing.Point(6, 19);
+            this.listView_NoteList.Name = "listView_NoteList";
+            this.listView_NoteList.Size = new System.Drawing.Size(121, 402);
+            this.listView_NoteList.SmallImageList = this.imageList1;
+            this.listView_NoteList.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView_NoteList.TabIndex = 1;
+            this.listView_NoteList.UseCompatibleStateImageBehavior = false;
+            this.listView_NoteList.View = System.Windows.Forms.View.SmallIcon;
+            this.listView_NoteList.DoubleClick += new System.EventHandler(this.listView_NoteList_DoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 592);
+            this.Controls.Add(this.groupBox_NoteList);
             this.Controls.Add(this.groupBox_Music);
             this.Controls.Add(this.groupBox_SlideNoteOption);
             this.Controls.Add(this.groupBox_LongNoteOption);
@@ -749,6 +790,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Music)).EndInit();
             this.groupBox_Music.ResumeLayout(false);
             this.groupBox_Music.PerformLayout();
+            this.groupBox_NoteList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -814,6 +856,9 @@
         private System.Windows.Forms.Label label_NoteDelay;
         private System.Windows.Forms.TextBox textBox_NoteDelay;
         private System.Windows.Forms.CheckBox checkBox_BeatCorrection;
+        private System.Windows.Forms.GroupBox groupBox_NoteList;
+        private System.Windows.Forms.ListView listView_NoteList;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
