@@ -39,8 +39,6 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Screen = new System.Windows.Forms.Panel();
-            this.pictureBox_Note8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_Note7 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note6 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note5 = new System.Windows.Forms.PictureBox();
             this.pictureBox_Note4 = new System.Windows.Forms.PictureBox();
@@ -89,12 +87,10 @@
             this.openFileDialog_Music = new System.Windows.Forms.OpenFileDialog();
             this.timer_Music = new System.Windows.Forms.Timer(this.components);
             this.groupBox_NoteList = new System.Windows.Forms.GroupBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listView_NoteList = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel_Screen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note4)).BeginInit();
@@ -179,8 +175,6 @@
             // panel_Screen
             // 
             this.panel_Screen.BackColor = System.Drawing.Color.Black;
-            this.panel_Screen.Controls.Add(this.pictureBox_Note8);
-            this.panel_Screen.Controls.Add(this.pictureBox_Note7);
             this.panel_Screen.Controls.Add(this.pictureBox_Note6);
             this.panel_Screen.Controls.Add(this.pictureBox_Note5);
             this.panel_Screen.Controls.Add(this.pictureBox_Note4);
@@ -192,35 +186,11 @@
             this.panel_Screen.Size = new System.Drawing.Size(445, 445);
             this.panel_Screen.TabIndex = 1;
             // 
-            // pictureBox_Note8
-            // 
-            this.pictureBox_Note8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_Note8.ImageLocation = "";
-            this.pictureBox_Note8.Location = new System.Drawing.Point(59, 60);
-            this.pictureBox_Note8.Name = "pictureBox_Note8";
-            this.pictureBox_Note8.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox_Note8.TabIndex = 6;
-            this.pictureBox_Note8.TabStop = false;
-            this.pictureBox_Note8.Tag = "7";
-            this.pictureBox_Note8.Click += new System.EventHandler(this.FixedNote);
-            // 
-            // pictureBox_Note7
-            // 
-            this.pictureBox_Note7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_Note7.ImageLocation = "";
-            this.pictureBox_Note7.Location = new System.Drawing.Point(11, 172);
-            this.pictureBox_Note7.Name = "pictureBox_Note7";
-            this.pictureBox_Note7.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox_Note7.TabIndex = 5;
-            this.pictureBox_Note7.TabStop = false;
-            this.pictureBox_Note7.Tag = "6";
-            this.pictureBox_Note7.Click += new System.EventHandler(this.FixedNote);
-            // 
             // pictureBox_Note6
             // 
             this.pictureBox_Note6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note6.ImageLocation = "";
-            this.pictureBox_Note6.Location = new System.Drawing.Point(59, 284);
+            this.pictureBox_Note6.Location = new System.Drawing.Point(11, 85);
             this.pictureBox_Note6.Name = "pictureBox_Note6";
             this.pictureBox_Note6.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note6.TabIndex = 4;
@@ -232,7 +202,7 @@
             // 
             this.pictureBox_Note5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note5.ImageLocation = "";
-            this.pictureBox_Note5.Location = new System.Drawing.Point(171, 332);
+            this.pictureBox_Note5.Location = new System.Drawing.Point(11, 259);
             this.pictureBox_Note5.Name = "pictureBox_Note5";
             this.pictureBox_Note5.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note5.TabIndex = 3;
@@ -244,7 +214,7 @@
             // 
             this.pictureBox_Note4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note4.ImageLocation = "";
-            this.pictureBox_Note4.Location = new System.Drawing.Point(283, 284);
+            this.pictureBox_Note4.Location = new System.Drawing.Point(171, 332);
             this.pictureBox_Note4.Name = "pictureBox_Note4";
             this.pictureBox_Note4.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note4.TabIndex = 2;
@@ -256,7 +226,7 @@
             // 
             this.pictureBox_Note3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note3.ImageLocation = "";
-            this.pictureBox_Note3.Location = new System.Drawing.Point(331, 172);
+            this.pictureBox_Note3.Location = new System.Drawing.Point(331, 259);
             this.pictureBox_Note3.Name = "pictureBox_Note3";
             this.pictureBox_Note3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note3.TabIndex = 2;
@@ -268,7 +238,7 @@
             // 
             this.pictureBox_Note2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_Note2.ImageLocation = "";
-            this.pictureBox_Note2.Location = new System.Drawing.Point(283, 60);
+            this.pictureBox_Note2.Location = new System.Drawing.Point(331, 85);
             this.pictureBox_Note2.Name = "pictureBox_Note2";
             this.pictureBox_Note2.Size = new System.Drawing.Size(100, 100);
             this.pictureBox_Note2.TabIndex = 1;
@@ -720,6 +690,18 @@
             this.groupBox_NoteList.TabStop = false;
             this.groupBox_NoteList.Text = "노트 목록";
             // 
+            // listView_NoteList
+            // 
+            this.listView_NoteList.Location = new System.Drawing.Point(6, 19);
+            this.listView_NoteList.Name = "listView_NoteList";
+            this.listView_NoteList.Size = new System.Drawing.Size(121, 402);
+            this.listView_NoteList.SmallImageList = this.imageList1;
+            this.listView_NoteList.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView_NoteList.TabIndex = 1;
+            this.listView_NoteList.UseCompatibleStateImageBehavior = false;
+            this.listView_NoteList.View = System.Windows.Forms.View.SmallIcon;
+            this.listView_NoteList.DoubleClick += new System.EventHandler(this.listView_NoteList_DoubleClick);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -732,18 +714,6 @@
             this.imageList1.Images.SetKeyName(5, "icon_6.png");
             this.imageList1.Images.SetKeyName(6, "icon_7.png");
             this.imageList1.Images.SetKeyName(7, "icon_8.png");
-            // 
-            // listView_NoteList
-            // 
-            this.listView_NoteList.Location = new System.Drawing.Point(6, 19);
-            this.listView_NoteList.Name = "listView_NoteList";
-            this.listView_NoteList.Size = new System.Drawing.Size(121, 402);
-            this.listView_NoteList.SmallImageList = this.imageList1;
-            this.listView_NoteList.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView_NoteList.TabIndex = 1;
-            this.listView_NoteList.UseCompatibleStateImageBehavior = false;
-            this.listView_NoteList.View = System.Windows.Forms.View.SmallIcon;
-            this.listView_NoteList.DoubleClick += new System.EventHandler(this.listView_NoteList_DoubleClick);
             // 
             // Form1
             // 
@@ -767,8 +737,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel_Screen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Note4)).EndInit();
@@ -822,8 +790,6 @@
         private System.Windows.Forms.RadioButton radioButton_Tap;
         private System.Windows.Forms.RadioButton radioButton_Snap;
         private System.Windows.Forms.PictureBox pictureBox_Note1;
-        private System.Windows.Forms.PictureBox pictureBox_Note8;
-        private System.Windows.Forms.PictureBox pictureBox_Note7;
         private System.Windows.Forms.PictureBox pictureBox_Note6;
         private System.Windows.Forms.PictureBox pictureBox_Note5;
         private System.Windows.Forms.PictureBox pictureBox_Note4;

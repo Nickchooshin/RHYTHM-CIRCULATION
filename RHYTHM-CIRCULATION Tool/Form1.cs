@@ -19,7 +19,7 @@ namespace RHYTHM_CIRCULATION_Tool
     public partial class Form1 : Form
     {
         private const int MAX_BAR = 500;
-        private const int MAX_NOTE = 8;
+        private const int MAX_NOTE = 6;
 
         private int m_bpm = 120;
         private int m_maxBeat = 16;
@@ -203,8 +203,6 @@ namespace RHYTHM_CIRCULATION_Tool
             m_notePictureBoxList[3] = pictureBox_Note4;
             m_notePictureBoxList[4] = pictureBox_Note5;
             m_notePictureBoxList[5] = pictureBox_Note6;
-            m_notePictureBoxList[6] = pictureBox_Note7;
-            m_notePictureBoxList[7] = pictureBox_Note8;
 
             ReloadNote();
         }
@@ -488,6 +486,7 @@ namespace RHYTHM_CIRCULATION_Tool
             ListBoxUpdate(index);
         }
 
+        // Key Press
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (m_isPlaying)
@@ -504,23 +503,17 @@ namespace RHYTHM_CIRCULATION_Tool
                     case '9':
                         noteNum = 1;
                         break;
-                    case '6':
+                    case '3':
                         noteNum = 2;
                         break;
-                    case '3':
+                    case '2':
                         noteNum = 3;
                         break;
-                    case '2':
+                    case '1':
                         noteNum = 4;
                         break;
-                    case '1':
-                        noteNum = 5;
-                        break;
-                    case '4':
-                        noteNum = 6;
-                        break;
                     case '7':
-                        noteNum = 7;
+                        noteNum = 5;
                         break;
                     case '5':
                         noteNum = 0;
@@ -903,20 +896,20 @@ namespace RHYTHM_CIRCULATION_Tool
             {
                 imgIndex = 3;
             }
+            
+            ListViewItem item = listView_NoteList.FindItemWithText(str);
 
-            if (imgIndex != -1)
+            if (item == null && imgIndex != -1)
             {
-                ListViewItem item = listView_NoteList.FindItemWithText(str);
-
-                if (item == null)
-                {
-                    item = new ListViewItem(str, imgIndex);
-                    listView_NoteList.Items.Add(item);
-                }
-                else
-                {
+                item = new ListViewItem(str, imgIndex);
+                listView_NoteList.Items.Add(item);
+            }
+            else
+            {
+                if (imgIndex != -1)
                     item.ImageIndex = imgIndex;
-                }
+                else
+                    listView_NoteList.Items.Remove(item);
             }
         }
 
