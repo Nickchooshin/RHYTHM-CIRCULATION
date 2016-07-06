@@ -24,7 +24,7 @@ public class NoteManager : MonoBehaviour {
     public GameObject PathPrefab;
     public GameObject RoundTripNotePrefab;
 
-    public Transform[] notePosition = new Transform[8];
+    public Transform[] notePosition = new Transform[6];
 
     public ResultUI resultUIPanel;
     public Score score;
@@ -194,7 +194,7 @@ public class NoteManager : MonoBehaviour {
                 if (type == NoteType.SLIDE)
                 {
                     note.transform.parent.position = new Vector3(0.0f, 0.0f, -1.0f);
-                    note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -45.0f * number);
+                    note.transform.parent.eulerAngles = new Vector3(0.0f, 0.0f, -60.0f * number);
                     note.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                 }
                 else if (type == NoteType.SNAP)
@@ -250,9 +250,11 @@ public class NoteManager : MonoBehaviour {
 
         pathObject.transform.position = new Vector3(0.0f, 0.0f, -0.99f);
         if (slideWay == NoteSlideWay.CLOCKWISE)
-            pathObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, (-45.0f * index) + 11.25f);
+            //pathObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, (-45.0f * index) + 11.25f);
+            pathObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, (-60.0f * index) + 14.23f);
         else
-            pathObject.transform.eulerAngles = new Vector3(0.0f, 180.0f, (45.0f * index) + 11.25f);
+            //pathObject.transform.eulerAngles = new Vector3(0.0f, 180.0f, (45.0f * index) + 11.25f);
+            pathObject.transform.eulerAngles = new Vector3(0.0f, 180.0f, (60.0f * index) + 14.23f);
 
         for (int i = 0; i <= length; i++)
         {

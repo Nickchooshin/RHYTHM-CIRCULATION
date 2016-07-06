@@ -22,10 +22,10 @@ public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
 
     protected override void Init()
     {
-        m_pathAmountMax = Length * 0.125f + 0.0625f;
+        m_pathAmountMax = Length * (1.0f / 6.0f) + (1.0f / 6.0f / 2.0f);
 
         noteImage.fillAmount = 0.0f;
-        pathImage.fillAmount = m_pathAmountMax - 0.0625f;
+        pathImage.fillAmount = m_pathAmountMax - (1.0f / 6.0f / 2.0f);
 
         StartCoroutine("NoteAppear");
     }
@@ -127,10 +127,10 @@ public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
         {
             float time = endTime - Time.time;
 
-            float angle = (-45.0f * Length) * (1.0f - (time / timeLength));
+            float angle = (-60.0f * Length) * (1.0f - (time / timeLength));
             Vector3 vectorAngle;
 
-            if ((int)(angle / -45.0f) > pathNoteCount)
+            if ((int)(angle / -60.0f) > pathNoteCount)
             {
                 ++pathNoteCount;
                 if (m_isDown && m_isEnter)
@@ -140,7 +140,7 @@ public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
             }
 
             if (isRoundTrip)
-                angle = (-45.0f * Length) - angle;
+                angle = (-60.0f * Length) - angle;
             vectorAngle = new Vector3(0.0f, 0.0f, angle);
 
             if (SlideWay == NoteSlideWay.CLOCKWISE)
