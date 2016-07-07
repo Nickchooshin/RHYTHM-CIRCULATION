@@ -108,13 +108,13 @@ public class Score : MonoBehaviour, IJudgeReceiver {
         progressGauge.fillAmount = (m_noteJudgePercent / (float)m_noteNumber);
     }
 
-    public void ScoreRecord(string name, string difficulty)
+    public void ScoreRecord(string name, string difficulty, string rank)
     {
         int highScore = HighScoreManager.Instance.GetHighScore(name, difficulty);
 
         if (m_score > highScore)
         {
-            HighScoreManager.Instance.SetHighScore(name, difficulty, m_score);
+            HighScoreManager.Instance.SetHighScore(name, difficulty, m_score, rank);
             HighScoreManager.Instance.SaveHighScore();
         }
     }

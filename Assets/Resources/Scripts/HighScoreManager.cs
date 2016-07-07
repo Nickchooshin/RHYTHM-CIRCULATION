@@ -10,7 +10,7 @@ public class HighScoreManager {
 
     private static readonly HighScoreManager m_instance = new HighScoreManager();
 
-    private Dictionary<string, int> m_highScore = new Dictionary<string, int>();
+    private Dictionary<string, ScoreData> m_highScore = new Dictionary<string, ScoreData>();
 
     public static HighScoreManager Instance
     {
@@ -40,14 +40,16 @@ public class HighScoreManager {
 
         jsonWriter.WriteArrayStart();
 
-        foreach (KeyValuePair<string, int> items in m_highScore)
+        foreach (KeyValuePair<string, ScoreData> items in m_highScore)
         {
             jsonWriter.WriteObjectStart();
 
             jsonWriter.WritePropertyName("Name");
             jsonWriter.Write(items.Key);
             jsonWriter.WritePropertyName("Score");
-            jsonWriter.Write(items.Value);
+            jsonWriter.Write(items.Value.Score);
+            jsonWriter.WritePropertyName("Rank");
+            jsonWriter.Write(items.Value.Rank);
 
             jsonWriter.WriteObjectEnd();
         }
@@ -75,8 +77,13 @@ public class HighScoreManager {
                 JsonData jsonScore = jsonData[i];
                 string name = jsonScore["Name"].ToString();
                 int score = (int)jsonScore["Score"];
+                string rank = jsonScore["Rank"].ToString();
 
-                m_highScore[name] = score;
+                ScoreData data = new ScoreData();
+                data.Score = score;
+                data.Rank = rank;
+
+                m_highScore[name] = data;
             }
         }
 
@@ -84,11 +91,14 @@ public class HighScoreManager {
         file.Close();
     }
 
-    public void SetHighScore(string name, string difficulty, int score)
+    public void SetHighScore(string name, string difficulty, int score, string rank)
     {
         string key = name + "_" + difficulty;
+        ScoreData data = new ScoreData();
+        data.Score = score;
+        data.Rank = rank;
 
-        m_highScore[key] = score;
+        m_highScore[key] = data;
     }
 
     public int GetHighScore(string name, string difficulty)
@@ -96,9 +106,19 @@ public class HighScoreManager {
         string key = name + "_" + difficulty;
 
         if (m_highScore.ContainsKey(key))
-            return m_highScore[key];
+            return m_highScore[key].Score;
 
         return 0;
+    }
+
+    public string GetHighScoreRank(string name, string difficulty)
+    {
+        string key = name + "_" + difficulty;
+
+        if (m_highScore.ContainsKey(key))
+            return m_highScore[key].Rank;
+
+        return "";
     }
 
     private string pathForDocumentsFile(string filename)

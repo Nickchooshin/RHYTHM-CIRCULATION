@@ -13,6 +13,8 @@ public class List : MonoBehaviour {
     public Text singer;
     public Text level;
     public Button button;
+    public Text mastery;
+    public Text rank;
 
     public JsonData Info
     {
@@ -75,6 +77,30 @@ public class List : MonoBehaviour {
         set
         {
             button.onClick.AddListener(value);
+        }
+    }
+
+    public string Mastery
+    {
+        get
+        {
+            return mastery.text;
+        }
+        set
+        {
+            mastery.text = value;
+        }
+    }
+
+    public string Rank
+    {
+        get
+        {
+            return rank.text;
+        }
+        set
+        {
+            rank.text = value;
         }
     }
 }

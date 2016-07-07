@@ -9,6 +9,8 @@ public class ListManager : MonoBehaviour {
     public Transform listPanel;
     public ListUIButton scriptListUIButton;
 
+    private const float LIST_SPACE = 220.0f;
+
     void Start()
     {
         TextAsset listTextAsset = Resources.Load<TextAsset>("Data/Information/List");
@@ -17,7 +19,7 @@ public class ListManager : MonoBehaviour {
         int listNumber = listData.Count;
         NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
 
-        listPanel.localScale = new Vector3(1.0f, listNumber * 160.0f, 1.0f);
+        listPanel.localScale = new Vector3(1.0f, listNumber * LIST_SPACE, 1.0f);
 
         for (int i = 0; i < listNumber; i++)
         {
@@ -34,9 +36,11 @@ public class ListManager : MonoBehaviour {
             list.Singer = infoData["Singer"].ToString();
             list.Level = "LEVEL " + infoData["Note"][(int)noteDifficulty]["Level"].ToString();
             list.ButtonListener = () => scriptListUIButton.MusicInformationClick(list);
+            list.Mastery = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
+            list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, list.Mastery);
 
             float scaleY = listPanel.localScale.y;
-            float positionY = (-80.0f - (160.0f * i)) / scaleY;
+            float positionY = (-80.0f - (LIST_SPACE * i)) / scaleY;
 
             listObject.transform.SetParent(listPanel);
             listObject.transform.localPosition = new Vector3(0.0f, positionY, 0.0f);
@@ -60,6 +64,8 @@ public class ListManager : MonoBehaviour {
             List list = listObject.GetComponent<List>();
 
             list.Level = "LEVEL " + infoData["Note"][(int)noteDifficulty]["Level"].ToString();
+            list.Mastery = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
+            list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, list.Mastery);
         }
     }
 }

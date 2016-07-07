@@ -91,6 +91,7 @@ public class NoteManager : MonoBehaviour {
 
         JsonData infoData = NoteDataLoader.Instance.InfoData;
         float accuracy = score.Accuracy;
+        string rank = "";
 
         resultUIPanel.Name = infoData["Name"].ToString();
         resultUIPanel.Singer = infoData["Singer"].ToString();
@@ -102,18 +103,19 @@ public class NoteManager : MonoBehaviour {
         resultUIPanel.Score = score.TotalScore.ToString();
         resultUIPanel.Difficulty = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
         if (accuracy >= 96.0f)
-            resultUIPanel.Rank = "S";
+            rank = "S";
         else if (accuracy >= 85.0f)
-            resultUIPanel.Rank = "A";
+            rank = "A";
         else if (accuracy >= 75.0f)
-            resultUIPanel.Rank = "B";
+            rank = "B";
         else if (accuracy >= 70.0f)
-            resultUIPanel.Rank = "C";
+            rank = "C";
         else
-            resultUIPanel.Rank = "F";
+            rank = "F";
+        resultUIPanel.Rank = rank;
         resultUIPanel.gameObject.SetActive(true);
 
-        score.ScoreRecord(infoData["Name"].ToString(), infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString());
+        score.ScoreRecord(infoData["Name"].ToString(), infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString(), rank);
     }
 
     private void CreateNoteList()
