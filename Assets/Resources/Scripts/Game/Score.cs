@@ -7,6 +7,7 @@ public class Score : MonoBehaviour, IJudgeReceiver {
     private int m_score = 0;
     private int m_noteJudgeCount = 0;
     private float m_noteJudgePercent = 0.0f;
+    private int m_noteNumber = 0;
 
     private int m_perfectCount = 0;
     private int m_greatCount = 0;
@@ -15,6 +16,7 @@ public class Score : MonoBehaviour, IJudgeReceiver {
 
     public Text scoreText;
     public Text percentText;
+    public Image progressGauge;
 
     public int PerfectCount
     {
@@ -68,6 +70,9 @@ public class Score : MonoBehaviour, IJudgeReceiver {
     {
         scoreText.text = "000000";
         percentText.text = "0.0 %";
+        progressGauge.fillAmount = 0.0f;
+
+        m_noteNumber = NoteDataLoader.Instance.NoteData["Note"].Count;
 
         NoteJudgeReceiver.Instance.AddJudgeReceiver(this);
     }
@@ -82,10 +87,12 @@ public class Score : MonoBehaviour, IJudgeReceiver {
                 ++m_perfectCount;
                 break;
             case Note.NoteJudge.GREAT:
+                m_noteJudgePercent += 0.7f;
                 m_score += 800;
                 ++m_greatCount;
                 break;
             case Note.NoteJudge.GOOD:
+                m_noteJudgePercent += 0.35f;
                 m_score += 500;
                 ++m_goodCount;
                 break;
@@ -98,6 +105,7 @@ public class Score : MonoBehaviour, IJudgeReceiver {
 
         scoreText.text = TotalScore.ToString("D6");
         percentText.text = Accuracy.ToString("F1") + " %";
+        progressGauge.fillAmount = (m_noteJudgePercent / (float)m_noteNumber);
     }
 
     public void ScoreRecord(string name, string difficulty)

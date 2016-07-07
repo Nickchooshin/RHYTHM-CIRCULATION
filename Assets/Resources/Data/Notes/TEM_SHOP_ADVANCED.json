@@ -21,8 +21,8 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 3,
-            "Bar"       : 8,
-            "Beat"      : 8
+            "Bar"       : 5,
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -40,6 +40,16 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 12,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 13,
             "Beat"      : 0
@@ -50,38 +60,8 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 15,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
             "Number"    : 4,
-            "Bar"       : 20,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 22,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 24,
+            "Bar"       : 13,
             "Beat"      : 8
         },
         {
@@ -91,27 +71,7 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 5,
-            "Bar"       : 28,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 29,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 31,
+            "Bar"       : 14,
             "Beat"      : 0
         },
         {
@@ -121,6 +81,106 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 0,
+            "Bar"       : 14,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 15,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 20,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 21,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 22,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 24,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 25,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 3,
+            "Length" : 2,
+            "SlideTime" : 15,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 28,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 3,
+            "Length" : 2,
+            "SlideTime" : 15,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 29,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 31,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
             "Bar"       : 36,
             "Beat"      : 8
         },
@@ -135,12 +195,12 @@
             "Beat"      : 8
         },
         {
-            "Type" : 1,
-            "Length" : 0,
+            "Type" : 2,
+            "Length" : 47,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 4,
+            "Number"    : 0,
             "Bar"       : 44,
             "Beat"      : 8
         },
@@ -150,18 +210,8 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 47,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 52,
+            "Number"    : 4,
+            "Bar"       : 48,
             "Beat"      : 4
         },
         {
@@ -171,6 +221,26 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 1,
+            "Bar"       : 49,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 11,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 52,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 2,
+            "Length" : 11,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
             "Bar"       : 53,
             "Beat"      : 0
         },
@@ -180,7 +250,7 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 4,
+            "Number"    : 0,
             "Bar"       : 56,
             "Beat"      : 4
         },
@@ -190,7 +260,7 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 2,
+            "Number"    : 3,
             "Bar"       : 57,
             "Beat"      : 0
         },
@@ -200,19 +270,19 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 3,
+            "Number"    : 5,
             "Bar"       : 60,
             "Beat"      : 4
         },
         {
-            "Type" : 4,
+            "Type" : 1,
             "Length" : 0,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 63,
-            "Beat"      : 8
+            "Number"    : 2,
+            "Bar"       : 61,
+            "Beat"      : 0
         },
         {
             "Type" : 4,
@@ -223,6 +293,16 @@
             "Number"    : 0,
             "Bar"       : 0,
             "Beat"      : 0
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 63,
+            "Beat"      : 8
         },
         {
             "Type" : 4,
