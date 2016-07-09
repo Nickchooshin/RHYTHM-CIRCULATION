@@ -19,6 +19,13 @@ public class ListUIButton : MonoBehaviour {
     void Start()
     {
         ChangeDifficulty(NoteDataLoader.Instance.NoteDifficulty);
+
+        AudioManager.Instance.LoadSEClip("Narration/02. [narration] List", "List");
+        AudioManager.Instance.LoadSEClip("Narration/06. [narration] Information", "Information");
+        AudioManager.Instance.LoadSEClip("Narration/03. [narration] Advanced", "Advanced");
+        AudioManager.Instance.LoadSEClip("Narration/04. [narration] Basic", "Basic");
+        AudioManager.Instance.LoadSEClip("Narration/05. [narration] Extreme", "Extreme");
+        AudioManager.Instance.LoadSEClip("SE/03. [SE] button", "Button");
     }
 
     public void BackButtonClick()
@@ -29,16 +36,22 @@ public class ListUIButton : MonoBehaviour {
     public void BasicButtonClick()
     {
         ChangeDifficulty(NoteDataLoader.DifficultyType.BASIC);
+        
+        AudioManager.Instance.PlaySE("Basic");
     }
 
     public void AdvancedButtonClick()
     {
         ChangeDifficulty(NoteDataLoader.DifficultyType.ADVANCED);
+
+        AudioManager.Instance.PlaySE("Advanced");
     }
 
     public void ExtremeButtonClick()
     {
         ChangeDifficulty(NoteDataLoader.DifficultyType.EXTREME);
+
+        AudioManager.Instance.PlaySE("Extreme");
     }
 
     private void ChangeDifficulty(NoteDataLoader.DifficultyType noteDifficulty)
@@ -79,6 +92,7 @@ public class ListUIButton : MonoBehaviour {
         float previewStartTime = (float)((double)infoData["Preview_Start"]);
         float previewEndTime = (float)((double)infoData["Preview_End"]);
         AudioManager.Instance.PlaySection(previewStartTime, previewEndTime, true);
+        AudioManager.Instance.PlaySE("Information");
     }
 
     public void ShowInformation()
@@ -87,10 +101,12 @@ public class ListUIButton : MonoBehaviour {
         InformationUIPanel.gameObject.SetActive(m_isInformationShow);
 
         AudioManager.Instance.Stop();
+        AudioManager.Instance.PlaySE("Button");
         if (!m_isInformationShow)
         {
             AudioManager.Instance.SetAudioClip("BGM/03. [BGM] List");
             AudioManager.Instance.Play();
+            AudioManager.Instance.PlaySE("List");
         }
     }
 

@@ -1692,7 +1692,7 @@ MonoBehaviour:
   TapNotePrefab: {fileID: 165540, guid: 25ba7a7f5bd1cd44e9337555704f2887, type: 2}
   LongNotePrefab: {fileID: 125158, guid: a50e0a708c3581947bdee7b0a2ab0e92, type: 2}
   SlideNotePrefab: {fileID: 133524, guid: 086420b769818d54ab4f893033c1aa62, type: 2}
-  SnapNotePrefab: {fileID: 191340, guid: 02bd71fe9f7a0464e8d8bce10dc75296, type: 2}
+  SnapNotePrefab: {fileID: 173356, guid: 02bd71fe9f7a0464e8d8bce10dc75296, type: 2}
   PathPrefab: {fileID: 174646, guid: 94011d0f0f1a6ec46a0a6604ef16b2f9, type: 2}
   RoundTripNotePrefab: {fileID: 128590, guid: 34c13dd1991129a4fba1f1eb93c4ca8a, type: 2}
   notePosition:
@@ -4446,7 +4446,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016127803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 290033772}

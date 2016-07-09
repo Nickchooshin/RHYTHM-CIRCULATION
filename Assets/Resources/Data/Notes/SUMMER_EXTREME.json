@@ -2,7 +2,7 @@
 {
     "BPM" : 90,
     "MaxBeat" : 16,
-    "NoteDelay" : 0,
+    "NoteDelay" : 100,
     "Note"      : [
         {
             "Type" : 1,
@@ -306,7 +306,7 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 7,
             "SlideWay"  : 0,
             "RoundTrip" : false,
@@ -316,7 +316,7 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 7,
             "SlideWay"  : 0,
             "RoundTrip" : false,
@@ -862,7 +862,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 63,
-            "Beat"      : 0
+            "Beat"      : 4
         },
         {
             "Type" : 3,
@@ -872,7 +872,7 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 63,
-            "Beat"      : 8
+            "Beat"      : 12
         },
         {
             "Type" : 1,
@@ -2175,56 +2175,6 @@
             "Beat"      : 4
         },
         {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
             "Type" : 1,
             "Length" : 0,
             "SlideTime" : 0,
@@ -2536,82 +2486,22 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 7,
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 0,
             "Bar"       : 172,
-            "Beat"      : 8
+            "Beat"      : 12
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 7,
             "SlideWay"  : 1,
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 173,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 173,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 173,
-            "Beat"      : 12
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 173,
-            "Beat"      : 12
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 174,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 174,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 175,
             "Beat"      : 4
         },
         {
@@ -2621,17 +2511,7 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 3,
-            "Bar"       : 175,
-            "Beat"      : 4
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 175,
+            "Bar"       : 174,
             "Beat"      : 12
         },
         {
@@ -2825,56 +2705,6 @@
             "Beat"      : 4
         },
         {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
             "Type" : 1,
             "Length" : 0,
             "SlideTime" : 0,
@@ -2926,7 +2756,7 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 15,
             "SlideWay"  : 1,
             "RoundTrip" : false,
@@ -2986,7 +2816,7 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 15,
             "SlideWay"  : 1,
             "RoundTrip" : false,

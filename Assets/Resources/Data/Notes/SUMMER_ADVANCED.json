@@ -2,7 +2,7 @@
 {
     "BPM" : 90,
     "MaxBeat" : 16,
-    "NoteDelay" : 0,
+    "NoteDelay" : 100,
     "Note"      : [
         {
             "Type" : 1,
@@ -773,56 +773,6 @@
             "Number"    : 0,
             "Bar"       : 76,
             "Beat"      : 8
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
         },
         {
             "Type" : 1,

@@ -2,7 +2,7 @@
 {
     "BPM" : 95,
     "MaxBeat" : 16,
-    "NoteDelay" : 0,
+    "NoteDelay" : 100,
     "Note"      : [
         {
             "Type" : 1,
@@ -146,21 +146,21 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
-            "SlideTime" : 15,
+            "Length" : 1,
+            "SlideTime" : 7,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
+            "Number"    : 5,
             "Bar"       : 28,
             "Beat"      : 0
         },
         {
             "Type" : 3,
-            "Length" : 2,
-            "SlideTime" : 15,
+            "Length" : 1,
+            "SlideTime" : 7,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 3,
+            "Number"    : 2,
             "Bar"       : 29,
             "Beat"      : 0
         },
@@ -290,59 +290,9 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 63,
             "Beat"      : 8
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 0,
-            "Beat"      : 0
         }
     ]
 }

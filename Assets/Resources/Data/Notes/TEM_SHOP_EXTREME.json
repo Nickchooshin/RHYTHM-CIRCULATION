@@ -2,7 +2,7 @@
 {
     "BPM" : 95,
     "MaxBeat" : 16,
-    "NoteDelay" : 0,
+    "NoteDelay" : 100,
     "Note"      : [
         {
             "Type" : 1,
@@ -136,8 +136,8 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
-            "SlideTime" : 16,
+            "Length" : 1,
+            "SlideTime" : 15,
             "SlideWay"  : 1,
             "RoundTrip" : false,
             "Number"    : 5,
@@ -256,8 +256,8 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
-            "SlideTime" : 5,
+            "Length" : 1,
+            "SlideTime" : 7,
             "SlideWay"  : 1,
             "RoundTrip" : false,
             "Number"    : 1,
@@ -266,8 +266,8 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
-            "SlideTime" : 5,
+            "Length" : 1,
+            "SlideTime" : 7,
             "SlideWay"  : 1,
             "RoundTrip" : false,
             "Number"    : 4,
@@ -386,7 +386,7 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 12,
             "SlideWay"  : 1,
             "RoundTrip" : false,
@@ -696,11 +696,11 @@
         },
         {
             "Type" : 3,
-            "Length" : 2,
+            "Length" : 1,
             "SlideTime" : 12,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 1,
+            "Number"    : 2,
             "Bar"       : 57,
             "Beat"      : 12
         },
