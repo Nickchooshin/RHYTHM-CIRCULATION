@@ -91,6 +91,7 @@ public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
                 m_noteJudge = NoteJudge.GOOD;
 
             NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
+            NoteSE();
             m_isMoving = true;
         }
     }
@@ -134,9 +135,15 @@ public class SlideNote : Note, IPointerEnterHandler, IPointerExitHandler {
             {
                 ++pathNoteCount;
                 if (m_isDown && m_isEnter)
+                {
                     NoteJudgeReceiver.Instance.SendNoteJudge(Note.NoteJudge.PERFECT);
+                    NoteSE();
+                }
                 else
+                {
                     NoteJudgeReceiver.Instance.SendNoteJudge(Note.NoteJudge.BAD);
+                    NoteSE();
+                }
             }
 
             if (isRoundTrip)

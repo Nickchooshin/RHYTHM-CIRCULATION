@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Rhythm_Circulation;
+
 public class NoteJudgeUI : MonoBehaviour, IJudgeReceiver {
 
     private float m_beatTime = 0.0f;

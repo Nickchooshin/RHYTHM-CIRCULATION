@@ -26,6 +26,12 @@ public class GameStart : MonoBehaviour {
 
         AudioManager.Instance.SetAudioClip("Music/" + infoData["Music"].ToString());
 
+        AudioManager.Instance.LoadSEClip("SE/04. [SE] Perfect_01", "Perfect_01");
+        AudioManager.Instance.LoadSEClip("SE/04. [SE] Perfect_02", "Perfect_02");
+        AudioManager.Instance.LoadSEClip("SE/04. [SE] Perfect_03", "Perfect_03");
+        AudioManager.Instance.LoadSEClip("SE/07. [SE] Other", "Other");
+        AudioManager.Instance.LoadSEClip("SE/08. [SE] Miss", "Miss");
+
         noteManager.SendMessage("StartInit");
     }
 }

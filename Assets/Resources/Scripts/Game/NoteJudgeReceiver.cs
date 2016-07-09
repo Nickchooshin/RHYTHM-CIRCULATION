@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using Rhythm_Circulation;
+
 public class NoteJudgeReceiver {
 
     private static readonly NoteJudgeReceiver m_instance = new NoteJudgeReceiver();

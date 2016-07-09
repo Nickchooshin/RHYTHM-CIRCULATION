@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using Rhythm_Circulation;
+
 public class NoteCombo : MonoBehaviour, IJudgeReceiver {
 
     public Text countText;

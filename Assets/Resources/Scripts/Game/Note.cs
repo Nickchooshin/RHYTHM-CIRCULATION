@@ -121,12 +121,43 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         Debug.Log(m_noteJudge);
         NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
+        NoteSE();
 
         GameObject prefab = Resources.Load<GameObject>("3D Particles/Prefabs/Effect");
         prefab.transform.position = transform.position;
         GameObject effect = MonoBehaviour.Instantiate<GameObject>(prefab);
 
         Destroy(gameObject);
+    }
+
+    protected void NoteSE()
+    {
+        if (m_noteJudge == NoteJudge.PERFECT)
+        {
+            switch (Type)
+            {
+                case NoteType.TAP:
+                case NoteType.LONG:
+                    AudioManager.Instance.PlaySE("Perfect_01");
+                    break;
+
+                case NoteType.SLIDE:
+                    AudioManager.Instance.PlaySE("Perfect_02");
+                    break;
+
+                case NoteType.SNAP:
+                    AudioManager.Instance.PlaySE("Perfect_03");
+                    break;
+            }
+        }
+        else if (m_noteJudge == NoteJudge.BAD)
+        {
+            AudioManager.Instance.PlaySE("Miss");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySE("Other");
+        }
     }
 
     protected virtual IEnumerator NoteAppear()
@@ -159,6 +190,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public abstract void OnPointerDown(PointerEventData eventData);
     public virtual void OnPointerUp(PointerEventData eventData)
     {
+        m_noteJudge = NoteJudge.BAD;
         DeleteNote();
     }
 }

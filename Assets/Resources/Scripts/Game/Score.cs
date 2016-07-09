@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using Rhythm_Circulation;
+
 public class Score : MonoBehaviour, IJudgeReceiver {
 
     private int m_score = 0;
