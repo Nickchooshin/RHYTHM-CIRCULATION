@@ -537,6 +537,8 @@ namespace RHYTHM_CIRCULATION_Tool
             InitNote();
 
             ReloadNote();
+
+            saveFileDialog1.FileName = "";
         }
 
         // Open
@@ -603,6 +605,8 @@ namespace RHYTHM_CIRCULATION_Tool
             reader.Close();
 
             ReloadNote();
+
+            saveFileDialog1.FileName = openFileDialog1.FileName;
         }
 
         // Save
