@@ -12,7 +12,7 @@ public class ResultUI : MonoBehaviour {
     public Text miss;
     public Text accuracy;
     public Text score;
-    public Text difficulty;
+    public Text mastery;
     public Text rank;
 
     public string Name
@@ -79,11 +79,11 @@ public class ResultUI : MonoBehaviour {
         }
     }
 
-    public string Difficulty
+    public string Mastery
     {
         set
         {
-            difficulty.text = value;
+            mastery.text = value;
         }
     }
 

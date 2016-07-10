@@ -316,7 +316,7 @@ MonoBehaviour:
   miss: {fileID: 325347015}
   accuracy: {fileID: 696453177}
   score: {fileID: 781913914}
-  difficulty: {fileID: 962673013}
+  mastery: {fileID: 962673013}
   rank: {fileID: 870413040}
 --- !u!1 &120580171
 GameObject:
@@ -2294,7 +2294,7 @@ GameObject:
   - 222: {fileID: 962673014}
   - 114: {fileID: 962673013}
   m_Layer: 5
-  m_Name: Result_Difficulty
+  m_Name: Result_Mastery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

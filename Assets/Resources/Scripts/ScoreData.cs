@@ -5,6 +5,7 @@ public class ScoreData {
 
     private int m_score = 0;
     private string m_rank = "";
+    private string m_mastery = "";
 
     public int Score
     {
@@ -27,6 +28,18 @@ public class ScoreData {
         set
         {
             m_rank = value;
+        }
+    }
+
+    public string Mastery
+    {
+        get
+        {
+            return m_mastery;
+        }
+        set
+        {
+            m_mastery = value;
         }
     }
 

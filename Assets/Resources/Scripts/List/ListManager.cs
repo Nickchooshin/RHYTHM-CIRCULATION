@@ -36,8 +36,8 @@ public class ListManager : MonoBehaviour {
             list.Singer = infoData["Singer"].ToString();
             list.Level = "LEVEL " + infoData["Note"][(int)noteDifficulty]["Level"].ToString();
             list.ButtonListener = () => scriptListUIButton.MusicInformationClick(list);
-            list.Mastery = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
-            list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, list.Mastery);
+            list.Mastery = HighScoreManager.Instance.GetHighScoreMastery(list.Name, infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString());
+            list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString());
 
             float scaleY = listPanel.localScale.y;
             float positionY = (-110.0f - (LIST_SPACE * i)) / scaleY;
@@ -64,8 +64,8 @@ public class ListManager : MonoBehaviour {
             List list = listObject.GetComponent<List>();
 
             list.Level = "LEVEL " + infoData["Note"][(int)noteDifficulty]["Level"].ToString();
-            list.Mastery = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
-            list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, list.Mastery);
+            list.Mastery = HighScoreManager.Instance.GetHighScoreMastery(list.Name, infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString());
+            list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString());
         }
     }
 }

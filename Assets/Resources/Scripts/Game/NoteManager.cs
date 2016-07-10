@@ -82,8 +82,7 @@ public class NoteManager : MonoBehaviour {
         yield return new WaitForSeconds(m_musicTime);
 
         StopCoroutine("GameStart");
-
-        //
+        
         float accuracy = score.Accuracy;
         string rank = "";
 
@@ -128,7 +127,6 @@ public class NoteManager : MonoBehaviour {
             AudioManager.Instance.Play();
             yield return new WaitForSeconds(2.0f);
         }
-        //
 
         AudioManager.Instance.Stop();
         AudioManager.Instance.SetAudioClip("BGM/04. [BGM] Result");
@@ -139,8 +137,6 @@ public class NoteManager : MonoBehaviour {
         NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
 
         JsonData infoData = NoteDataLoader.Instance.InfoData;
-        //float accuracy = score.Accuracy;
-        //string rank = "";
 
         resultUIPanel.Name = infoData["Name"].ToString();
         resultUIPanel.Singer = infoData["Singer"].ToString();
@@ -150,21 +146,11 @@ public class NoteManager : MonoBehaviour {
         resultUIPanel.Miss = score.MissCount.ToString();
         resultUIPanel.Accuracy = score.Accuracy.ToString("F1") + "%";
         resultUIPanel.Score = score.TotalScore.ToString();
-        resultUIPanel.Difficulty = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
-        /*if (accuracy >= 96.0f)
-            rank = "S";
-        else if (accuracy >= 85.0f)
-            rank = "A";
-        else if (accuracy >= 75.0f)
-            rank = "B";
-        else if (accuracy >= 70.0f)
-            rank = "C";
-        else
-            rank = "F";*/
+        resultUIPanel.Mastery = score.Mastery;
         resultUIPanel.Rank = rank;
         resultUIPanel.gameObject.SetActive(true);
 
-        score.ScoreRecord(infoData["Name"].ToString(), infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString(), rank);
+        score.ScoreRecord(infoData["Name"].ToString(), infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString(), rank, score.Mastery);
     }
 
     private void CreateNoteList()

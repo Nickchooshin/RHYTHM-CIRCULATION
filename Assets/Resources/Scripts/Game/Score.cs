@@ -15,6 +15,8 @@ public class Score : MonoBehaviour, IJudgeReceiver {
     private int m_greatCount = 0;
     private int m_goodCount = 0;
     private int m_missCount = 0;
+    private int m_combo = 0;
+    private int m_maxCombo = 0;
 
     public Text scoreText;
     public Text percentText;
@@ -68,6 +70,23 @@ public class Score : MonoBehaviour, IJudgeReceiver {
         }
     }
 
+    public string Mastery
+    {
+        get
+        {
+            float comboPercent = ((float)m_maxCombo / (float)m_noteNumber) * 100.0f;
+
+            if (comboPercent >= 100.0f)
+                return "MASTER";
+            else if (comboPercent >= 70.0f)
+                return "EXPERT";
+            else if (comboPercent >= 30.0f)
+                return "BEGINNER";
+
+            return "";
+        }
+    }
+
     void Start()
     {
         scoreText.text = "000000";
@@ -87,21 +106,28 @@ public class Score : MonoBehaviour, IJudgeReceiver {
                 m_noteJudgePercent += 1.0f;
                 m_score += 1000;
                 ++m_perfectCount;
+                ++m_combo;
                 break;
             case Note.NoteJudge.GREAT:
                 m_noteJudgePercent += 0.7f;
                 m_score += 800;
                 ++m_greatCount;
+                ++m_combo;
                 break;
             case Note.NoteJudge.GOOD:
                 m_noteJudgePercent += 0.35f;
                 m_score += 500;
                 ++m_goodCount;
+                ++m_combo;
                 break;
             case Note.NoteJudge.BAD:
                 ++m_missCount;
+                m_combo = 0;
                 break;
         }
+
+        if (m_combo >= m_maxCombo)
+            m_maxCombo = m_combo;
 
         ++m_noteJudgeCount;
 
@@ -110,13 +136,13 @@ public class Score : MonoBehaviour, IJudgeReceiver {
         progressGauge.fillAmount = (m_noteJudgePercent / (float)m_noteNumber);
     }
 
-    public void ScoreRecord(string name, string difficulty, string rank)
+    public void ScoreRecord(string name, string difficulty, string rank, string mastery)
     {
         int highScore = HighScoreManager.Instance.GetHighScore(name, difficulty);
 
         if (m_score > highScore)
         {
-            HighScoreManager.Instance.SetHighScore(name, difficulty, m_score, rank);
+            HighScoreManager.Instance.SetHighScore(name, difficulty, m_score, rank, mastery);
             HighScoreManager.Instance.SaveHighScore();
         }
     }

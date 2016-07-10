@@ -50,6 +50,8 @@ public class HighScoreManager {
             jsonWriter.Write(items.Value.Score);
             jsonWriter.WritePropertyName("Rank");
             jsonWriter.Write(items.Value.Rank);
+            jsonWriter.WritePropertyName("Mastery");
+            jsonWriter.Write(items.Value.Mastery);
 
             jsonWriter.WriteObjectEnd();
         }
@@ -78,10 +80,12 @@ public class HighScoreManager {
                 string name = jsonScore["Name"].ToString();
                 int score = (int)jsonScore["Score"];
                 string rank = jsonScore["Rank"].ToString();
+                string mastery = jsonScore["Mastery"].ToString();
 
                 ScoreData data = new ScoreData();
                 data.Score = score;
                 data.Rank = rank;
+                data.Mastery = mastery;
 
                 m_highScore[name] = data;
             }
@@ -91,12 +95,13 @@ public class HighScoreManager {
         file.Close();
     }
 
-    public void SetHighScore(string name, string difficulty, int score, string rank)
+    public void SetHighScore(string name, string difficulty, int score, string rank, string mastery)
     {
         string key = name + "_" + difficulty;
         ScoreData data = new ScoreData();
         data.Score = score;
         data.Rank = rank;
+        data.Mastery = mastery;
 
         m_highScore[key] = data;
     }
@@ -117,6 +122,16 @@ public class HighScoreManager {
 
         if (m_highScore.ContainsKey(key))
             return m_highScore[key].Rank;
+
+        return "";
+    }
+
+    public string GetHighScoreMastery(string name, string difficulty)
+    {
+        string key = name + "_" + difficulty;
+
+        if (m_highScore.ContainsKey(key))
+            return m_highScore[key].Mastery;
 
         return "";
     }
