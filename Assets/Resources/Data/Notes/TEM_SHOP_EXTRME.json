@@ -1,8 +1,8 @@
 
 {
-    "BPM" : 98,
+    "BPM" : 95,
     "MaxBeat" : 16,
-    "NoteDelay" : 990,
+    "NoteDelay" : 200,
     "Note"      : [
         {
             "Type" : 1,
@@ -10,8 +10,8 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 0,
+            "Number"    : 0,
+            "Bar"       : 4,
             "Beat"      : 8
         },
         {
@@ -20,8 +20,18 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 5,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
             "Number"    : 2,
-            "Bar"       : 1,
+            "Bar"       : 6,
             "Beat"      : 0
         },
         {
@@ -31,8 +41,18 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 4,
-            "Bar"       : 2,
-            "Beat"      : 4
+            "Bar"       : 6,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 6,
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -41,18 +61,8 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 5,
-            "Bar"       : 4,
-            "Beat"      : 4
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
             "Bar"       : 6,
-            "Beat"      : 4
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -61,8 +71,8 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 0,
-            "Bar"       : 8,
-            "Beat"      : 4
+            "Bar"       : 6,
+            "Beat"      : 12
         },
         {
             "Type" : 1,
@@ -70,8 +80,18 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 10,
+            "Number"    : 5,
+            "Bar"       : 12,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 12,
             "Beat"      : 4
         },
         {
@@ -82,7 +102,17 @@
             "RoundTrip" : false,
             "Number"    : 3,
             "Bar"       : 12,
-            "Beat"      : 4
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 13,
+            "Beat"      : 0
         },
         {
             "Type" : 1,
@@ -92,76 +122,26 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 13,
-            "Beat"      : 12
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 14,
             "Beat"      : 4
         },
         {
             "Type" : 1,
             "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 15,
-            "Beat"      : 4
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 16,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 17,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 17,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 18,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 3,
-            "Bar"       : 19,
+            "Bar"       : 13,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 3,
+            "Length" : 1,
+            "SlideTime" : 15,
+            "SlideWay"  : 1,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 14,
             "Beat"      : 0
         },
         {
@@ -170,9 +150,29 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 21,
-            "Beat"      : 0
+            "Number"    : 4,
+            "Bar"       : 16,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 17,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 20,
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -182,7 +182,17 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 21,
-            "Beat"      : 8
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 22,
+            "Beat"      : 0
         },
         {
             "Type" : 1,
@@ -192,46 +202,6 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 22,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 23,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 25,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 27,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 27,
             "Beat"      : 8
         },
         {
@@ -240,17 +210,67 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 3,
+            "Number"    : 4,
+            "Bar"       : 22,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 22,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 22,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 24,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 25,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 3,
+            "Length" : 1,
+            "SlideTime" : 7,
+            "SlideWay"  : 1,
+            "RoundTrip" : false,
+            "Number"    : 1,
             "Bar"       : 28,
             "Beat"      : 0
         },
         {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
+            "Type" : 3,
+            "Length" : 1,
+            "SlideTime" : 7,
+            "SlideWay"  : 1,
             "RoundTrip" : false,
-            "Number"    : 0,
+            "Number"    : 4,
             "Bar"       : 29,
             "Beat"      : 0
         },
@@ -260,6 +280,26 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 30,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 30,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 31,
             "Beat"      : 0
@@ -270,8 +310,8 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 31,
+            "Number"    : 4,
+            "Bar"       : 32,
             "Beat"      : 8
         },
         {
@@ -280,19 +320,29 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 33,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
             "Number"    : 3,
-            "Bar"       : 32,
+            "Bar"       : 34,
             "Beat"      : 0
         },
         {
-            "Type" : 2,
-            "Length" : 15,
+            "Type" : 1,
+            "Length" : 0,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 0,
-            "Bar"       : 33,
-            "Beat"      : 0
+            "Bar"       : 34,
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -301,27 +351,7 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 5,
-            "Bar"       : 35,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 35,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 35,
+            "Bar"       : 34,
             "Beat"      : 12
         },
         {
@@ -330,9 +360,9 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 37,
-            "Beat"      : 0
+            "Number"    : 4,
+            "Bar"       : 35,
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -340,8 +370,28 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 39,
+            "Number"    : 2,
+            "Bar"       : 36,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 37,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 3,
+            "Length" : 1,
+            "SlideTime" : 12,
+            "SlideWay"  : 1,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 38,
             "Beat"      : 0
         },
         {
@@ -352,7 +402,7 @@
             "RoundTrip" : false,
             "Number"    : 2,
             "Bar"       : 39,
-            "Beat"      : 8
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -362,7 +412,7 @@
             "RoundTrip" : false,
             "Number"    : 3,
             "Bar"       : 39,
-            "Beat"      : 12
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -370,9 +420,9 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 41,
-            "Beat"      : 0
+            "Number"    : 5,
+            "Bar"       : 40,
+            "Beat"      : 8
         },
         {
             "Type" : 1,
@@ -382,6 +432,66 @@
             "RoundTrip" : false,
             "Number"    : 1,
             "Bar"       : 41,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 42,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 42,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 42,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 15,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 43,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 44,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 44,
             "Beat"      : 8
         },
         {
@@ -391,8 +501,8 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 3,
-            "Bar"       : 43,
-            "Beat"      : 0
+            "Bar"       : 45,
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -401,28 +511,28 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 4,
-            "Bar"       : 43,
-            "Beat"      : 8
+            "Bar"       : 45,
+            "Beat"      : 4
         },
         {
-            "Type" : 2,
-            "Length" : 15,
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 45,
+            "Beat"      : 15
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 5,
             "Bar"       : 45,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 47,
-            "Beat"      : 0
+            "Beat"      : 15
         },
         {
             "Type" : 1,
@@ -431,8 +541,8 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 0,
-            "Bar"       : 49,
-            "Beat"      : 0
+            "Bar"       : 46,
+            "Beat"      : 7
         },
         {
             "Type" : 1,
@@ -440,8 +550,18 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 49,
+            "Number"    : 3,
+            "Bar"       : 46,
+            "Beat"      : 11
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 47,
             "Beat"      : 8
         },
         {
@@ -451,17 +571,77 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 4,
-            "Bar"       : 50,
-            "Beat"      : 0
+            "Bar"       : 47,
+            "Beat"      : 8
         },
         {
             "Type" : 2,
-            "Length" : 15,
+            "Length" : 47,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 48,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 49,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 49,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 50,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 3,
-            "Bar"       : 51,
+            "Bar"       : 50,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 2,
+            "Length" : 47,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 52,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 53,
             "Beat"      : 0
         },
         {
@@ -472,7 +652,7 @@
             "RoundTrip" : false,
             "Number"    : 0,
             "Bar"       : 53,
-            "Beat"      : 0
+            "Beat"      : 12
         },
         {
             "Type" : 1,
@@ -480,9 +660,29 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 53,
+            "Number"    : 4,
+            "Bar"       : 54,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 54,
             "Beat"      : 8
+        },
+        {
+            "Type" : 2,
+            "Length" : 47,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 56,
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -491,58 +691,28 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 2,
-            "Bar"       : 54,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 55,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 3,
-            "Length" : 1,
-            "SlideTime" : 15,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
             "Bar"       : 57,
             "Beat"      : 0
         },
         {
+            "Type" : 3,
+            "Length" : 1,
+            "SlideTime" : 12,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 57,
+            "Beat"      : 12
+        },
+        {
             "Type" : 1,
             "Length" : 0,
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 2,
+            "Number"    : 1,
             "Bar"       : 60,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 64,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 65,
-            "Beat"      : 0
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -551,7 +721,17 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 5,
-            "Bar"       : 66,
+            "Bar"       : 60,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 61,
             "Beat"      : 0
         },
         {
@@ -561,7 +741,7 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 4,
-            "Bar"       : 67,
+            "Bar"       : 61,
             "Beat"      : 0
         },
         {
@@ -570,9 +750,19 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 61,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
             "Number"    : 0,
-            "Bar"       : 69,
-            "Beat"      : 0
+            "Bar"       : 62,
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -581,67 +771,7 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 1,
-            "Bar"       : 70,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 71,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 72,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 74,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 76,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 77,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 77,
+            "Bar"       : 62,
             "Beat"      : 8
         },
         {
@@ -650,39 +780,19 @@
             "SlideTime" : 0,
             "SlideWay"  : 0,
             "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 78,
-            "Beat"      : 0
+            "Number"    : 5,
+            "Bar"       : 62,
+            "Beat"      : 8
         },
         {
-            "Type" : 3,
-            "Length" : 1,
-            "SlideTime" : 15,
-            "SlideWay"  : 1,
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 2,
-            "Bar"       : 79,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 82,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 84,
-            "Beat"      : 0
+            "Bar"       : 63,
+            "Beat"      : 4
         },
         {
             "Type" : 1,
@@ -691,328 +801,8 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 4,
-            "Bar"       : 85,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 85,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 86,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 3,
-            "Length" : 1,
-            "SlideTime" : 15,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 87,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 90,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 92,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 93,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 93,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 94,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 3,
-            "Length" : 1,
-            "SlideTime" : 15,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 95,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 98,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 98,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 102,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 102,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 104,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 104,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 3,
-            "Length" : 1,
-            "SlideTime" : 9,
-            "SlideWay"  : 1,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 106,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 3,
-            "Length" : 1,
-            "SlideTime" : 9,
-            "SlideWay"  : 1,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 110,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 113,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 113,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 115,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 115,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 116,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 117,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 5,
-            "Bar"       : 117,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 119,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 119,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 1,
-            "Bar"       : 120,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 4,
-            "Bar"       : 121,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 2,
-            "Bar"       : 121,
-            "Beat"      : 8
-        },
-        {
-            "Type" : 2,
-            "Length" : 15,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 122,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 1,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 3,
-            "Bar"       : 124,
-            "Beat"      : 0
-        },
-        {
-            "Type" : 4,
-            "Length" : 0,
-            "SlideTime" : 0,
-            "SlideWay"  : 0,
-            "RoundTrip" : false,
-            "Number"    : 0,
-            "Bar"       : 128,
-            "Beat"      : 0
+            "Bar"       : 63,
+            "Beat"      : 4
         }
     ]
 }

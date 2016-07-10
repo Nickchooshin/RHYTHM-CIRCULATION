@@ -2,7 +2,7 @@
 {
     "BPM" : 98,
     "MaxBeat" : 16,
-    "NoteDelay" : 890,
+    "NoteDelay" : 990,
     "Note"      : [
         {
             "Type" : 1,
