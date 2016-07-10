@@ -78,9 +78,9 @@ public class Score : MonoBehaviour, IJudgeReceiver {
 
             if (comboPercent >= 100.0f)
                 return "MASTER";
-            else if (comboPercent >= 70.0f)
+            else if (comboPercent >= 80.0f)
                 return "EXPERT";
-            else if (comboPercent >= 30.0f)
+            else if (comboPercent >= 60.0f)
                 return "BEGINNER";
 
             return "";

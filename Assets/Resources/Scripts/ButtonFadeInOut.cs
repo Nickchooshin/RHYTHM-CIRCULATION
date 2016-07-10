@@ -7,7 +7,7 @@ public class ButtonFadeInOut : MonoBehaviour
     public Image buttonImage;
     public float fadeInOutTime = 1.0f;
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine("FadeInOut");
     }

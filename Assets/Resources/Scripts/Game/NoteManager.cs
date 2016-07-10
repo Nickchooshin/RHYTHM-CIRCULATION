@@ -296,7 +296,7 @@ public class NoteManager : MonoBehaviour {
         for (int i = 0; i <= length; i++)
         {
             GameObject roundTripObject = Instantiate<GameObject>(RoundTripNotePrefab);
-            roundTripObject.transform.position = notePosition[i + 1].position;
+            roundTripObject.transform.position = notePosition[(i + 1) % 6].position;
             m_roundTripDictionary.Add(roundTripObject, pathObject);
 
             if (roundTrip)

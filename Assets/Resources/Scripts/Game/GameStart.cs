@@ -49,7 +49,7 @@ public class GameStart : MonoBehaviour {
 
         yield return new WaitForSeconds(2.0f);
 
-        ReadyStartText.text = "START!";
+        ReadyStartText.text = "- START! -";
         AudioManager.Instance.PlaySE("Start");
 
         yield return new WaitForSeconds(2.0f);

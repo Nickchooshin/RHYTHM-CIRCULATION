@@ -171,8 +171,738 @@
             "SlideWay"  : 0,
             "RoundTrip" : false,
             "Number"    : 2,
-            "Bar"       : 41,
+            "Bar"       : 42,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 44,
             "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 44,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 49,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 50,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 53,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 54,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 7,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 55,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 58,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 27,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 62,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 66,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 68,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 70,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 72,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 74,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 78,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 80,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 82,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 86,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 87,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 88,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 89,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 90,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 94,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 98,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 15,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 102,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 15,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 104,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 2,
+            "Length" : 15,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 106,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 108,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 109,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 112,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 114,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 116,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 117,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 2,
+            "Length" : 30,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 119,
+            "Beat"      : 14
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 123,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 125,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 127,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 131,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 133,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 135,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 139,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 141,
+            "Beat"      : 4
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 141,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 143,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 145,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 147,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 149,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 153,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 156,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 157,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 161,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 165,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 169,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 173,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 175,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 177,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 179,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 184,
+            "Beat"      : 8
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 0,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 0,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 0,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 0,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 4,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 0,
+            "Beat"      : 0
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 186,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 187,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 3,
+            "Bar"       : 189,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 4,
+            "Bar"       : 194,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 2,
+            "Bar"       : 195,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 31,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 197,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 5,
+            "Bar"       : 202,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 1,
+            "Bar"       : 203,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 1,
+            "Length" : 0,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 205,
+            "Beat"      : 12
+        },
+        {
+            "Type" : 2,
+            "Length" : 50,
+            "SlideTime" : 0,
+            "SlideWay"  : 0,
+            "RoundTrip" : false,
+            "Number"    : 0,
+            "Bar"       : 212,
+            "Beat"      : 1
         }
     ]
 }

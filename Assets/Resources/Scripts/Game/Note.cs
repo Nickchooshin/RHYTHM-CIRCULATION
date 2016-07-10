@@ -15,12 +15,11 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         BAD
     }
 
-    public const float APPEAR_TIME = 0.35f;
+    public const float APPEAR_TIME = 0.4f;
 
     public const float PERFECT_TIMING = 0.1f;
     public const float GREAT_TIMING = 0.2f;
-    //public const float GOOD_TIMING = 0.3f;
-    public const float GOOD_TIMING = 0.35f;
+    public const float GOOD_TIMING = 0.3f;
 
     protected NoteData m_noteData = new NoteData();
     protected NoteJudge m_noteJudge = NoteJudge.BAD;
