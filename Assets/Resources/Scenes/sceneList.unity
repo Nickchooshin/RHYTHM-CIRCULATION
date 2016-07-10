@@ -905,6 +905,7 @@ GameObject:
   - 222: {fileID: 869613109}
   - 114: {fileID: 869613108}
   - 114: {fileID: 869613107}
+  - 114: {fileID: 869613110}
   m_Layer: 5
   m_Name: Information_Back
   m_TagString: Untagged
@@ -1008,6 +1009,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 869613105}
+--- !u!114 &869613110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 869613105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721360873fe389f49a41585d530d46f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 869613108}
+  fadeInOutTime: 1
 --- !u!1 &944186928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,6 +1984,7 @@ GameObject:
   - 222: {fileID: 1831407471}
   - 114: {fileID: 1831407470}
   - 114: {fileID: 1831407472}
+  - 114: {fileID: 1831407473}
   m_Layer: 5
   m_Name: Information_Start
   m_TagString: Untagged
@@ -2073,6 +2088,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1831407473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831407468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721360873fe389f49a41585d530d46f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 1831407470}
+  fadeInOutTime: 1
 --- !u!1 &2057780856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,6 +2339,7 @@ GameObject:
   - 222: {fileID: 2109109081}
   - 114: {fileID: 2109109080}
   - 114: {fileID: 2109109079}
+  - 114: {fileID: 2109109082}
   m_Layer: 5
   m_Name: Back_Button
   m_TagString: Untagged
@@ -2414,6 +2443,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2109109077}
+--- !u!114 &2109109082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2109109077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721360873fe389f49a41585d530d46f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 2109109080}
+  fadeInOutTime: 1
 --- !u!1 &2110388212
 GameObject:
   m_ObjectHideFlags: 0
