@@ -123,9 +123,28 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         NoteJudgeReceiver.Instance.SendNoteJudge(m_noteJudge);
         NoteSE();
 
-        GameObject prefab = Resources.Load<GameObject>("3D Particles/Prefabs/Effect");
-        prefab.transform.position = transform.position;
-        GameObject effect = MonoBehaviour.Instantiate<GameObject>(prefab);
+        GameObject prefab = null;
+
+        switch (m_noteJudge)
+        {
+            case NoteJudge.PERFECT:
+                prefab = Resources.Load<GameObject>("3D Particles/Prefabs/Effect_Perfect");
+                break;
+
+            case NoteJudge.GREAT:
+                prefab = Resources.Load<GameObject>("3D Particles/Prefabs/Effect_Great");
+                break;
+
+            case NoteJudge.GOOD:
+                prefab = Resources.Load<GameObject>("3D Particles/Prefabs/Effect_Good");
+                break;
+        }
+
+        if (prefab != null)
+        {
+            prefab.transform.position = transform.position;
+            GameObject effect = MonoBehaviour.Instantiate<GameObject>(prefab);
+        }
 
         Destroy(gameObject);
     }

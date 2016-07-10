@@ -83,15 +83,64 @@ public class NoteManager : MonoBehaviour {
 
         StopCoroutine("GameStart");
 
+        //
+        float accuracy = score.Accuracy;
+        string rank = "";
+
+        if (accuracy >= 96.0f)
+        {
+            rank = "S";
+            AudioManager.Instance.LoadSEClip("Narration/13. [narration] S Rank", "Rank");
+        }
+        else if (accuracy >= 85.0f)
+        {
+            rank = "A";
+            AudioManager.Instance.LoadSEClip("Narration/14. [narration] A Rank", "Rank");
+        }
+        else if (accuracy >= 75.0f)
+        {
+            rank = "B";
+            AudioManager.Instance.LoadSEClip("Narration/15. [narration] B Rank", "Rank");
+        }
+        else if (accuracy >= 70.0f)
+        {
+            rank = "C";
+            AudioManager.Instance.LoadSEClip("Narration/16. [narration] C Rank", "Rank");
+        }
+        else
+            rank = "F";
+
+        if (rank != "F")
+        {
+            AudioManager.Instance.SetSEClip("Narration/09. [narration] Clear");
+            AudioManager.Instance.PlaySE();
+        }
+        else
+        {
+            AudioManager.Instance.SetSEClip("Narration/10. [narration] Fail");
+            AudioManager.Instance.PlaySE();
+        }
+        yield return new WaitForSeconds(1.5f);
+
+        if (accuracy >= 100.0f)
+        {
+            AudioManager.Instance.SetSEClip("11. [narration] Full Combo");
+            AudioManager.Instance.Play();
+            yield return new WaitForSeconds(2.0f);
+        }
+        //
+
         AudioManager.Instance.Stop();
         AudioManager.Instance.SetAudioClip("BGM/04. [BGM] Result");
         AudioManager.Instance.Play();
+        //AudioManager.Instance.PlaySE("Result");
+        AudioManager.Instance.PlaySE("Rank");
 
         NoteDataLoader.DifficultyType noteDifficulty = NoteDataLoader.Instance.NoteDifficulty;
 
         JsonData infoData = NoteDataLoader.Instance.InfoData;
-        float accuracy = score.Accuracy;
-        string rank = "";
+        //float accuracy = score.Accuracy;
+        //string rank = "";
 
         resultUIPanel.Name = infoData["Name"].ToString();
         resultUIPanel.Singer = infoData["Singer"].ToString();
@@ -102,7 +151,7 @@ public class NoteManager : MonoBehaviour {
         resultUIPanel.Accuracy = score.Accuracy.ToString("F1") + "%";
         resultUIPanel.Score = score.TotalScore.ToString();
         resultUIPanel.Difficulty = infoData["Note"][(int)noteDifficulty]["Difficulty"].ToString();
-        if (accuracy >= 96.0f)
+        /*if (accuracy >= 96.0f)
             rank = "S";
         else if (accuracy >= 85.0f)
             rank = "A";
@@ -111,7 +160,7 @@ public class NoteManager : MonoBehaviour {
         else if (accuracy >= 70.0f)
             rank = "C";
         else
-            rank = "F";
+            rank = "F";*/
         resultUIPanel.Rank = rank;
         resultUIPanel.gameObject.SetActive(true);
 
