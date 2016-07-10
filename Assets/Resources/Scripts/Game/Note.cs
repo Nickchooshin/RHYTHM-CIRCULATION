@@ -144,6 +144,7 @@ public abstract class Note : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             prefab.transform.position = transform.position;
             GameObject effect = MonoBehaviour.Instantiate<GameObject>(prefab);
+            prefab.transform.position = new Vector3(0.0f, 0.0f, -1.0f);
         }
 
         Destroy(gameObject);

@@ -40,7 +40,7 @@ public class ListManager : MonoBehaviour {
             list.Rank = HighScoreManager.Instance.GetHighScoreRank(list.Name, list.Mastery);
 
             float scaleY = listPanel.localScale.y;
-            float positionY = (-80.0f - (LIST_SPACE * i)) / scaleY;
+            float positionY = (-110.0f - (LIST_SPACE * i)) / scaleY;
 
             listObject.transform.SetParent(listPanel);
             listObject.transform.localPosition = new Vector3(0.0f, positionY, 0.0f);
